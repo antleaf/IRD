@@ -52,10 +52,8 @@ fr:
         | `oai_pmh_base_url` | URL | URL de base de l'interface OAI-PMH du dépôt | OBLIGATOIRE | URI HTTP ou HTTPS valide | https://zenodo.org/oai2d |
         | `media_types` | *liste (termes)* | Décrit le(s) type(s) de contenu du dépôt. | OBLIGATOIRE | Ce champ DOIT contenir **une ou plusieurs** valeurs de la liste *Types de médias* (voir ci-dessous).<br/>Séparez chaque valeur par une barre verticale : "\|" | research-articles\|conference-papers\|research-data |
         | `primary_subject` | *terme* | Décrit le sujet/la discipline principale du contenu du dépôt. | OBLIGATOIRE | Ce champ DOIT contenir **une** valeur de la liste *Sujets principaux* (voir ci-dessous) | multidisciplinaire |
-        | `record_status` | *terme* | Ceci identifie le statut de la notice IRD | OBLIGATOIRE | Ce champ DOIT contenir **une** valeur de la liste *Statuts de la notice* (voir ci-dessous).<br/>- Si le dépôt n'est plus valide pour inclusion dans l'IRD, utilisez la valeur « archivé ».<br/>- Si le dépôt a été vérifié et que toutes les informations sont à jour, utilisez la valeur « révisé ».<br/>- Sinon, utilisez la valeur « en cours de révision ». | vérifié |
-
-        <br/>
-        ### Listes contrôlées de termes
+        | `record_status` | *terme* | Ceci identifie le statut de l'enregistrement IRD | OBLIGATOIRE | Ce champ DOIT contenir **une** valeur de la liste *Statuts d'enregistrement* (voir ci-dessous).<br/>- Si le dépôt n'est plus valide pour inclusion dans l'IRD, utilisez la valeur « archivé ».<br/>- Si le dépôt a été vérifié et que toutes les informations sont à jour, utilisez la valeur « révisé ».<br/>- Sinon, utilisez la valeur « en cours de révision ». | vérifié |
+      controlled_lists_of_terms: Listes contrôlées de termes
       media_types: Types de médias
       primary_subjects: Matières principales
       record_statuses: Statuts des enregistrements

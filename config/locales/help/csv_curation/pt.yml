@@ -54,9 +54,7 @@ pt:
         | `media_types` | *list (terms)* | Isto descreve o(s) tipo(s) de conteúdo no repositório. | OBRIGATÓRIO | Este campo DEVE conter **um ou mais** valores da lista *Tipos de mídia* (veja abaixo).<br/>Separe cada valor com um caractere "pipe": "\|" | research-articles\|conference-papers\|research-data |
         | `primary_subject` | *term* | Isto descreve o assunto/disciplina principal do conteúdo no repositório. | OBRIGATÓRIO | Este campo DEVE conter **um** valor da lista *Primary Subjects* (veja abaixo) | multidisciplinary |
         | `record_status` | *term* | Isso identifica o status do registro do IRD | OBRIGATÓRIO | Este campo DEVE conter **um** valor da lista *Record Statuses* (veja abaixo).<br/>- Se o repositório não for mais válido para inclusão no IRD, use o valor "archived"<br/>- Se o repositório tiver sido verificado e todas as informações estiverem atualizadas, use o valor "reviewed"<br/>- Caso contrário, use o valor "under_review". | verified |
-
-        <br/>
-        ### Listas controladas de termos
+      controlled_lists_of_terms: Listas controladas de termos
       media_types: Tipos de mídia
       primary_subjects: Matérias Primárias
       record_statuses: Status de registro

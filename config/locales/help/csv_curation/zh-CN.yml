@@ -52,11 +52,9 @@ zh-CN:
         | `software_version` | 自由文本 | 这是存储库运行的软件平台的版本号或标签。| 可选 | | 3 |
         | `oai_pmh_base_url` | URL | 这是存储库的 OAI-PMH 接口的基本 URL | 必需 | 这必须是有效的 HTTP 或 HTTPS URI | https://zenodo.org/oai2d |
         | `media_types` | *列表（术语）* | 这描述了存储库中内容的类型。| 必需 | 此字段必须包含列表 *媒体类型* 中的**一个或多个**值（见下文）。<br/>用“管道”字符分隔每个值：“\|”| research-articles\|conference-papers\|research-data |
-        | `primary_subject` | *term* | 这描述了存储库中内容的主要主题/学科。 | 必需 | 此字段必须包含列表 *主要主题* 中的**一个**值（见下文） | multidisciplinary |
-        | `record_status` | *term* | 这标识了 IRD 记录的状态 | 必需 | 此字段必须包含列表 *记录状态* 中的**一个**值（见下文）。<br/>- 如果存储库不再有效，不能包含在 IRD 中，请使用值“archived”<br/>- 如果存储库已经过检查，并且所有信息都是最新的，则使用值“reviewed”<br/>- 否则，使用值“under_review”。 | verified |
-
-        <br/>
-        ### 受控术语列表
+        | `primary_subject` | *term* | 这描述了存储库中内容的主要主题/学科。 | 必需 | 此字段必须包含来自列表 *主要主题* 的**一个**值（见下文） | 多学科 |
+        | `record_status` | *term* | 这标识了 IRD 记录的状态 | 必需 | 此字段必须包含来自列表 *记录状态* 的**一个**值（见下文）。<br/>- 如果存储库不再有效，不能包含在 IRD 中，请使用值“archived”<br/>- 如果存储库已经过检查，并且所有信息都是最新的，则使用值“reviewed”<br/>- 否则，使用值“under_review”。 | 已验证 |
+      controlled_lists_of_terms: 受控术语列表
       media_types: 媒体类型
       primary_subjects: 主要科目
       record_statuses: 记录状态

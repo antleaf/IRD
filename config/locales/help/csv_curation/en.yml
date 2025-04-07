@@ -54,9 +54,7 @@ en:
         | `media_types`      | *list (terms)* | This describes the type(s) of content in the repository.                                                                       | REQUIRED    | This field MUST contain **one or more** values from the list *Media Types* (see below).<br/>Separate each value with a "pipe" character: "\|"                                                                                                                                                                                          | research-articles\|conference-papers\|research-data |
         | `primary_subject`  | *term*         | This describes the primary subject/discipline of the content in the repository.                                                | REQUIRED    | This field MUST contain **one** value from the list *Primary Subjects* (see below)                                                                                                                                                                                                                                                     | multidisciplinary                                   |
         | `record_status`    | *term*         | This identifies the status of the IRD record                                                                                   | REQUIRED    | This field MUST contain **one** value from the list *Record Statuses* (see below).<br/>- If the repository is no longer valid for inclusion in IRD, use the value "archived"<br/>- If the repository has been checked, and all information is up-to-date, then use the value "reviewed"<br/>- Otherwise, use the value "under_review". | verified                                            |
-
-        <br/>
-        ### Controlled lists of terms
+      controlled_lists_of_terms: Controlled lists of terms
       media_types: Media Types
       primary_subjects: Primary Subjects
       record_statuses: Record Statuses

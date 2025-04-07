@@ -57,9 +57,7 @@ es:
         | `media_types` | *list (terms)* | Describe el/los tipo(s) de contenido del repositorio. | OBLIGATORIO | Este campo DEBE contener **uno o más** valores de la lista *Tipos de medios* (ver más abajo).<br/>Separe cada valor con una barra vertical: "\|" | research-articles\|conference-papers\|research-data |
         | `primary_subject` | *término* | Describe la materia/disciplina principal del contenido del repositorio. | OBLIGATORIO | Este campo DEBE contener **un** valor de la lista *Materias Primarias* (ver más abajo) | multidisciplinario |
         | `estado_del_registro` | *término* | Identifica el estado del registro del IRD | OBLIGATORIO | Este campo DEBE contener **un** valor de la lista *Estados_del_registro* (ver más abajo).<br/>- Si el repositorio ya no es válido para su inclusión en el IRD, utilice el valor "archivado".<br/>- Si el repositorio ha sido revisado y toda la información está actualizada, utilice el valor "revisado".<br/>- De lo contrario, utilice el valor "en_revisión". | verificado |
-
-        <br/>
-        ### Listas controladas de términos
+      controlled_lists_of_terms: Listas controladas de términos
       media_types: Tipos de medios
       primary_subjects: Asignaturas primarias
       record_statuses: Estados de registro

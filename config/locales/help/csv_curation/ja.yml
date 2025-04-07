@@ -60,9 +60,7 @@ ja:
         | `media_types` | *リスト (用語)* | これは、リポジトリ内のコンテンツの種類を説明します。 | 必須 | このフィールドには、リスト *メディア タイプ* の **1 つ以上の** 値が含まれている必要があります (下記参照)。<br/>各値は「パイプ」文字で区切ります: "\|" | research-articles\|conference-papers\|research-data |
         | `primary_subject` | *term* | これはリポジトリ内のコンテンツの主な主題/分野を説明します。 | 必須 | このフィールドには、*Primary Subjects* リストから **1 つの** 値が含まれている必要があります (下記参照) | multidisciplinary |
         | `record_status` | *term* | これは IRD レコードのステータスを識別します | 必須 | このフィールドには、*Record Statuses* リストから **1 つの** 値が含まれている必要があります (下記参照)。<br/>- リポジトリが IRD に含めるのに有効でなくなった場合は、値 "archived" を使用します<br/>- リポジトリがチェックされ、すべての情報が最新である場合は、値 "reviewed" を使用します<br/>- それ以外の場合は、値 "under_review" を使用します。 | verified |
-
-        <br/>
-        ### 用語の制御リスト
+      controlled_lists_of_terms: 管理された用語リスト
       media_types: メディアタイプ
       primary_subjects: 主な科目
       record_statuses: レコードステータス
