@@ -1,0 +1,64 @@
+---
+tr:
+  help:
+    csv_curation:
+      body_text: |-
+        (Bu belgedeki "ZORUNLU", "ZORUNLU DEĞİL", "GEREKLİ", "OLACAK", "OLMAYACAK", "OLMALI", "ÖNERİLEN", "OLABİLİR" ve "İSTEĞE BAĞLI" anahtar sözcükleri [RFC 2119](https://www.ietf.org/rfc/rfc2119.txt)'de açıklandığı şekilde yorumlanmalıdır.)
+
+        Bu talimatlar, IRD hizmeti tarafından size (Sorumlu Kuruluş olarak) sağlanan bir CSV dosyasının kullanımına yardımcı olmak için tasarlanmıştır, böylece dosyada listelenen depolar hakkında bazı bilgileri güncelleyebilirsiniz.
+
+        Bu CSV, IRD'den dışa aktarılmıştır. IRD'nin bildiği, sorumluluk alanınızdaki depolar hakkında en son bilgileri içerir.
+        13 sütun içerir. Sütunların birkaçı kısıtlanmıştır. Bazıları yalnızca izin verilen değerlerin kontrollü bir listesinden değerleri kabul eder. Tüm bunlar aşağıdaki tabloda ayrıntılı olarak açıklanmıştır.
+
+        Bu dosyanın her satırındaki değerler, tablodaki kurallarla sınırlandırılarak düzenlenebilir. Daha sonra dosya, kayıtları güncellemek için IRD'ye geri gönderilebilir. CSV dosyasını aldığınızda, IRD tarafından bilinen depolar için kayıtlar içerecektir. Bu, ilk sütunun - `ID` - her biri için bir ID içerdiği anlamına gelir. Bu ID'lerden birine sahip bir satırdaki herhangi bir değeri düzenlerseniz, o ID'ye sahip IRD'deki kayıt bu değerlerle güncellenecektir.
+
+        Ayrıca, IRD tarafından henüz bilinmeyen bir depo olduğuna inanıyorsanız, CSV dosyasına yeni satırlar ekleyebilirsiniz. Bu tür satırlar, aşağıdaki tabloda yer alan aynı kurallarla sınırlandırılmış değerlere de sahip olacaktır, ancak bir ID'ye sahip OLMAMALIDIR. Bir ID'nin olmaması, IRD'nin o depo için yeni bir kayıt oluşturmasına neden olacaktır.
+
+        Kayıtları güncellemek için bir CSV dosyasını IRD'ye geri gönderdiğinizde, işlenmeden önce otomatik olarak kontrol edilecektir. Dosyanın yapısı orijinal dosyayla tam olarak eşleşmelidir (örneğin sütun sayısı, sütunların sırası, satırlardaki izin verilen değerler vb.).
+
+        Güncelleme gerektirmeyen satırlar varsa, bu satırları EKLEYEBİLİRSİNİZ (ancak bu İSTEĞE BAĞLIDIR). CSV dosyası IRD tarafından işlendiğinde, IRD kaydında güncelleme gerektirmeyen satırlar basitçe yok sayılır.
+
+        CSV dosyası artık var olmadığına inandığınız bir depoya ait bir satır içeriyorsa, bunu `record_status` sütununa "archived" değerini girerek belirtmeniz GEREKİR.
+
+        ### CSV dosyası güncellemesini kullanma işleminin özeti
+
+        1. CSV dosyasını IRD'den alın
+        2. Dosyadaki her satırı (depo) bilgilerin doğruluğu açısından kontrol edin
+        - İsteğe bağlı olarak, aşağıdaki tabloda açıklanan kısıtlamalara ve kurallara göre bu satırdaki tüm değerleri güncelleyin
+        3. IRD'ye dahil edilmesi gerektiğini düşündüğünüz yeni depolar için yeni satırlar ekleyin
+        - Tablodaki kurallara göre her yeni satıra değerler ekleyin.
+        4. Her satır için `record_status` sütununu güncelleyin:
+        - Depo kaydının eksiksiz ve doğru olduğunu düşünüyorsanız, bu değeri "incelendi" olarak ayarlayın
+        - Bu deponun işlevsiz olduğunu veya herhangi bir nedenle IRD'de artık temsil edilmemesi gerektiğini düşünüyorsanız, bu değeri "arşivlendi" olarak ayarlayın
+
+        ### Aşağıdaki tabloda aşağıdaki terimler kullanılmıştır
+
+        - ***nil:*** Bu, boş veya boş bir değeri belirtir. - ***terim*:** Bu, izin verilen değerlerin kontrollü listesinden **bir** değerin SEÇİLMESİ GEREKTİĞİNİ belirtir.
+        - ***liste:*** Bu, izin verilen değerlerin kontrollü listesinden **bir veya daha fazla** değerin SEÇİLMESİ GEREKTİĞİNİ belirtir; burada bireysel değerler bir "boru" karakteriyle ayrılır: "\|"
+
+        ### CSV dosyasındaki sütunlar
+
+        | Sütun Adı | Tür | Açıklama | Gereksinim | Kısıtlamalar ve Kurallar | Örnek |
+        | ------------------ | -------------- | ------------------------------------------------------------------------------------------------------------------------------ | ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------- |
+        | `id` | UUID veya *nil* | Bu deponun IRD kimliği (yeni bir depo için boş olacaktır) | İSTEĞE BAĞLI | - Bu depo için IRD'de zaten bir kayıt varsa, bu ZORUNLUDUR<br/>- Bu depo için IRD'de henüz bir kayıt yoksa, bu *nil* OLMALIDIR | 1b74aa75-db97-4ea3-a344-baafc0911ee8 |
+        | `name` | Serbest metin | Deponun adı | ZORUNLUDUR | | Zenodo |
+        | `homepage` | URL | Deponun ana sayfasının URL'si | ZORUNLUDUR | Bu geçerli bir HTTP veya HTTPS URI'si OLMALIDIR. | https://zenodo.org/ |
+        | `contact` | Serbest metin | Kullanıcıların depo hizmetiyle iletişim kurmasının bir yolu. | ÖNERİLEN | Bu genellikle bir destek e-posta adresidir, ancak bir "yardım masası" veya iletişim formuna giden bir URL veya hatta sadece serbest metinli bir talimat da OLABİLİR | info@zenodo.org |
+        | `owner_ror` | HTTPS URL'si | Bu, bu deponun sahibi olan kuruluş için [Araştırma Kuruluşu Kaydı (ROR)](https://ror.org) tanımlayıcısıdır | ÖNERİLEN | Bu, HTTPS URI biçiminde geçerli bir ROR OLMALIDIR. | https://ror.org/01ggx4157 |
+        | `owner_name` | Serbest metin | Bu deponun sahibi olan kuruluşun adı | İSTEĞE BAĞLI | Bu alan, CSV IRD tarafından işlendiğinde **kullanılmaz** - yalnızca sahip kuruluşu tanıyabilmeniz için bir kolaylık olarak sağlanır. Kuruluş yalnızca `owner_ror` sütunundaki değerle tanımlanır. | Avrupa Nükleer Araştırma Örgütü |
+        | `repository_type` | *term* | | ZORUNLU | Bu alan, *Repository Types* listesinden **bir** değer içermelidir (aşağıya bakın) | generalist_repository |
+        | `software` | *term* | | ÖNERİLEN | Bu alan, *Software Platforms* listesinden **bir** değer içermelidir (aşağıya bakın) | invenio |
+        | `software_version` | Serbest metin | | İSTEĞE BAĞLI | | 3 |
+        | `oai_pmh_base_url` | URL | | ZORUNLU | Bu geçerli bir HTTP veya HTTPS URI OLMALIDIR | https://zenodo.org/oai2d |
+        | `media_types` | *list (terimler)* | | ZORUNLU | Bu alan *Medya Türleri* listesinden **bir veya daha fazla** değer içermelidir (aşağıya bakın).<br/>Her değeri bir "boru" karakteriyle ayırın: "\|" | research-articles\|conference-papers\|research-data |
+        | `primary_subject` | *term* | | ZORUNLU | Bu alan *Birincil Konular* listesinden **bir** değer içermelidir (aşağıya bakın) | multidisipliner |
+        | `record_status` | *term* | | ZORUNLU | Bu alan *Kayıt Durumları* listesinden **bir** değer içermelidir (aşağıya bakın) | doğrulandı |
+
+        <br/>
+        ### Terimlerin kontrol edilen listeleri
+      media_types: Medya Türleri
+      primary_subjects: Birincil Dersler
+      record_statuses: Kayıt Durumları
+      repository_types: Depo Türleri
+      software_platforms: Yazılım Platformları
+      title: CSV toplu iş dosyasını düzenleme

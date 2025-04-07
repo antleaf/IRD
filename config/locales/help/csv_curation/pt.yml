@@ -1,0 +1,65 @@
+---
+pt:
+  help:
+    csv_curation:
+      body_text: |-
+        (As palavras-chave "DEVE", "NÃO DEVE", "REQUERIDO", "DEVERÁ", "NÃO DEVERÁ", "DEVERIA", "NÃO DEVERIA", "RECOMENDADO", "PODE" e "OPCIONAL" neste documento devem ser interpretadas conforme descrito em [RFC 2119](https://www.ietf.org/rfc/rfc2119.txt).)
+
+        Estas instruções têm como objetivo ajudar no uso de um arquivo CSV, fornecido a você (como uma Organização Responsável) pelo serviço IRD, para que você possa atualizar algumas informações sobre os repositórios listados no arquivo.
+
+        Este CSV foi exportado do IRD. Ele contém as informações mais recentes, conhecidas pelo IRD, sobre repositórios em sua área de responsabilidade.
+        Ele contém 13 colunas. Várias colunas são restritas. Algumas aceitam apenas valores de uma lista controlada de valores permitidos. Tudo isso é detalhado na tabela (abaixo).
+
+        Os valores em cada linha deste arquivo podem ser editados, restringidos pelas regras na tabela. O arquivo pode então ser enviado de volta ao IRD para atualizar os registros lá. Quando você receber o arquivo CSV, ele conterá registros para repositórios conhecidos pelo IRD. Isso significa que a primeira coluna - `ID` - contém um ID para cada um deles. Se você editar qualquer valor em uma linha que tenha um desses IDs, o registro no IRD com esse ID será atualizado com esses valores.
+
+        Você PODE também adicionar novas linhas ao arquivo CSV, se você acredita que há um repositório que ainda não é conhecido pelo IRD. Essas linhas também terão valores, restringidos pelas mesmas regras na tabela abaixo, mas NÃO DEVEM ter um ID. A ausência de um ID fará com que o IRD crie um novo registro para esse repositório.
+
+        Quando você envia um arquivo CSV de volta ao IRD para atualizar registros, ele será verificado automaticamente antes de ser processado. A estrutura do arquivo DEVE corresponder exatamente ao arquivo original (por exemplo, o número de colunas, a ordem das colunas, os valores permitidos nas linhas etc.).
+
+        Se houver linhas onde nenhuma atualização é necessária, você PODE incluir essas linhas (mas isso é OPCIONAL). Quando o arquivo CSV é processado pelo IRD, quaisquer linhas que não exijam uma atualização no registro IRD são simplesmente ignoradas.
+
+        Se o arquivo CSV contiver uma linha para um repositório que você acredita que não existe mais, então você DEVE indicar isso inserindo o valor "archived" na coluna `record_status`.
+
+        ### Resumo do processo para usar a atualização do arquivo CSV
+
+        1. Receba o arquivo CSV do IRD
+        2. Verifique cada linha (repositório) no arquivo para verificar a precisão das informações
+        - Opcionalmente, atualize quaisquer valores nesta linha, de acordo com as restrições e regras descritas na tabela (abaixo)
+        3. Adicione novas linhas para quaisquer novos repositórios que você acha que devem ser incluídos no IRD
+        - Adicione valores em cada nova linha, de acordo com as regras na tabela.
+        4. Atualize a coluna `record_status` para cada linha:
+        - Se você acha que o registro do repositório está completo e preciso, defina este valor como "revisado"
+        - Se você acha que este repositório está extinto ou não deve mais ser representado no IRD por algum motivo, defina este valor como "arquivado"
+
+        ### Na tabela abaixo, os seguintes termos são usados
+
+        - ***nil:*** Isso indica um valor em branco ou vazio.
+        - ***term*:** Isso indica que **um** valor DEVE ser selecionado de uma lista controlada de valores permitidos.
+        - ***list:*** Isso indica que **um ou mais** valores DEVEM ser selecionados de uma lista controlada de valores permitidos, onde os valores individuais são separados por um caractere "pipe": "\|"
+
+        ### Colunas no arquivo CSV
+
+        | Nome da coluna | Tipo | Descrição | Requisito | Restrições e regras | Exemplo |
+        | ------------------ | -------------- | ------------------------------------------------------------------------------------------------------------------------------ | ----------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------- |
+        | `id` | UUID ou *nil* | O ID do IRD para este repositório (ficará em branco para um novo repositório) | OPCIONAL | - Se já houver um registro no IRD para este repositório, então isto é OBRIGATÓRIO<br/>- Se ainda não houver um registro no IRD para este repositório, então isto DEVE ser *nil* | 1b74aa75-db97-4ea3-a344-baafc0911ee8 |
+        | `name` | Texto livre | O nome do repositório | OBRIGATÓRIO | | Zenodo |
+        | `homepage` | URL | O URL da página inicial do repositório | OBRIGATÓRIO | DEVE ser um URI HTTP ou HTTPS válido. | https://zenodo.org/ |
+        | `contact` | Texto livre | Uma maneira para os usuários contatarem o serviço do repositório. | RECOMENDADO | Geralmente é um endereço de e-mail de suporte, mas PODE ser também um URL para um "help-desk" ou formulário de contato, ou mesmo apenas uma instrução de texto livre | info@zenodo.org |
+        | `owner_ror` | URL HTTPS | Este é o identificador [Registro de Organização de Pesquisa (ROR)](https://ror.org) para a organização que possui este repositório | RECOMENDADO | Este DEVE ser um ROR válido em seu formato URI HTTPS. | https://ror.org/01ggx4157 |
+        | `owner_name` | Texto livre | O nome da organização que possui este repositório | OPCIONAL | Este campo **não é usado** quando o CSV é processado pelo IRD - ele é fornecido apenas como uma conveniência para que você possa reconhecer a organização proprietária. A organização é identificada apenas pelo valor na coluna `owner_ror`. | Organização Europeia para Pesquisa Nuclear |
+        | `repository_type` | *termo* | | OBRIGATÓRIO | Este campo DEVE conter **um** valor da lista *Tipos de Repositório* (veja abaixo) | generalist_repository |
+        | `software` | *termo* | | RECOMENDADO | Este campo DEVE conter **um** valor da lista *Plataformas de Software* (veja abaixo) | invenio |
+        | `software_version` | Texto livre | | OPCIONAL | | 3 |
+        | `oai_pmh_base_url` | URL | | OBRIGATÓRIO | Este DEVE ser um URI HTTP ou HTTPS válido | https://zenodo.org/oai2d |
+        | `media_types` | *list (terms)* | | OBRIGATÓRIO | Este campo DEVE conter **um ou mais** valores da lista *Media Types* (veja abaixo).<br/>Separe cada valor com um caractere "pipe": "\|" | research-articles\|conference-papers\|research-data |
+        | `primary_subject` | *term* | | OBRIGATÓRIO | Este campo DEVE conter **um** valor da lista *Primary Subjects* (veja abaixo) | multidisciplinary |
+        | `record_status` | *term* | | OBRIGATÓRIO | Este campo DEVE conter **um** valor da lista *Record Statuses* (veja abaixo) | verified |
+
+        <br/>
+        ### Listas controladas de termos
+      media_types: Tipos de mídia
+      primary_subjects: Matérias Primárias
+      record_statuses: Status de registro
+      repository_types: Tipos de repositório
+      software_platforms: Plataformas de software
+      title: Curadoria de um arquivo de lote CSV

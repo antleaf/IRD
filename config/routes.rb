@@ -7,8 +7,13 @@ Rails.application.routes.draw do
 
   get "browser", to: "browser#index"
   get "about", to: "about#index"
-  get "help", to: "help#index"
+
   get "search", to: "search#index", as: "search"
+
+  # HELP PAGES
+  get "help", to: "help#index"
+  get "/help/index", to: "help#index"
+  get "/help/csv_curation", to: "help#csv_curation"
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.

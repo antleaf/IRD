@@ -1,0 +1,29 @@
+
+= process_md(t("help.csv_curation.body_text"))
+%div.row
+  %div.col
+    %h4=t("help.csv_curation.repository_types")
+    %ul
+      - System.subcategories.each do |system_category|
+        %li=system_category[0]
+  %div.col
+    %h4=t("help.csv_curation.media_types")
+    %ul
+      - Rails.configuration.ird[:media_types].keys.each do |media_type|
+        %li=media_type
+  %div.col
+    %h4=t("help.csv_curation.primary_subjects")
+    %ul
+      - System.primary_subjects.each do |primary_subject|
+        %li=primary_subject[0]
+  %div.col
+    %h4=t("help.csv_curation.software_platforms")
+    %ul
+      - Platform.order(:id).each do |platform|
+        %li=platform.id
+  %div.col
+    %h4=t("help.csv_curation.record_statuses")
+    %ul
+      %li under_review
+      %li verified
+      %li archived

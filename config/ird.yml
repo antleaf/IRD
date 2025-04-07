@@ -58,28 +58,28 @@ shared:
       language: 中文
       flag: cn
   media_types:
-    books:
-      identifier: "http://purl.org/coar/resource_type/c_2f33"
-    other:
-      identifier: "http://purl.org/coar/resource_type/c_1843"
-    theses:
-      identifier: "http://purl.org/coar/resource_type/c_46ec"
-    patents:
-      identifier: "http://purl.org/coar/resource_type/c_15cd"
-    research-data:
-      identifier: "http://purl.org/coar/resource_type/c_ddb1"
-    conference-papers:
-      identifier: "http://purl.org/coar/resource_type/c_5794"
-    software:
-      identifier: "http://purl.org/coar/resource_type/c_5ce6"
-    images:
-      identifier: "http://purl.org/coar/resource_type/c_c513"
     research-articles:
       identifier: "http://purl.org/coar/resource_type/c_2df8fbb1"
+    research-data:
+      identifier: "http://purl.org/coar/resource_type/c_ddb1"
+    books:
+      identifier: "http://purl.org/coar/resource_type/c_2f33"
+    conference-papers:
+      identifier: "http://purl.org/coar/resource_type/c_5794"
+    images:
+      identifier: "http://purl.org/coar/resource_type/c_c513"
     learning-objects:
       identifier: "http://purl.org/coar/resource_type/c_e059"
     multimedia:
       identifier: "http://purl.org/coar/resource_type/multimedia"
+    other:
+      identifier: "http://purl.org/coar/resource_type/c_1843"
+    patents:
+      identifier: "http://purl.org/coar/resource_type/c_15cd"
+    software:
+      identifier: "http://purl.org/coar/resource_type/c_5ce6"
+    theses:
+      identifier: "http://purl.org/coar/resource_type/c_46ec"
   labels:
     duplicate:
       restricted: false

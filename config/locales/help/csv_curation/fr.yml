@@ -1,0 +1,64 @@
+---
+fr:
+  help:
+    csv_curation:
+      body_text: |-
+        (Les mots clés « DOIT », « NE DOIT PAS », « OBLIGATOIRE », « DEVRA », « NE DEVRA PAS », « DEVRAIT », « NE DEVRAIT PAS », « RECOMMANDÉ », « PEUT » et « FACULTATIF » utilisés dans ce document doivent être interprétés conformément à la norme [RFC 2119](https://www.ietf.org/rfc/rfc2119.txt).)
+
+        Ces instructions sont destinées à vous aider à utiliser un fichier CSV, fourni par le service IRD (en tant qu'organisation responsable), afin de vous permettre de mettre à jour certaines informations concernant les dépôts répertoriés.
+
+        Ce fichier CSV a été exporté depuis l'IRD. Il contient les informations les plus récentes, connues de l'IRD, concernant les dépôts de votre domaine de responsabilité.
+        Il comporte 13 colonnes. Plusieurs d'entre elles sont soumises à des contraintes. Certaines n'acceptent que des valeurs issues d'une liste contrôlée de valeurs autorisées. L'ensemble de ces informations est détaillé dans le tableau ci-dessous.
+
+        Les valeurs de chaque ligne de ce fichier peuvent être modifiées, conformément aux règles du tableau. Le fichier peut ensuite être renvoyé à l'IRD afin d'y mettre à jour les enregistrements. À la réception du fichier CSV, celui-ci contiendra les enregistrements des référentiels connus de l'IRD. La première colonne, « ID », contient un identifiant pour chacun d'eux. Si vous modifiez une valeur dans une ligne comportant l'un de ces identifiants, l'enregistrement de l'IRD correspondant sera mis à jour avec ces valeurs.
+
+        Vous pouvez également ajouter de nouvelles lignes au fichier CSV si vous pensez qu'il existe un référentiel inconnu de l'IRD. Ces lignes contiendront également des valeurs, soumises aux mêmes règles que celles du tableau ci-dessous, mais elles ne DOIVENT PAS comporter d'identifiant. L'absence d'identifiant entraînera la création par l'IRD d'un nouvel enregistrement pour ce référentiel.
+
+        Lorsque vous soumettez un fichier CSV à l'IRD pour mettre à jour des enregistrements, il sera automatiquement vérifié avant d'être traité. La structure du fichier DOIT correspondre exactement à celle du fichier d'origine (par exemple, le nombre de colonnes, l'ordre des colonnes, les valeurs autorisées dans les lignes, etc.).
+
+        Si certaines lignes ne nécessitent aucune mise à jour, vous POUVEZ les inclure (mais ceci est FACULTATIF). Lors du traitement du fichier CSV par IRD, les lignes ne nécessitant pas de mise à jour de l'enregistrement IRD sont simplement ignorées.
+
+        Si le fichier CSV contient une ligne correspondant à un référentiel que vous pensez avoir disparu, vous DEVEZ l'indiquer en saisissant la valeur « archivé » dans la colonne « record_status ».
+
+        ### Résumé du processus de mise à jour du fichier CSV
+
+        1. Réception du fichier CSV de l'IRD
+        2. Vérification de l'exactitude des informations de chaque ligne (référentiel) du fichier
+        - Mise à jour facultative des valeurs de cette ligne, conformément aux contraintes et règles décrites dans le tableau ci-dessous
+        3. Ajout de nouvelles lignes pour les nouveaux référentiels que vous souhaitez inclure dans l'IRD
+        - Ajout de valeurs à chaque nouvelle ligne, conformément aux règles du tableau
+        4. Mise à jour de la colonne « record_status » pour chaque ligne :
+        - Si vous pensez que l'enregistrement du référentiel est complet et exact, définissez cette valeur sur « reviewed »
+        - Si vous pensez que ce référentiel est obsolète ou ne devrait plus être représenté dans l'IRD pour une raison quelconque, définissez cette valeur sur « archivé »
+
+        ### Dans le tableau ci-dessous, les termes suivants sont utilisés :
+
+        - ***nil :*** Indique une valeur vide.
+        - ***term* :** Indique qu'**une** valeur DOIT être sélectionnée dans une liste contrôlée de valeurs autorisées. - ***liste :*** Ceci indique qu'**une ou plusieurs** valeurs DOIVENT être sélectionnées dans une liste contrôlée de valeurs autorisées, où les valeurs individuelles sont séparées par une barre verticale : « \| »
+
+        ### Colonnes du fichier CSV
+
+        | Nom de la colonne | Type | Description | Exigence | Contraintes et règles | Exemple |
+        | ------------------ | -------------- | ------------------------------------------------------------------------------------------------------------------------------ | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------- |
+        | `id` | UUID ou *nil* | L'ID IRD de ce dépôt (il sera vide pour un nouveau dépôt) | FACULTATIF | - Si un enregistrement existe déjà dans l'IRD pour ce dépôt, ce champ est OBLIGATOIRE. - S'il n'existe pas encore d'enregistrement dans l'IRD pour ce dépôt, ce champ DOIT être *nil* | 1b74aa75-db97-4ea3-a344-baafc0911ee8 |
+        | `name` | Texte libre | Nom du dépôt | OBLIGATOIRE | | Zenodo |
+        | `homepage` | URL | URL de la page d'accueil du dépôt | OBLIGATOIRE | URI HTTP ou HTTPS valide. | https://zenodo.org/ |
+        | `contact` | Texte libre | Moyen pour les utilisateurs de contacter le service du dépôt. | RECOMMANDÉ | Il s'agit souvent d'une adresse e-mail d'assistance, mais PEUT également être une URL vers un service d'assistance ou un formulaire de contact, ou même simplement une instruction en texte libre | info@zenodo.org |
+        | `owner_ror` | URL HTTPS | Identifiant [ROR (Registre des organismes de recherche)](https://ror.org) de l'organisation propriétaire de ce dépôt | RECOMMANDÉ | URI HTTPS valide. | https://ror.org/01ggx4157 |
+        | `owner_name` | Texte libre | Nom de l'organisation propriétaire de ce dépôt | FACULTATIF | Ce champ n'est **pas utilisé** lorsque le fichier CSV est traité par l'IRD ; il est fourni uniquement pour faciliter l'identification de l'organisation propriétaire. L'organisation est identifiée uniquement par la valeur de la colonne « owner_ror ». | Organisation européenne pour la recherche nucléaire |
+        | `repository_type` | *terme* | | OBLIGATOIRE | Ce champ DOIT contenir **une** valeur de la liste *Types de dépôts* (voir ci-dessous) | generalist_repository |
+        | `software` | *terme* | | RECOMMANDÉ | Ce champ DOIT contenir **une** valeur de la liste *Plateformes logicielles* (voir ci-dessous) | invenio |
+        | `software_version` | Texte libre | | FACULTATIF | | 3 |
+        | `oai_pmh_base_url` | URL | | OBLIGATOIRE | Il doit s'agir d'une URI HTTP ou HTTPS valide | https://zenodo.org/oai2d |
+        | `media_types` | *liste (termes)* | | OBLIGATOIRE | Ce champ DOIT contenir **une ou plusieurs** valeurs de la liste *Types de médias* (voir ci-dessous).<br/>Séparez chaque valeur par une barre verticale : "\|" | research-articles\|conference-papers\|research-data |
+        | `primary_subject` | *terme* | | OBLIGATOIRE | Ce champ DOIT contenir **une** valeur de la liste *Sujets principaux* (voir ci-dessous) | multidisciplinaire |
+        | `record_status` | *terme* | | OBLIGATOIRE | Ce champ DOIT contenir **une** valeur de la liste *Statuts des enregistrements* (voir ci-dessous) | vérifié |
+
+        <br/>
+        ### Listes contrôlées de termes
+      media_types: Types de médias
+      primary_subjects: Matières principales
+      record_statuses: Statuts des enregistrements
+      repository_types: Types de référentiels
+      software_platforms: Plateformes logicielles
+      title: Conservation d'un fichier batch CSV

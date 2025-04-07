@@ -1,3 +1,5 @@
-
-%h2= t('help.general.title')
-= process_md(t('help.general.body'))
+%h2= t("help.index.title")
+= process_md(t("help.index.body_text") )
+%ul
+  %li= link_to t("help.index.title"), "/help/index"
+  %li= link_to t("help.csv_curation.title"), "/help/csv_curation"

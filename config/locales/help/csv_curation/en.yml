@@ -1,0 +1,65 @@
+---
+en:
+  help:
+    csv_curation:
+      body_text: |-
+        (The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in [RFC 2119](https://www.ietf.org/rfc/rfc2119.txt).)
+
+        These instructions are intended to help with the use of a CSV file, provided to you (as a Responsible Organisation) by the IRD service, so that you can update some information about the repositories listed in the file.
+
+        This CSV has been exported from IRD. It contains the most recent information, known to IRD, about repositories in your area of responsibility.
+        It contains 13 columns. Several of the columns are constrained. Some accept only values from a controlled list of allowed values. All of this is detailed in the table (below).
+
+        The values in each row of this file can be edited, constrained by the rules in the table. The file can then be sent back to the IRD in order to update the records there. When you receive the CSV file it will contain records for repositories known to IRD. This means that the first column - `ID` - contains an ID for each of them. If you edit any value in a row which has one of these IDs then the record in IRD with that ID will be updated with those values.
+
+        You MAY also add new rows to the CSV file, if you believe that there is a repository which is not already known to IRD. Such rows will also have values, constrained by the same rules in the table below, but they MUST NOT have an ID. The absence of an ID will cause IRD to create a new record for that repository.
+
+        When you submit a CSV file back to the IRD to update records, it will be automatically checked before being processed. The structure of the file MUST exactly match the original file (e.g. the number of columns, the order of the columns, the allowed values in the rows etc.).
+
+        If there are rows where no update is required, you MAY include those rows (but this is OPTIONAL). When the CSV file is processed by IRD, any rows which do not require an update to the IRD record are simply ignored.
+
+        If the CSV file contains a row for a repository which you believe no longer exists, then you MUST indicate this by entering the value "archived" in the `record_status` column.
+
+        ### Summary of process for using the CSV file update
+
+        1. Receive the CSV file from IRD
+        2. Check each row (repository) in the file for accuracy of the information
+            - Optionally update any values in this row, according to the constraints and rules described in the table (below)
+        3. Add new rows for any new repositories that you think should be included in the IRD
+            - Add values in each new row, according to the rules in the table.
+        4. Update the `record_status` column for each row:
+            - If you think the repository record is complete and accurate, set this value to "reviewed"
+            - If you think this repository is defunct, or should no longer be represented in the IRD for some reason, set this value to "archived"
+
+        ### In the table below, the following terms are used
+
+        - ***nil:*** This indicates a blank, or empty value.
+        - ***term*:** This indicates that **one** value MUST be selected from a controlled list of allowed values.
+        - ***list:*** This indicates that **one or more** value MUST be selected from a controlled list of allowed values, where the individual values are separated by a "pipe" character: "\|"
+
+        ### Columns in the CSV file
+
+        | Column Name        | Type           | Description                                                                                                                    | Requirement | Constraints & Rules                                                                                                                                                                                                                     | Example                                             |
+        | ------------------ | -------------- | ------------------------------------------------------------------------------------------------------------------------------ | ----------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------- |
+        | `id`               | UUID or *nil*  | The IRD ID for this repository (will be blank for a new repository)                                                            | OPTIONAL    | - If there is already a record in the IRD for this repository, then this is REQUIRED<br/>- If there is not yet a a record in the IRD for this repository, then this MUST be *nil*                                                       | 1b74aa75-db97-4ea3-a344-baafc0911ee8                |
+        | `name`             | Free text      | The name of the repository                                                                                                     | REQUIRED    |                                                                                                                                                                                                                                         | Zenodo                                              |
+        | `homepage`         | URL            | The URL of the homepage of the repository                                                                                      | REQUIRED    | This MUST be a valid HTTP or HTTPS URI.                                                                                                                                                                                                 | https://zenodo.org/                                 |
+        | `contact`          | Free text      | A way for users to contact the repository service.                                                                             | RECOMMENDED | This is often a support email address, but MAY also be a URL to a "help-desk" or contact form, or even just a free-text instruction                                                                                                     | info@zenodo.org                                     |
+        | `owner_ror`        | HTTPS URL      | This is the [Research Organization Registry (ROR)](https://ror.org) identifier for the organisation which owns this repository | RECOMMENDED | This MUST be a valid ROR in its HTTPS URI form.                                                                                                                                                                                         | https://ror.org/01ggx4157                           |
+        | `owner_name`       | Free text      | The name of the organisation which owns this repository                                                                        | OPTIONAL    | This field is **not used** when the CSV is processed by IRD - it is provided only as a convenience for you to be able to recognise the owning organisation. The organisation is identified only by the value in the `owner_ror` column. | European Organization for Nuclear Research          |
+        | `repository_type`  | *term*         |                                                                                                                                | REQUIRED    | This field MUST contain **one** value from the list *Repository Types* (see below)                                                                                                                                                      | generalist_repository                               |
+        | `software`         | *term*         |                                                                                                                                | RECOMMENDED | This field MUST contain **one** value from the list *Software Platforms* (see below)                                                                                                                                                    | invenio                                             |
+        | `software_version` | Free text      |                                                                                                                                | OPTIONAL    |                                                                                                                                                                                                                                         | 3                                                   |
+        | `oai_pmh_base_url` | URL            |                                                                                                                                | REQUIRED    | This MUST be a valid HTTP or HTTPS URI                                                                                                                                                                                                  | https://zenodo.org/oai2d                            |
+        | `media_types`      | *list (terms)* |                                                                                                                                | REQUIRED    | This field MUST contain **one or more** values from the list *Media Types* (see below).<br/>Separate each value with a "pipe" character: "\|"                                                                                           | research-articles\|conference-papers\|research-data |
+        | `primary_subject`  | *term*         |                                                                                                                                | REQUIRED    | This field MUST contain **one** value from the list *Primary Subjects* (see below)                                                                                                                                                      | multidisciplinary                                   |
+        | `record_status`    | *term*         |                                                                                                                                | REQUIRED    | This field MUST contain **one** value from the list *Record Statuses* (see below)                                                                                                                                                       | verified                                            |
+
+        <br/>
+        ### Controlled lists of terms
+      media_types: Media Types
+      primary_subjects: Primary Subjects
+      record_statuses: Record Statuses
+      repository_types: Repository Types
+      software_platforms: Software Platforms
+      title: Curating a CSV batch file

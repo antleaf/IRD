@@ -20,6 +20,10 @@
             =link_to t(:admin), admin_path, class: 'nav-link'
         %li.nav-item
           =link_to t(:about,scope: :page_titles), about_path, class: 'nav-link'
+        - if current_user
+          %li.nav-item
+            =link_to t(:help,scope: :page_titles), "/help/index", class: 'nav-link'
+
       %ul.navbar-nav.ms-auto.mb-2.mb-lg-0
         - if policy(:search).index?
           %li.nav-item
