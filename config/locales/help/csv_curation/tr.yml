@@ -39,20 +39,19 @@ tr:
         ### CSV dosyasındaki sütunlar
 
         | Sütun Adı | Tür | Açıklama | Gereksinim | Kısıtlamalar ve Kurallar | Örnek |
-        | ------------------ | -------------- | ------------------------------------------------------------------------------------------------------------------------------ | ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------- |
-        | `id` | UUID veya *nil* | Bu deponun IRD kimliği (yeni bir depo için boş olacaktır) | İSTEĞE BAĞLI | - Bu depo için IRD'de zaten bir kayıt varsa, bu ZORUNLUDUR<br/>- Bu depo için IRD'de henüz bir kayıt yoksa, bu *nil* OLMALIDIR | 1b74aa75-db97-4ea3-a344-baafc0911ee8 |
+        | ------------------ | -------------- | ------------------------------------------------------------------------------------------------------------------------------ | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- --- ... Bu deponun IRD Kimliği (yeni bir depo için boş olacaktır) | İSTEĞE BAĞLI | - Bu depo için IRD'de zaten bir kayıt varsa, bu ZORUNLUDUR<br/>- Bu depo için IRD'de henüz bir kayıt yoksa, bu *nil* OLMALIDIR | 1b74aa75-db97-4ea3-a344-baafc0911ee8 |
         | `name` | Serbest metin | Deponun adı | ZORUNLUDUR | | Zenodo |
         | `homepage` | URL | Deponun ana sayfasının URL'si | ZORUNLUDUR | Bu geçerli bir HTTP veya HTTPS URI'si OLMALIDIR. | https://zenodo.org/ |
-        | `contact` | Serbest metin | Kullanıcıların depo hizmetiyle iletişim kurmasının bir yolu. | ÖNERİLEN | Bu genellikle bir destek e-posta adresidir, ancak bir "yardım masası" veya iletişim formuna giden bir URL veya hatta sadece serbest metinli bir talimat da OLABİLİR | info@zenodo.org |
+        | `contact` | Serbest metin | Kullanıcıların depo hizmetiyle iletişim kurmasının bir yolu. | ÖNERİLEN | Bu genellikle bir destek e-posta adresidir, ancak bir "yardım masası" veya iletişim formu için bir URL veya hatta sadece serbest metinli bir talimat da OLABİLİR | info@zenodo.org |
         | `owner_ror` | HTTPS URL'si | Bu, bu deponun sahibi olan kuruluş için [Araştırma Kuruluşu Kaydı (ROR)](https://ror.org) tanımlayıcısıdır | ÖNERİLEN | Bu, HTTPS URI biçiminde geçerli bir ROR OLMALIDIR. | https://ror.org/01ggx4157 |
         | `owner_name` | Serbest metin | Bu deponun sahibi olan kuruluşun adı | İSTEĞE BAĞLI | Bu alan, CSV IRD tarafından işlendiğinde **kullanılmaz** - yalnızca sahip kuruluşu tanıyabilmeniz için bir kolaylık olarak sağlanır. Kuruluş yalnızca `owner_ror` sütunundaki değerle tanımlanır. | Avrupa Nükleer Araştırma Örgütü |
-        | `repository_type` | *term* | | ZORUNLU | Bu alan, *Repository Types* listesinden **bir** değer içermelidir (aşağıya bakın) | generalist_repository |
-        | `software` | *term* | | ÖNERİLEN | Bu alan, *Software Platforms* listesinden **bir** değer içermelidir (aşağıya bakın) | invenio |
-        | `software_version` | Serbest metin | | İSTEĞE BAĞLI | | 3 |
-        | `oai_pmh_base_url` | URL | | ZORUNLU | Bu geçerli bir HTTP veya HTTPS URI OLMALIDIR | https://zenodo.org/oai2d |
-        | `media_types` | *list (terimler)* | | ZORUNLU | Bu alan *Medya Türleri* listesinden **bir veya daha fazla** değer içermelidir (aşağıya bakın).<br/>Her değeri bir "boru" karakteriyle ayırın: "\|" | research-articles\|conference-papers\|research-data |
-        | `primary_subject` | *term* | | ZORUNLU | Bu alan *Birincil Konular* listesinden **bir** değer içermelidir (aşağıya bakın) | multidisipliner |
-        | `record_status` | *term* | | ZORUNLU | Bu alan *Kayıt Durumları* listesinden **bir** değer içermelidir (aşağıya bakın) | doğrulandı |
+        | `repository_type` | *terim* | Bu, deponun "kapsamını" açıklar. | ZORUNLU | Bu alan, *Depo Türleri* listesinden **bir** değer içermelidir (aşağıya bakın) | generalist_repository |
+        | `software` | *term* | Bu, deponun üzerinde çalıştığı yazılım platformunu tanımlar. | ÖNERİLEN | Bu alan, *Yazılım Platformları* listesinden **bir** değer içermelidir (aşağıya bakın) | invenio |
+        | `software_version` | Serbest metin | Bu, deponun üzerinde çalıştığı yazılım platformunun sürüm numarası veya etiketidir. | İSTEĞE BAĞLI | | 3 |
+        | `oai_pmh_base_url` | URL | Bu, deponun OAI-PMH arayüzünün Temel URL'sidir | ZORUNLU | Bu, geçerli bir HTTP veya HTTPS URI'si OLMALIDIR | https://zenodo.org/oai2d |
+        | `media_types` | *list (terms)* | Bu, depodaki içerik türünü/türlerini açıklar. | ZORUNLU | Bu alan, *Medya Türleri* listesinden **bir veya daha fazla** değer içermelidir (aşağıya bakın).<br/>Her değeri bir "boru" karakteriyle ayırın: "\|" | research-articles\|conference-papers\|research-data |
+        | `primary_subject` | *term* | Bu, depodaki içeriğin birincil konusunu/disiplinini açıklar. | ZORUNLU | Bu alan, *Birincil Konular* listesinden **bir** değer içermelidir (aşağıya bakın) | multidisciplinary |
+        | `record_status` | *term* | Bu, IRD kaydının durumunu tanımlar | ZORUNLU | Bu alan *Kayıt Durumları* listesinden **bir** değer içermelidir (aşağıya bakın).<br/>- Depo artık IRD'ye dahil edilmek için geçerli değilse, "arşivlendi" değerini kullanın<br/>- Depo kontrol edildiyse ve tüm bilgiler güncelse, "incelendi" değerini kullanın<br/>- Aksi takdirde, "inceleniyor" değerini kullanın. | doğrulandı |
 
         <br/>
         ### Terimlerin kontrol edilen listeleri

@@ -40,20 +40,20 @@ pt:
         ### Colunas no arquivo CSV
 
         | Nome da coluna | Tipo | Descrição | Requisito | Restrições e regras | Exemplo |
-        | ------------------ | -------------- | ------------------------------------------------------------------------------------------------------------------------------ | ----------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------- |
+        | ------------------ | -------------- | ------------------------------------------------------------------------------------------------------------------------------ | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------- |
         | `id` | UUID ou *nil* | O ID do IRD para este repositório (ficará em branco para um novo repositório) | OPCIONAL | - Se já houver um registro no IRD para este repositório, então isto é OBRIGATÓRIO<br/>- Se ainda não houver um registro no IRD para este repositório, então isto DEVE ser *nil* | 1b74aa75-db97-4ea3-a344-baafc0911ee8 |
         | `name` | Texto livre | O nome do repositório | OBRIGATÓRIO | | Zenodo |
         | `homepage` | URL | O URL da página inicial do repositório | OBRIGATÓRIO | DEVE ser um URI HTTP ou HTTPS válido. | https://zenodo.org/ |
         | `contact` | Texto livre | Uma maneira para os usuários contatarem o serviço do repositório. | RECOMENDADO | Geralmente é um endereço de e-mail de suporte, mas PODE ser também um URL para um "help-desk" ou formulário de contato, ou mesmo apenas uma instrução de texto livre | info@zenodo.org |
         | `owner_ror` | URL HTTPS | Este é o identificador [Registro de Organização de Pesquisa (ROR)](https://ror.org) para a organização que possui este repositório | RECOMENDADO | Este DEVE ser um ROR válido em seu formato URI HTTPS. | https://ror.org/01ggx4157 |
         | `owner_name` | Texto livre | O nome da organização que possui este repositório | OPCIONAL | Este campo **não é usado** quando o CSV é processado pelo IRD - ele é fornecido apenas como uma conveniência para que você possa reconhecer a organização proprietária. A organização é identificada apenas pelo valor na coluna `owner_ror`. | Organização Europeia para Pesquisa Nuclear |
-        | `repository_type` | *termo* | | OBRIGATÓRIO | Este campo DEVE conter **um** valor da lista *Tipos de Repositório* (veja abaixo) | generalist_repository |
-        | `software` | *termo* | | RECOMENDADO | Este campo DEVE conter **um** valor da lista *Plataformas de Software* (veja abaixo) | invenio |
-        | `software_version` | Texto livre | | OPCIONAL | | 3 |
-        | `oai_pmh_base_url` | URL | | OBRIGATÓRIO | Este DEVE ser um URI HTTP ou HTTPS válido | https://zenodo.org/oai2d |
-        | `media_types` | *list (terms)* | | OBRIGATÓRIO | Este campo DEVE conter **um ou mais** valores da lista *Media Types* (veja abaixo).<br/>Separe cada valor com um caractere "pipe": "\|" | research-articles\|conference-papers\|research-data |
-        | `primary_subject` | *term* | | OBRIGATÓRIO | Este campo DEVE conter **um** valor da lista *Primary Subjects* (veja abaixo) | multidisciplinary |
-        | `record_status` | *term* | | OBRIGATÓRIO | Este campo DEVE conter **um** valor da lista *Record Statuses* (veja abaixo) | verified |
+        | `repository_type` | *termo* | Isso descreve o "escopo" do repositório. | OBRIGATÓRIO | Este campo DEVE conter **um** valor da lista *Tipos de Repositório* (veja abaixo) | generalist_repository |
+        | `software` | *termo* | Isso identifica a plataforma de software na qual o repositório é executado. | RECOMENDADO | Este campo DEVE conter **um** valor da lista *Plataformas de Software* (veja abaixo) | invenio |
+        | `software_version` | Texto livre | Este é o número da versão ou rótulo da plataforma de software em que o repositório é executado. | OPCIONAL | | 3 |
+        | `oai_pmh_base_url` | URL | Este é o URL base da interface OAI-PMH do repositório | OBRIGATÓRIO | Este DEVE ser um URI HTTP ou HTTPS válido | https://zenodo.org/oai2d |
+        | `media_types` | *list (terms)* | Isto descreve o(s) tipo(s) de conteúdo no repositório. | OBRIGATÓRIO | Este campo DEVE conter **um ou mais** valores da lista *Tipos de mídia* (veja abaixo).<br/>Separe cada valor com um caractere "pipe": "\|" | research-articles\|conference-papers\|research-data |
+        | `primary_subject` | *term* | Isto descreve o assunto/disciplina principal do conteúdo no repositório. | OBRIGATÓRIO | Este campo DEVE conter **um** valor da lista *Primary Subjects* (veja abaixo) | multidisciplinary |
+        | `record_status` | *term* | Isso identifica o status do registro do IRD | OBRIGATÓRIO | Este campo DEVE conter **um** valor da lista *Record Statuses* (veja abaixo).<br/>- Se o repositório não for mais válido para inclusão no IRD, use o valor "archived"<br/>- Se o repositório tiver sido verificado e todas as informações estiverem atualizadas, use o valor "reviewed"<br/>- Caso contrário, use o valor "under_review". | verified |
 
         <br/>
         ### Listas controladas de termos
