@@ -77,7 +77,18 @@ module Ingest
     private
 
     def process_array_cell(cell)
-      cell.strip!.delete_prefix!("|").delete_suffix!("|")
+      cell.strip!
+      if cell.nil? || cell.blank?
+        return []
+      end
+      cell.delete_prefix!("|")
+      if cell.nil? || cell.blank?
+        return []
+      end
+      cell.delete_suffix!("|")
+      if cell.nil? || cell.blank?
+        return []
+      end
       cell.split("|")
     end
 
