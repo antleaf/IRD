@@ -30,7 +30,7 @@ module Ingest
             candidate_system.add_attribute("platform_id", row["software"])
             candidate_system.add_attribute("platform_version", row["software_version"])
             candidate_system.add_attribute("contact", row["contact"])
-            candidate_system.add_attribute("oai_base_url", row["oai_base_url"])
+            candidate_system.add_attribute("oai_base_url", row["oai_pmh_base_url"])
             candidate_system.add_attribute("primary_subject", row["primary_subject"])
             candidate_system.add_attribute("record_status", row["record_status"])
             candidate_system.add_attribute("media_types", process_array_cell(row["media_types"])) if row["media_types"] && !row["media_types"].blank?
