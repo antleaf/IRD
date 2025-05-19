@@ -39,7 +39,7 @@ shared:
       http_prefix:
       http_suffix:
     ark:
-      link_to_source: false
+      link_to_source: true
       http_prefix: https://n2t.net/
       http_suffix:
   locales:
