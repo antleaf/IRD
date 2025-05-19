@@ -172,6 +172,7 @@ class System < ApplicationRecord
     end
   end
 
+
   def mark_reviewed!
     self.reviewed = Time.zone.now
   end
@@ -308,6 +309,16 @@ class System < ApplicationRecord
     self.url = duplicate_system.url if self.url.blank?
   end
 
+  def set_ark!
+    if self.repoids.where(identifier_scheme: :ark).empty?
+      Repoid.create!(
+        system_id: self.id,
+        identifier_scheme: :ark,
+        identifier_value: "ark:#{Rails.configuration.ird[:ark][:naan]}/#{Rails.configuration.ird[:ark][:shoulder]}#{self.id.tr('-','')}"
+      )
+    end
+  end
+
   private
 
   def update_normalids_after_save
@@ -324,6 +335,7 @@ class System < ApplicationRecord
 
   def add_id_to_repoids_after_create
     Repoid.create!(system_id: self.id, identifier_scheme: :ird, identifier_value: self.id)
+    set_ark!
   end
 
   def add_url_to_normalids_on_create

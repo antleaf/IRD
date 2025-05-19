@@ -10,6 +10,9 @@ Rails.application.routes.draw do
 
   get "search", to: "search#index", as: "search"
 
+  # ARKs
+  get "/*ark_tag#{Rails.configuration.ird[:ark][:naan]}/#{Rails.configuration.ird[:ark][:shoulder]}:id", to: "systems#ark", constraints: { ark_tag: "ark:" }, as: :ark
+
   # HELP PAGES
   get "help", to: "help#index"
   get "/help/index", to: "help#index"

@@ -10,6 +10,9 @@ shared:
   network_check_failure:
     error_count_threshold: <%= ENV.fetch("ERROR_COUNT_THRESHOLD",3).to_i %>
     error_duration_threshold: <%= ENV.fetch("ERROR_DURATION_THRESHOLD",30).to_i %> #days
+  ark:
+    naan: 15398
+    shoulder: x1
   repoid_schemes:
     ird:
       link_to_source: false
@@ -34,6 +37,10 @@ shared:
     oai:
       link_to_source: false
       http_prefix:
+      http_suffix:
+    ark:
+      link_to_source: false
+      http_prefix: https://n2t.net/
       http_suffix:
   locales:
     en:

@@ -22,14 +22,6 @@ pt:
         location: Localização
         longitude: Longitude
         ror: ROR
-      repoid:
-        identifier_scheme_list:
-          ird: IRD
-          lyrasis: Lirásis
-          oai: OAI
-          opendoar: OpenDOAR
-          re3data: re3dados
-          roar: RUGIDO
       system:
         authorised_curators: Curadores Autorizados
         contact: Contato

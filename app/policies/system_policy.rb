@@ -132,4 +132,8 @@ class SystemPolicy < ApplicationPolicy
     User.valid_user?(@user) && (@user.has_role?(:administrator) || @user.has_role?(:superuser) || @user.can_curate?(@record))
   end
 
+  def ark?
+    show?
+  end
+
 end

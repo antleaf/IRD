@@ -22,14 +22,6 @@ tr:
         location: Konum
         longitude: Boylam
         ror: ROR
-      repoid:
-        identifier_scheme_list:
-          ird: IRD
-          lyrasis: Lirasis
-          oai: OAI
-          opendoar: AçıkDOAR
-          re3data: re3veri
-          roar: KÜKREME
       system:
         authorised_curators: Yetkili Küratörler
         contact: Temas etmek
