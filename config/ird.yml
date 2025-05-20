@@ -15,30 +15,37 @@ shared:
     shoulder: x1
   repoid_schemes:
     ird:
+      display: false
       link_to_source: false
       http_prefix: https://ird.coar-repositories.org/systems/
       http_suffix:
     opendoar:
+      display: true
       link_to_source: true
       http_prefix: https://v2.sherpa.ac.uk/id/repository/
       http_suffix:
     re3data:
+      display: true
       link_to_source: true
       http_prefix: https://www.re3data.org/repository/
       http_suffix:
     roar:
+      display: true
       link_to_source: true
       http_prefix: https://roar.eprints.org/
       http_suffix:
     lyrasis:
+      display: true
       link_to_source: false
       http_prefix: https://registry.lyrasis.org/entry/
       http_suffix:
     oai:
+      display: true
       link_to_source: false
       http_prefix:
       http_suffix:
     ark:
+      display: false
       link_to_source: true
       http_prefix: https://n2t.net/
       http_suffix:
