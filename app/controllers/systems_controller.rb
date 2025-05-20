@@ -298,6 +298,14 @@ class SystemsController < ApplicationController
   end
 
   # GET /systems/1 or /systems/1.json
+  def ark
+    repoid = Repoid.where(identifier_scheme: :ark, identifier_value: "ark:#{Rails.configuration.ird[:ark][:naan]}/#{Rails.configuration.ird[:ark][:shoulder]}#{params[:id]}").first
+    unless repoid.nil?
+      @system = repoid.system
+      authorize @system
+      redirect_to system_url(@system)
+    end
+  end
   def show
     authorize @system
     @page_title = @system.name

@@ -22,14 +22,6 @@ zh-CN:
         location: 地点
         longitude: 经度
         ror: 罗尔斯-罗伊斯
-      repoid:
-        identifier_scheme_list:
-          ird: 税务局
-          lyrasis: 莱拉西斯
-          oai: 办公室协助办公室
-          opendoar: 开放DOAR
-          re3data: 重新数据
-          roar: 吼
       system:
         authorised_curators: 授权策展人
         contact: 接触

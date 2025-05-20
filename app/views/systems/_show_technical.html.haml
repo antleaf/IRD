@@ -19,7 +19,9 @@
           - if !@system.repoids.empty?
             %ul
               - @system.repoids.each do |repoid|
-                %li= resolvable_identifier(repoid.identifier_scheme, repoid.identifier_value)
+                - scheme_config = Rails.application.config.ird[:repoid_schemes][repoid.identifier_scheme.to_sym]
+                - if scheme_config[:display] == true
+                  %li= resolvable_identifier(repoid.identifier_scheme, repoid.identifier_value)
           -else
             =t(:none)
     %div.col-md-6
