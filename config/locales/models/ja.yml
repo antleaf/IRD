@@ -24,7 +24,7 @@ ja:
         ror: ROR
       system:
         authorised_curators: 認定キュレーター
-        contact: 接触
+        contact: 連絡先
         issues: キュレーションの問題
         media_types: メディアタイプ
         oai_base_url: OAI-PMH ベース URL
@@ -46,7 +46,7 @@ ja:
           humanities: 人文科学
           law: 法
           mathematics: 数学
-          multidisciplinary: 多分野にわたる
+          multidisciplinary: 学際領域
           science: 科学
           social_sciences: 社会科学
           technology: テクノロジー
@@ -61,10 +61,10 @@ ja:
         responsible_party: 責任組織
         subcategory: 範囲
         subcategory_list:
-          disciplinary_repository: 懲戒処分
-          generalist_repository: ジェネラリスト
+          disciplinary_repository: 分野別リポジトリ
+          generalist_repository: 汎用リポジトリ
           governmental_repository: 政府
-          institutional_repository: 機関
+          institutional_repository: 機関リポジトリ
           unknown: 非公開
         system_labels: ラベル
         system_status: システムステータス
