@@ -1,6 +1,5 @@
 ---
 en:
-  curation_issues: Curation Issues
   curation-issues:
     automated-oai-pmh-check-failed:
       description: Automated OAI-PMH check failed
@@ -38,3 +37,4 @@ en:
     thumbnail-missing:
       description: Thumbnail is missing
       name: Missing thumbnail
+  curation_issues: Curation Issues
