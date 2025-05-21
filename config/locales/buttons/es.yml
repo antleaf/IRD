@@ -1,6 +1,7 @@
 ---
 es:
   buttons:
+    add_agent: Agregar agente
     allocate_rp_by_country: Asignar RP por país
     allocate_rp_by_country_replace_existing: Asignar RP por país (reemplazar existente)
     archive_record: Registro de archivo

@@ -37,3 +37,4 @@ tr:
     thumbnail-missing:
       description: Küçük resim eksik
       name: Eksik küçük resim
+  curation_issues: Küratörlük Sorunları

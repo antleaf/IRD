@@ -1,5 +1,6 @@
 ---
 zh-CN:
+  actions: 行动
   additional_authorised_curators: 额外的授权策展人
   admin: 行政
   agencies: 机构
@@ -9,6 +10,7 @@ zh-CN:
   authorised_curator_for_these_repositories: 这些存储库的授权管理员
   authorised_curators: 授权策展人
   contact: 接触
+  content_types: 内容类型
   continents: 大洲
   curation: 策展
   database: 数据库
@@ -56,6 +58,7 @@ zh-CN:
   records_in_ird: 税务局记录
   registered_users: 注册用户
   repositories: 存储库
+  repositories_owned: 拥有的存储库
   repositories_requiring_review: 需要审查的存储库
   repository_browser: 存储库浏览器
   repository_scope: 存储库范围
@@ -63,6 +66,7 @@ zh-CN:
   repository_status: 存储库状态
   required: 必需的
   reset: 重置
+  responsibilities: 职责
   responsible_organisation: 负责机构
   responsible_organisations: 负责组织
   reviewed: 已审核

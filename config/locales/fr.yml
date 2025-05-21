@@ -1,5 +1,6 @@
 ---
 fr:
+  actions: Actes
   additional_authorised_curators: Curateurs autorisés supplémentaires
   admin: Administrateur
   agencies: Agences
@@ -9,6 +10,7 @@ fr:
   authorised_curator_for_these_repositories: Conservateur agréé pour ces dépôts
   authorised_curators: Conservateurs agréés
   contact: Contact
+  content_types: Types de contenu
   continents: Continents
   curation: Conservation
   database: Base de données
@@ -56,6 +58,7 @@ fr:
   records_in_ird: Enregistrements dans l'IRD
   registered_users: Utilisateurs enregistrés
   repositories: Dépôts
+  repositories_owned: Dépôts détenus
   repositories_requiring_review: Dépôts nécessitant une révision
   repository_browser: Navigateur de référentiel
   repository_scope: Portée du référentiel
@@ -63,6 +66,7 @@ fr:
   repository_status: Statut du dépôt
   required: Requis
   reset: Réinitialiser
+  responsibilities: Responsabilités
   responsible_organisation: Organisation responsable
   responsible_organisations: Organisations responsables
   reviewed: Révisé

@@ -207,12 +207,12 @@
 
       -# = render '_shared/record_form_buttons', form: f,model_instance: @system
       .actions
-        = link_to 'Cancel', @system, :class => 'btn btn-danger'
-        = f.submit 'Save', :class => 'btn btn-success',onclick:"if(document.getElementById('autocomplete_system_owner').value == '') {document.getElementById('system_owner_id').value = null;};"
+        = link_to t("buttons.cancel_operation"), @system, :class => 'btn btn-danger'
+        = f.submit t("buttons.save_record"), :class => 'btn btn-success',onclick:"if(document.getElementById('autocomplete_system_owner').value == '') {document.getElementById('system_owner_id').value = null;};"
 
 
   %div.col-3
-    %h5 Curation Issues
+    %h5= t('curation_issues')
     -unless @system.issues.empty?
       %ul
         - @system.issues.each do |issue|
@@ -221,7 +221,7 @@
     - else
       %p No curation issues
     - if policy(@system).admin?
-      %h5 Network Checks
+      %h5= t('network_checks')
       - if @system.network_checks.count > 0
         %ul
           - @system.network_checks.each do |nc|
@@ -236,7 +236,7 @@
       - if @system.metadata
         -unless @system.metadata.empty?
           %br
-          %h5 Metadata from home webpage
+          %h5= t('metadata')
           %ul
             - @system.metadata.each do |k,v|
               %li

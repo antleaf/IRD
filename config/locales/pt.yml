@@ -1,5 +1,6 @@
 ---
 pt:
+  actions: Ações
   additional_authorised_curators: Curadores Autorizados Adicionais
   admin: Administrador
   agencies: Agências
@@ -9,6 +10,7 @@ pt:
   authorised_curator_for_these_repositories: Curador autorizado para esses repositórios
   authorised_curators: Curadores Autorizados
   contact: Contato
+  content_types: Tipos de conteúdo
   continents: Continentes
   curation: Curadoria
   database: Banco de dados
@@ -56,6 +58,7 @@ pt:
   records_in_ird: Registros no IRD
   registered_users: Usuários Registrados
   repositories: Repositórios
+  repositories_owned: Repositórios Próprios
   repositories_requiring_review: Repositórios que requerem revisão
   repository_browser: Navegador de repositório
   repository_scope: Escopo do Repositório
@@ -63,6 +66,7 @@ pt:
   repository_status: Status do repositório
   required: Obrigatório
   reset: Reiniciar
+  responsibilities: Responsabilidades
   responsible_organisation: Organização Responsável
   responsible_organisations: Organizações Responsáveis
   reviewed: Revisado

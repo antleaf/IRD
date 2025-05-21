@@ -6,8 +6,8 @@
       = render '_shared/download_machine_readable_data_buttons', formats: [:json]
   %thead
     %tr
-      %th Name
-      %th.number Responsibilities
+      %th= t("attributes.name")
+      %th.number= t("responsibilities")
   %tbody
     - organisations.each do |organisation|
       %tr

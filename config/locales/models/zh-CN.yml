@@ -65,6 +65,7 @@ zh-CN:
           generalist_repository: 通才
           governmental_repository: 政府
           institutional_repository: 机构
+          special_collection: 特别收藏
           unknown: 未分类
         system_labels: 标签
         system_status: 系统状态
@@ -108,6 +109,7 @@ zh-CN:
     aliases: 其他名称
     country_id: 国家
     description: 描述
+    id: ID
     identifiers: 标识符
     name: 姓名
     responsible_party: 负责机构

@@ -16,7 +16,7 @@
   = link_to t('buttons.generate_new_api_key'), generate_api_key_url(@user.id), :class => 'btn btn-primary btn-sm'
 %div.row
   %div.col.md-6
-    = print_field_name_and_value('User ID',@user.id)
+    = print_field_name_and_value(t("attributes.id"),@user.id)
     = print_field_name_and_value(t(:email),@user.email)
     -# = print_field_name_and_value(t(:fore_name),@user.fore_name)
     -# = print_field_name_and_value(t(:last_name),@user.last_name)

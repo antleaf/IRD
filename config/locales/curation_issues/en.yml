@@ -1,5 +1,6 @@
 ---
 en:
+  curation_issues: Curation Issues
   curation-issues:
     automated-oai-pmh-check-failed:
       description: Automated OAI-PMH check failed

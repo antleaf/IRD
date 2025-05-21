@@ -65,6 +65,7 @@ es:
           generalist_repository: Generalista
           governmental_repository: Gubernamental
           institutional_repository: Institucional
+          special_collection: Colección especial
           unknown: Sin clasificar
         system_labels: Etiquetas
         system_status: Estado del sistema
@@ -108,6 +109,7 @@ es:
     aliases: Otros nombres
     country_id: País
     description: Descripción
+    id: IDENTIFICACIÓN
     identifiers: Identificadores
     name: Nombre
     responsible_party: Organización responsable

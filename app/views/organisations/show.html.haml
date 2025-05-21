@@ -1,7 +1,7 @@
 %div.record-action-buttons
   = render '_shared/record_action_buttons', model_instance: @organisation
   - if policy(@organisation).add_user_as_agent?
-    = link_to 'Add agent',nil, :class => 'btn btn-primary btn-sm',"data-bs-toggle":"modal", "data-bs-target":"#addUserAsAgentModal"
+    = link_to t("buttons.add_agent"),nil, :class => 'btn btn-primary btn-sm',"data-bs-toggle":"modal", "data-bs-target":"#addUserAsAgentModal"
   - if @organisation.is_rp?
     - if policy(@organisation).remove_rp_status? && @organisation.rp
       = link_to t('buttons.remove_rp_status'), remove_rp_status_url(@organisation.id), :class => 'btn btn-danger btn-sm'
@@ -18,14 +18,14 @@
 = print_field_name_and_value(t('attributes.url'),link_to(@organisation.website,@organisation.website, class: "external-link")) unless @organisation.website.blank?
 = print_field_name_and_value("ROR",link_to(@organisation.ror,@organisation.ror, class: "external-link")) unless @organisation.ror.blank?
 
-= print_field_name_and_value('Location',@organisation.location)
-= print_field_name_and_value('Country',@organisation.country.name)
+= print_field_name_and_value(t("activerecord.attributes.organisation.location"),@organisation.location)
+= print_field_name_and_value(t("activerecord.models.country.one"),@organisation.country.name)
 
 - if policy(@organisation).systems?
   - if @organisation.ownerships.publicly_viewable.count > 0
-    = print_field_name_and_value("Repositories owned",link_to(@organisation.ownerships.publicly_viewable.count, organisation_ownerships_url))
+    = print_field_name_and_value(t(:repositories_owned),link_to(@organisation.ownerships.publicly_viewable.count, organisation_ownerships_url))
   - else
-    = print_field_name_and_value("Repositories owned", @organisation.ownerships.publicly_viewable.count)
+    = print_field_name_and_value(t(:repositories_owned), @organisation.ownerships.publicly_viewable.count)
 
 - if @organisation.rp
   - if @organisation.responsibilities.publicly_viewable.count > 0
@@ -39,7 +39,7 @@
 
 - if @organisation.rp
   %div.property
-    %h5.property-name Agents
+    %h5.property-name= t("activerecord.attributes.organisation.agents")
     %div.property-value
       %ul
         - @organisation.users.each do |user|

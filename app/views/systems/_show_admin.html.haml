@@ -2,7 +2,7 @@
   %h2= t(:admin)
   -# = print_field_name_and_value('Record Source',@system.record_source)
   %div.property
-    %h5.property-name Generator
+    %h5.property-name= t("activerecord.models.generator.one")
     %div.property-value
       - if @system.generator
         = link_to @system.generator.name, @system.generator

@@ -37,3 +37,4 @@ pt:
     thumbnail-missing:
       description: Falta a miniatura
       name: Miniatura ausente
+  curation_issues: Questões de curadoria

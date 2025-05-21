@@ -1,5 +1,6 @@
 ---
 en:
+  actions: Actions
   additional_authorised_curators: Additional Authorised Curators
   admin: Admin
   agencies: Agencies
@@ -9,6 +10,7 @@ en:
   authorised_curator_for_these_repositories: Authorised Curator for these repositories
   authorised_curators: Authorised Curators
   contact: Contact
+  content_types: Content Types
   continents: Continents
   curation: Curation
   database: Database
@@ -56,6 +58,7 @@ en:
   records_in_ird: Records in IRD
   registered_users: Registered Users
   repositories: Repositories
+  repositories_owned: Repositories Owned
   repositories_requiring_review: Repositories Requiring Review
   repository_browser: Repository Browser
   repository_scope: Repository Scope
@@ -63,6 +66,7 @@ en:
   repository_status: Repository Status
   required: Required
   reset: Reset
+  responsibilities: Responsibilities
   responsible_organisation: Responsible Organisation
   responsible_organisations: Responsible Organisations
   reviewed: Reviewed

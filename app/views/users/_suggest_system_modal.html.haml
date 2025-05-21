@@ -12,7 +12,7 @@
           = "* = #{t(:required)}"
           %div.row.align-items-center.field
             %div.col-2.field-name
-              = f.label :name, :class=>"form-label required"
+              = f.label t("attributes.name"), :class=>"form-label required"
             %div.col
               = f.text_field :name, :class=>"form-control"
           %div.row.align-items-center.field
@@ -24,7 +24,7 @@
           %div.row.align-items-center.field
             %div.col-2.field-name
               -# i18n-tasks-use t('activerecord.attributes.system.owner') # this lets i18n-tasks know the key is used
-              = f.label :owner,:class=>"form-label"
+              = f.label t(:owner),:class=>"form-label"
             %div.col
               = f.hidden_field :owner_id
               = text_field_tag 'autocomplete_system_owner', nil, id: 'autocomplete_system_owner',:class=>"form-control"

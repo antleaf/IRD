@@ -76,7 +76,7 @@ class System < ApplicationRecord
   enum :system_category, { unknown: 0, repository: 1, service: 2 }, prefix: true, default: :unknown, scopes: true
   translate_enum :system_category
 
-  enum :subcategory, { unknown: 0, institutional_repository: 1, disciplinary_repository: 2, generalist_repository: 3, governmental_repository: 4 }, prefix: true, default: :unknown, scopes: true
+  enum :subcategory, { unknown: 0, institutional_repository: 1, disciplinary_repository: 2, generalist_repository: 3, governmental_repository: 4, special_collection: 5 }, prefix: true, default: :unknown, scopes: true
   translate_enum :subcategory
 
   enum :system_status, { unknown: 0, offline: 1, online: 2, missing: 3 }, prefix: true, default: :unknown, scopes: true

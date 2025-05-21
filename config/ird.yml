@@ -40,7 +40,7 @@ shared:
       http_prefix: https://registry.lyrasis.org/entry/
       http_suffix:
     oai:
-      display: true
+      display: false
       link_to_source: false
       http_prefix:
       http_suffix:

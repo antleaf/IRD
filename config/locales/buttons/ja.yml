@@ -1,6 +1,7 @@
 ---
 ja:
   buttons:
+    add_agent: エージェントを追加
     allocate_rp_by_country: 国別にRPを割り当てる
     allocate_rp_by_country_replace_existing: 国別にRPを割り当てる（既存のRPを置き換える）
     archive_record: アーカイブ記録

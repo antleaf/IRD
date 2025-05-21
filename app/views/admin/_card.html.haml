@@ -27,11 +27,9 @@
               %b= "#{t(:identifiers)}:"
               %ul
                 - system.repoids.each do |repoid|
-                  - unless repoid.identifier_scheme == 'ird'
-                    %li
-                      -# i18n-tasks-use t('activerecord.attributes.repoid.identifier_scheme_list.#{identifier_scheme}') # this lets i18n-tasks know the key is use
-                      %b= "#{Repoid.translated_identifier_scheme(repoid.identifier_scheme)}:"
-                      =repoid.identifier_value
+                  - scheme_config = Rails.application.config.ird[:repoid_schemes][repoid.identifier_scheme.to_sym]
+                  - if scheme_config[:display] == true
+                    %li= resolvable_identifier(repoid.identifier_scheme, repoid.identifier_value)
             %li
               %b= "#{t(:tags)}:"
               - system.tag_list.each do |tag|

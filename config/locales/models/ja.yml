@@ -65,6 +65,7 @@ ja:
           generalist_repository: 汎用リポジトリ
           governmental_repository: 政府
           institutional_repository: 機関リポジトリ
+          special_collection: 特別コレクション
           unknown: 非公開
         system_labels: ラベル
         system_status: システムステータス
@@ -108,6 +109,7 @@ ja:
     aliases: その他の名前
     country_id: 国
     description: 説明
+    id: ID
     identifiers: 識別子
     name: 名前
     responsible_party: 責任組織

@@ -1,5 +1,6 @@
 ---
 ja:
+  actions: アクション
   additional_authorised_curators: 追加の公認キュレーター
   admin: 管理者
   agencies: 代理店
@@ -9,6 +10,7 @@ ja:
   authorised_curator_for_these_repositories: これらのリポジトリの公認キュレーター
   authorised_curators: 認定キュレーター
   contact: 接触
+  content_types: コンテンツタイプ
   continents: 大陸
   curation: キュレーション
   database: データベース
@@ -56,6 +58,7 @@ ja:
   records_in_ird: IRDの記録
   registered_users: 登録ユーザー
   repositories: リポジトリ
+  repositories_owned: 所有リポジトリ
   repositories_requiring_review: レビューが必要なリポジトリ
   repository_browser: リポジトリブラウザ
   repository_scope: リポジトリのスコープ
@@ -63,6 +66,7 @@ ja:
   repository_status: リポジトリのステータス
   required: 必須
   reset: リセット
+  responsibilities: 責任
   responsible_organisation: 責任組織
   responsible_organisations: 責任ある組織
   reviewed: レビュー済み
