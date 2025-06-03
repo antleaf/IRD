@@ -31,7 +31,7 @@ gem "active_snapshot"
 gem "rails_autolink"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem "rails", "~> 8.0.0"
+gem "rails", "~> 8.0.2"
 # The modern asset pipeline for Rails [https://github.com/rails/propshaft]
 gem "propshaft"
 gem "sqlite3", ">= 2.4"
@@ -55,7 +55,7 @@ gem "tzinfo-data", platforms: %i[ windows jruby ]
 
 # Use the database-backed adapters for Rails.cache, Active Job, and Action Cable
 gem "solid_cache"
-gem "solid_queue", "~> 1.1.3"
+gem "solid_queue", "~> 1.1.5"
 gem "solid_cable"
 
 # Reduces boot times through caching; required in config/boot.rb
