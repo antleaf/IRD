@@ -38,7 +38,8 @@ class SystemPolicy < ApplicationPolicy
   end
 
   def set_record_archived?
-    User.valid_user?(@user) && (@user.has_role?(:administrator) || @user.has_role?(:superuser))
+    # User.valid_user?(@user) && (@user.has_role?(:administrator) || @user.has_role?(:superuser))
+    User.valid_user?(@user) && (@user.has_role?(:administrator) || @user.has_role?(:superuser) || @user.can_curate?(@record))
   end
 
   def set_record_draft?
