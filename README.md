@@ -4,7 +4,7 @@
 ### Requirements
 1. Local Postgres Server, with a user account capable of creating databases
 2. Local Opensearch server
-2. Ruby environment (tested with 3.3.7)
+2. Ruby environment (tested with 3.4.4)
 
 ### Process
 (from this directory)
