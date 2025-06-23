@@ -1,0 +1,7 @@
+---
+fr:
+  change_request:
+    instructions_text: |-
+      Si vous souhaitez signaler un problème concernant cet enregistrement ou demander une modification, veuillez
+      <a href="mailto:%{email_address}?subject=Demande de modification de l'enregistrement du dépôt IRD : %{record_link}&body=Concernant l'enregistrement IRD :%0D%0A %0D%0A%{record_link}%0D%0A %0D%0A Je souhaite demander la ou les modifications suivantes :%0D%0A %0D%0A"
+      class="external-email">contacter l'organisme responsable de cet enregistrement</a>

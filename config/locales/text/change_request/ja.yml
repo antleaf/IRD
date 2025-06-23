@@ -1,0 +1,7 @@
+---
+ja:
+  change_request:
+    instructions_text: |-
+      この記録に関する問題を報告したり、変更をリクエストしたりする場合は、
+      <a href="mailto:%{email_address}?subject=IRDリポジトリ記録の変更リクエスト: %{record_link}&body=IRD記録に関して:%0D%0A %0D%0A%{record_link}%0D%0A %0D%0A 以下の変更をリクエストします:%0D%0A %0D%0A"
+      class="external-email">この記録の担当組織にご連絡ください</a>

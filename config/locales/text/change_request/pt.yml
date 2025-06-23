@@ -1,0 +1,7 @@
+---
+pt:
+  change_request:
+    instructions_text: |-
+      Se desejar relatar um problema com este registro ou solicitar uma alteração, por favor,
+      <a href="mailto:%{email_address}?subject=Solicitação de alteração no registro do repositório IRD: %{record_link}&body=Com relação ao registro IRD:%0D%0A %0D%0A%{record_link}%0D%0A %0D%0A Gostaria de solicitar a(s) seguinte(s) alteração(ões):%0D%0A %0D%0A"
+      class="external-email">entre em contato com a Organização Responsável por este registro</a>

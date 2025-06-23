@@ -1,0 +1,7 @@
+---
+zh-CN:
+  change_request:
+    instructions_text: |-
+      如果您想报告此记录的问题或请求更改，请
+      <a href="mailto:%{email_address}?subject=请求更改 IRD 存储库记录：%{record_link}&body=关于 IRD 记录：%0D%0A %0D%0A%{record_link}%0D%0A %0D%0A 我想要请求以下更改：%0D%0A %0D%0A"
+      class="external-email">联系此记录的负责机构</a>

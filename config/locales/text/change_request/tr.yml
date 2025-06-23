@@ -1,0 +1,7 @@
+---
+tr:
+  change_request:
+    instructions_text: |-
+      Bu kayıtla ilgili bir sorun bildirmek veya bir değişiklik talep etmek istiyorsanız lütfen
+      <a href="mailto:%{email_address}?subject=IRD veri havuzu kaydında değişiklik talebi: %{record_link}&body=IRD kaydıyla ilgili olarak:%0D%0A %0D%0A%{record_link}%0D%0A %0D%0A Aşağıdaki değişikliği/değişiklikleri talep etmek istiyorum:%0D%0A %0D%0A"
+      class="external-email">Bu kayıt için Sorumlu Kuruluşla iletişime geçin</a>
