@@ -262,6 +262,7 @@ GEM
     opensearch-ruby (3.4.0)
       faraday (>= 1.0, < 3)
       multi_json (>= 1.0)
+    ostruct (0.6.2)
     pagy (9.3.4)
     parallel (1.27.0)
     parser (3.3.8.0)
@@ -522,6 +523,7 @@ DEPENDENCIES
   mission_control-jobs
   nokogiri
   opensearch-ruby
+  ostruct
   pagy (~> 9.3)
   passwordless
   pg (>= 0.18, < 2.0)
