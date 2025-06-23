@@ -27,7 +27,6 @@ gem "selenium-webdriver", "~> 4.28"
 gem "acts-as-taggable-on"
 gem "chartkick"
 gem "bcrypt"
-gem "active_snapshot"
 gem "rails_autolink"
 gem "ostruct"
 

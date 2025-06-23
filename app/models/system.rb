@@ -31,16 +31,6 @@ class System < ApplicationRecord
   Issue = Struct.new(:priority, :description)
   include TranslateEnum
   include MachineReadability
-  include ActiveSnapshot
-
-  has_snapshot_children do
-    instance = self.class.includes(:taggings, :repoids, :normalids).find(id)
-    {
-      taggings: instance.taggings,
-      repoids: instance.repoids,
-      normalids: instance.normalids
-    }
-  end
 
   searchkick max_result_window: 20000, deep_paging: true
   acts_as_taggable_on :tags, :labels # labels are from a *controlled* vocab, used for operations
@@ -154,14 +144,6 @@ class System < ApplicationRecord
 
   def self.unrestricted_labels
     Rails.configuration.ird[:labels].select { |_, v| v[:restricted] == false }.keys
-  end
-
-  def most_recent_snapshot(user = nil)
-    if user
-      snapshots.where(user_id: user.id).order(created_at: :desc).first
-    else
-      snapshots.order(created_at: :desc).first
-    end
   end
 
   def display_name

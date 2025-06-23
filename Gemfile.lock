@@ -44,9 +44,6 @@ GEM
       erubi (~> 1.11)
       rails-dom-testing (~> 2.2)
       rails-html-sanitizer (~> 1.6)
-    active_snapshot (1.0.0)
-      activerecord (>= 6.1)
-      railties
     activejob (8.0.2)
       activesupport (= 8.0.2)
       globalid (>= 0.3.6)
@@ -496,7 +493,6 @@ PLATFORMS
   x86_64-linux-musl
 
 DEPENDENCIES
-  active_snapshot
   acts-as-taggable-on
   addressable
   aws-sdk-s3

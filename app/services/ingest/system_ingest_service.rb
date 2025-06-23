@@ -27,15 +27,15 @@ module Ingest
             end
             unless system.changes.empty?
               # puts system.changes.inspect
-              unless candidate_system.dry_run
-                service_result = Snapshots::SystemSnapshotCreationService.call(candidate_system.get_attribute("id"), user)
-                if service_result.success?
-                  Rails.logger.info("Created snapshot for system with id '#{system.id}'")
-                else
-                  Rails.logger.error("Error creating snapshot for system with id '#{system.id}': #{service_result.error}")
-                  raise service_result.error
-                end
-              end
+              # unless candidate_system.dry_run
+              #   service_result = Snapshots::SystemSnapshotCreationService.call(candidate_system.get_attribute("id"), user)
+              #   if service_result.success?
+              #     Rails.logger.info("Created snapshot for system with id '#{system.id}'")
+              #   else
+              #     Rails.logger.error("Error creating snapshot for system with id '#{system.id}': #{service_result.error}")
+              #     raise service_result.error
+              #   end
+              # end
               updated = true
               Rails.logger.info("System with id '#{system.id}' updated")
             end

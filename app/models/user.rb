@@ -7,7 +7,6 @@ class User < ApplicationRecord
   has_and_belongs_to_many :roles, :join_table => 'roles_users'
   has_and_belongs_to_many :systems, :join_table => 'systems_users'
   has_and_belongs_to_many :organisations, :join_table => 'organisations_users'
-  has_many :snapshots, class_name: "ActiveSnapshot::Snapshot"
 
   before_create :set_id
 
