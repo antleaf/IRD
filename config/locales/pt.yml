@@ -29,6 +29,7 @@ pt:
   managing_agents_for: Gerenciando agentes para %{rp}
   media_type: Tipo de mídia
   metadata: Metadados
+  most_recent_update: Atualização mais recente
   name: Nome
   needs_review: Necessita de revisão
   network_checks: Verificações de rede

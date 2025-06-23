@@ -2,6 +2,8 @@
   %div.col-lg-9
     = render 'show_general', "@system": @system
     = render 'show_technical', "@system": @system
+    - if policy(@system).view_audit?
+      = render 'show_audit', "@system": @system
   %div.col-lg-3
     = render 'show_curation', "@system": @system
     - if policy(@system).admin?

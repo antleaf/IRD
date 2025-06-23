@@ -1,0 +1,16 @@
+%table{:class=>"table table-sm table-striped table-bordered sortable-table"}
+  %caption
+    Audits
+  %thead
+    %tr
+      %th Updated by
+      %th Timestamp
+      %th.no-sort Changes
+      -# %th.actions.no-sort &nbsp;
+  %tbody
+    - @system.audits.order(created_at: :desc).each do |audit|
+      %tr
+        %td= audit.user.display_name
+        %td= audit.created_at.strftime('%Y-%m-%d %H:%M')
+        %td= audit.audited_changes.map { |k, v| "#{k}: #{v}" }.join(', ')
+        -# %td= render 'shared/record_action_buttons_table', model_instance: audit

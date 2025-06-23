@@ -29,6 +29,7 @@ tr:
   managing_agents_for: "%{rp} için Aracıları Yönetme"
   media_type: Medya türü
   metadata: Meta veri
+  most_recent_update: En Son Güncelleme
   name: İsim
   needs_review: İncelemeye ihtiyaç var
   network_checks: Ağ Kontrolleri

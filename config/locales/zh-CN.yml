@@ -29,6 +29,7 @@ zh-CN:
   managing_agents_for: 管理 %{rp} 的代理
   media_type: 媒體類型
   metadata: 元数据
+  most_recent_update: 最近更新
   name: 姓名
   needs_review: 需要审核
   network_checks: 网络检查

@@ -37,7 +37,12 @@
           - @system.users.each do |user|
             %li
               = user.display_name
-
+  - most_recent_audit = @system.audits.order(created_at: :desc).first
+  - if most_recent_audit
+    %div.property
+      %h5.property-name= t(:most_recent_update)
+      %div.property-value
+        ="#{most_recent_audit.user.display_name}, #{most_recent_audit.created_at.strftime('%Y-%m-%d %H:%M')}"
 
   - if policy(@system).curate?
     %div.property

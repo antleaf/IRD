@@ -29,6 +29,7 @@ es:
   managing_agents_for: Gestión de agentes para %{rp}
   media_type: Tipo de medio
   metadata: Metadatos
+  most_recent_update: Actualización más reciente
   name: Nombre
   needs_review: Necesita revisión
   network_checks: Comprobaciones de red

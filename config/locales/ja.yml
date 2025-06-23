@@ -29,6 +29,7 @@ ja:
   managing_agents_for: "%{rp} のエージェントの管理"
   media_type: メディアタイプ
   metadata: メタデータ
+  most_recent_update: 最新のアップデート
   name: 名前
   needs_review: レビューが必要
   network_checks: ネットワークチェック

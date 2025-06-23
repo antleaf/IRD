@@ -137,4 +137,8 @@ class SystemPolicy < ApplicationPolicy
     show?
   end
 
+  def view_audit?
+    User.valid_user?(@user) && (@user.has_role?(:administrator) || @user.has_role?(:superuser))
+  end
+
 end

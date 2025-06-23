@@ -29,6 +29,7 @@ en:
   managing_agents_for: Managing Agents for %{rp}
   media_type: Media-type
   metadata: Metadata
+  most_recent_update: Most Recent Update
   name: Name
   needs_review: Needs Review
   network_checks: Network Checks

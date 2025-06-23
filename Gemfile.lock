@@ -78,6 +78,9 @@ GEM
     addressable (2.8.7)
       public_suffix (>= 2.0.2, < 7.0)
     ast (2.4.3)
+    audited (5.8.0)
+      activerecord (>= 5.2, < 8.2)
+      activesupport (>= 5.2, < 8.2)
     aws-eventstream (1.4.0)
     aws-partitions (1.1119.0)
     aws-sdk-core (3.226.0)
@@ -495,6 +498,7 @@ PLATFORMS
 DEPENDENCIES
   acts-as-taggable-on
   addressable
+  audited
   aws-sdk-s3
   bcrypt
   bootsnap
