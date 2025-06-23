@@ -64,6 +64,7 @@ tr:
   repository_scope: Depo Kapsamı
   repository_scope_short: Kapsam
   repository_status: Depo Durumu
+  request_a_change: Değişiklik Talebinde Bulunun
   required: Gerekli
   reset: Sıfırla
   responsibilities: Sorumluluklar

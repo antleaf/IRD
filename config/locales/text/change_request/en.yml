@@ -1,0 +1,7 @@
+---
+en:
+  change_request:
+    instructions_text: |-
+      If you wish to report an issue with this record, or to request a change, please
+      <a href="mailto:%{email_address}?subject=Request for change to IRD repository record: %{record_link}&body=With regard to IRD record:%0D%0A %0D%0A%{record_link}%0D%0A %0D%0A I would like to request the following change(s):%0D%0A %0D%0A"
+        class="external-email">contact the Responsible Organisation for this record</a>

@@ -35,6 +35,7 @@
       = print_field_name_and_value(t('attributes.responsible_party'),@organisation.responsibilities.publicly_viewable.count)
   - else
     = print_field_name_and_value(t('attributes.responsible_party'),@organisation.responsibilities.publicly_viewable.count)
+  = print_field_name_and_value(t('activerecord.attributes.organisation.rp_contact'),auto_link(@organisation.rp_contact))
 
 
 - if @organisation.rp
@@ -48,5 +49,4 @@
               = link_to user.display_name,user
             - else
               = user.display_name
-
 = render 'add_user_as_agent_modal'

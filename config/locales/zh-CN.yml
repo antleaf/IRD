@@ -64,6 +64,7 @@ zh-CN:
   repository_scope: 存储库范围
   repository_scope_short: 范围
   repository_status: 存储库状态
+  request_a_change: 请求更改
   required: 必需的
   reset: 重置
   responsibilities: 职责

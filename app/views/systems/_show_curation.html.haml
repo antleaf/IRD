@@ -13,6 +13,12 @@
       = system_status_flags @system.system_status
       = oai_status_flags @system.oai_status
   = print_field_name_and_value(t(:responsible_organisation),(link_to(@system.rp.display_name, @system.rp) unless @system.rp.nil?),true)
+  - if @system.rp.rp_contact
+    %div.property#change-request-property
+      %h5.property-name= t('request_a_change')
+      %div.property-value
+        =process_md(t("change_request.instructions_text", email_address: @system.rp.rp_contact, record_link: request.original_url, rp_name: @system.rp.display_name))
+
   %div.property
     %h5.property-name= t(:authorised_curators)
     ="#{t(:managing_agents_for, rp: @system.rp.display_name)}:"

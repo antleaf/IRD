@@ -64,6 +64,7 @@ pt:
   repository_scope: Escopo do Repositório
   repository_scope_short: Escopo
   repository_status: Status do repositório
+  request_a_change: Solicitar uma alteração
   required: Obrigatório
   reset: Reiniciar
   responsibilities: Responsabilidades

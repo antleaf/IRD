@@ -22,6 +22,7 @@ en:
         location: Location
         longitude: Longitude
         ror: ROR
+        rp_contact: Contact for Responsible Organisation
       system:
         authorised_curators: Authorised Curators
         contact: Contact

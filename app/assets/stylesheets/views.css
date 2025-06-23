@@ -5,6 +5,11 @@
     padding: 5px;
 }
 
+#change-request-property {
+    background-color: lightyellow;
+    border: 0.5px solid #cdcdcd;
+}
+
 h5.property-name {
     padding-bottom: 0 !important;
     margin-bottom: 0 !important;

@@ -22,6 +22,7 @@ zh-CN:
         location: 地点
         longitude: 经度
         ror: 罗尔斯-罗伊斯
+        rp_contact: 负责机构联系方式
       system:
         authorised_curators: 授权策展人
         contact: 接触

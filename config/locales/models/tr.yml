@@ -22,6 +22,7 @@ tr:
         location: Konum
         longitude: Boylam
         ror: ROR
+        rp_contact: Sorumlu Kuruluş için İletişim
       system:
         authorised_curators: Yetkili Küratörler
         contact: Temas etmek

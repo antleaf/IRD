@@ -64,6 +64,7 @@ es:
   repository_scope: Alcance del repositorio
   repository_scope_short: Alcance
   repository_status: Estado del repositorio
+  request_a_change: Solicitar un cambio
   required: Requerido
   reset: Reiniciar
   responsibilities: Responsabilidades

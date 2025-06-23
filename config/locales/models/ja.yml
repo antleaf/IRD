@@ -22,6 +22,7 @@ ja:
         location: 位置
         longitude: 経度
         ror: ROR
+        rp_contact: 担当組織の連絡先
       system:
         authorised_curators: 認定キュレーター
         contact: 連絡先

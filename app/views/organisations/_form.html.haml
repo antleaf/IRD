@@ -78,5 +78,10 @@
           = b.check_box(class: "check_box")
           = "#{b.object.name} (#{b.object.email})"
         %br
-
+    %div.row.align-items-center.field
+      %div.col-2.field-name
+        -# i18n-tasks-use t('activerecord.attributes.organisation.rp_contact') # this lets i18n-tasks know the key is used
+        = f.label :rp_contact, :class=>"form-label"
+      %div.col
+        = f.text_field :rp_contact, :class=>"form-control"
   = render '_shared/record_form_buttons', form: f,model_instance: @organisation

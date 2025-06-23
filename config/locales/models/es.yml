@@ -22,6 +22,7 @@ es:
         location: Ubicación
         longitude: Longitud
         ror: ROR
+        rp_contact: Contacto para la organización responsable
       system:
         authorised_curators: Curadores autorizados
         contact: Contacto

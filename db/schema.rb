@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_03_02_154231) do
+ActiveRecord::Schema[8.0].define(version: 2025_06_17_164622) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -120,6 +120,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_02_154231) do
     t.boolean "rp", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "rp_contact"
     t.index ["country_id"], name: "index_organisations_on_country_id"
     t.index ["domain"], name: "index_organisations_on_domain"
     t.index ["ror"], name: "index_organisations_on_ror"

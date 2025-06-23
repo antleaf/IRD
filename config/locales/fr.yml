@@ -64,6 +64,7 @@ fr:
   repository_scope: Portée du référentiel
   repository_scope_short: Portée
   repository_status: Statut du dépôt
+  request_a_change: Demander un changement
   required: Requis
   reset: Réinitialiser
   responsibilities: Responsabilités

@@ -64,6 +64,7 @@ ja:
   repository_scope: リポジトリのスコープ
   repository_scope_short: 範囲
   repository_status: リポジトリのステータス
+  request_a_change: 変更をリクエストする
   required: 必須
   reset: リセット
   responsibilities: 責任

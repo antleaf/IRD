@@ -173,9 +173,18 @@ li.curation-issue {
 /*//  padding-right: 1.25em;*/
 /*//}*/
 
-a.external-link::after {
+.external-link::after {
   position: absolute;
   content: '\F1C5';
+  justify-content: flex-end;
+  font-family: "bootstrap-icons", serif;
+  margin-left: 0.25em;
+  font-size: 0.7em;
+}
+
+.external-email::after {
+  position: absolute;
+  content: '\F7BE';
   justify-content: flex-end;
   font-family: "bootstrap-icons", serif;
   margin-left: 0.25em;
