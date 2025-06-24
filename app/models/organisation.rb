@@ -8,6 +8,7 @@ class Organisation < ApplicationRecord
     {
       name: name,
       short_name: short_name,
+      country: country.name,
       aliases: aliases
     }
   end
