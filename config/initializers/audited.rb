@@ -1,1 +1,1 @@
-Audited.max_audits = 5 # keep only 5 latest audits
+Audited.max_audits = ENV.fetch('MAX_AUDITS', 5).to_i # keep only 5 latest audits
