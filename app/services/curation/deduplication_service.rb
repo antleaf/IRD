@@ -16,10 +16,14 @@ module Curation
                 pair_count += 1
               end
               keeper.update_from_duplicate_system(doppelganger)
-              keeper.save!
+              Audited.audit_class.as_user(User.system_user) do
+                keeper.save!
+              end
               doppelganger.label_list.add('duplicate')
               doppelganger.record_status = :archived
-              doppelganger.save!
+              Audited.audit_class.as_user(User.system_user) do
+                doppelganger.save!
+              end
             end
           end
         end

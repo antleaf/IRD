@@ -5,7 +5,9 @@ class AllocateRpByCountryJob < ApplicationJob
 
   def perform(system_id, replace_existing_rp)
     system = Rp::AllocateRpByCountryService.call(system_id, replace_existing_rp).payload
-    system.save!
+    Audited.audit_class.as_user(User.system_user) do
+      system.save!
+    end
   end
 
 end

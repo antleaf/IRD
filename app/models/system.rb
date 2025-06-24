@@ -143,6 +143,10 @@ class System < ApplicationRecord
     Machine_readable_attributes
   end
 
+  def self.restricted_labels
+    Rails.configuration.ird[:labels].select { |_, v| v[:restricted] == true }.keys
+  end
+
   def self.unrestricted_labels
     Rails.configuration.ird[:labels].select { |_, v| v[:restricted] == false }.keys
   end

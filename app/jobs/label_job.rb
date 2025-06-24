@@ -10,6 +10,8 @@ class LabelJob < ApplicationJob
     elsif add_or_remove == :remove
       system.label_list.remove label
     end
-    system.save! # this is needed
+    Audited.audit_class.as_user(User.system_user) do
+      system.save!
+    end # this is needed
   end
 end

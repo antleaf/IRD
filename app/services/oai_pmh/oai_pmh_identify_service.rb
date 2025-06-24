@@ -114,7 +114,9 @@ module OaiPmh
         success @system
       ensure
         begin
-          @system.save!
+          Audited.audit_class.as_user(User.system_user) do
+            @system.save!
+          end
         rescue Exception => e2
           Rails.logger.error("OAI-PMH Identify: #{e2.message}")
         end

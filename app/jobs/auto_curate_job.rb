@@ -9,6 +9,8 @@ class AutoCurateJob < ApplicationJob
     if service_result.success?
       system = service_result.payload
     end
-    system.save!
+    Audited.audit_class.as_user(User.system_user) do
+      system.save!
+    end
   end
 end

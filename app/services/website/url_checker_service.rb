@@ -103,7 +103,9 @@ module Website
         success @system
       ensure
         begin
-          @system.save!
+          Audited.audit_class.as_user(User.system_user) do
+            @system.save!
+          end
         rescue Exception => e2
           Rails.logger.error("CheckWebsite: #{e2.message}")
         end

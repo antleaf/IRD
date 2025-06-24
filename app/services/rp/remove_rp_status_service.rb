@@ -21,7 +21,9 @@ module Rp
 
     def remove_rp_status(system)
       system = AllocateRpService.call!(system.id, Organisation.default_rp_id,true).payload
-      system.save!
+      Audited.audit_class.as_user(User.system_user) do
+        system.save!
+      end
     end
   end
 end

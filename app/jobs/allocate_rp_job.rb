@@ -5,6 +5,8 @@ class AllocateRpJob < ApplicationJob
 
   def perform(system_id, rp_id, replace_existing_rp)
     system = Rp::AllocateRpService.call(system_id, rp_id, replace_existing_rp).payload
-    system.save!
+    Audited.audit_class.as_user(User.system_user) do
+      system.save!
+    end
   end
 end

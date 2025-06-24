@@ -10,7 +10,10 @@
   %tbody
     - @system.audits.order(created_at: :desc).each do |audit|
       %tr
-        %td= audit.user.display_name
+        - if audit.user.present?
+          %td= audit.user.display_name
+        - else
+          %td System
         %td= audit.created_at.strftime('%Y-%m-%d %H:%M')
         %td= audit.audited_changes.map { |k, v| "#{k}: #{v}" }.join(', ')
         -# %td= render 'shared/record_action_buttons_table', model_instance: audit
