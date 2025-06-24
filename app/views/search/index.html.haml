@@ -13,7 +13,7 @@
     -@search_result.each do |sr|
       %tr
         %td= sr.class.name
-        %td= link_to sr.name,sr unless sr.short_name.blank?
+        %td= link_to sr.name,sr unless sr.name.blank?
         %td
           = sr.short_name unless sr.short_name.blank?
         %td
