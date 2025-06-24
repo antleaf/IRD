@@ -10,6 +10,7 @@ es:
     authorise_a_user: Autorizar a un usuario
     auto_curate: Curación automática
     cancel_operation: Cancelar operación
+    change_to_awaiting_review: Cambiar el estado del registro a 'En espera de revisión'
     change_to_draft: Cambiar el estado del registro a 'Borrador'
     change_to_under_review: Cambiar el estado del registro a 'En revisión'
     change_to_verified: Cambiar el estado del registro a 'Verificado'

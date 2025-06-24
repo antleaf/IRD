@@ -10,6 +10,7 @@ tr:
     authorise_a_user: Bir Kullanıcıyı Yetkilendirin
     auto_curate: Otomatik Düzenleme
     cancel_operation: İşlemi İptal Et
+    change_to_awaiting_review: Kayıt durumunu 'İncelenmeyi Bekliyor' olarak değiştirin
     change_to_draft: Kayıt durumunu 'Taslak' olarak değiştir
     change_to_under_review: Kayıt durumunu 'İnceleniyor' olarak değiştirin
     change_to_verified: Kayıt durumunu 'Doğrulandı' olarak değiştirin

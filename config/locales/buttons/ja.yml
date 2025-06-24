@@ -10,6 +10,7 @@ ja:
     authorise_a_user: ユーザーを承認する
     auto_curate: 自動キュレーション
     cancel_operation: 操作をキャンセル
+    change_to_awaiting_review: レコードのステータスを「レビュー待ち」に変更します
     change_to_draft: レコードのステータスを「下書き」に変更
     change_to_under_review: レコードのステータスを「レビュー中」に変更する
     change_to_verified: レコードのステータスを「確認済み」に変更する

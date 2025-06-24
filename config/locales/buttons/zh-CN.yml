@@ -10,6 +10,7 @@ zh-CN:
     authorise_a_user: 授权用户
     auto_curate: 自动策划
     cancel_operation: 取消操作
+    change_to_awaiting_review: 将记录状态更改为“等待审核”
     change_to_draft: 将记录状态更改为“草稿”
     change_to_under_review: 将记录状态更改为“审核中”
     change_to_verified: 将记录状态更改为“已验证”

@@ -11,6 +11,7 @@ en:
     auto_curate: Auto-Curate
     cancel_operation: Cancel Operation
     change_to_draft: Change record status to 'Draft'
+    change_to_awaiting_review: Change record status to 'Awaiting Review'
     change_to_under_review: Change record status to 'Under Review'
     change_to_verified: Change record status to 'Verified'
     check_oai: Check OAI-PMH

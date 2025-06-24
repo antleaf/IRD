@@ -64,6 +64,9 @@
         - if policy(@system).set_record_verified? && !@system.record_status_verified?
           = link_to t('buttons.change_to_verified'), set_record_verified_url(@system.id), :class => 'btn btn-success btn-sm'
           %br
+        - if policy(@system).set_record_awaiting_review? && !@system.record_status_awaiting_review?
+          = link_to t("buttons.change_to_awaiting_review"), set_record_awaiting_review_url(@system.id), :class => 'btn btn-sm btn-secondary'
+          %br
         - if policy(@system).set_record_under_review? && !@system.record_status_under_review?
           = link_to t("buttons.change_to_under_review"), set_record_under_review_url(@system.id), :class => 'btn btn-sm btn-warning'
           %br

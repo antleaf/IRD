@@ -10,6 +10,7 @@ fr:
     authorise_a_user: Autoriser un utilisateur
     auto_curate: Auto-curation
     cancel_operation: Annuler l'opération
+    change_to_awaiting_review: Changer le statut de l'enregistrement en « En attente de révision »
     change_to_draft: Changer le statut de l'enregistrement en « Brouillon »
     change_to_under_review: Changer le statut de l'enregistrement en « En cours d'examen »
     change_to_verified: Changer le statut de l'enregistrement en « Vérifié »
