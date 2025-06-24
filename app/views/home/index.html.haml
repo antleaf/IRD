@@ -1,5 +1,6 @@
 %div.row
   %div.col-lg-10
+    =link_to image_tag('COAR-logo.png', id: "coar-logo"), "https://www.coar-repositories.org/"
     = process_md(t('home_page.home_page_text'))
     = bar_chart @continent_graph_data,title: t('statistics_and_graphs.repositories_count_by_continent')
   %div.col-lg-2

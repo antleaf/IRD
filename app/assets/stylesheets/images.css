@@ -56,3 +56,10 @@ div.image-credit {
   font-size: 0.6em;
   text-align: right;
 }
+
+img#coar-logo {
+  max-width: 30%;
+  height: auto;
+  /*float: right;*/
+  margin-bottom: 10px;
+}

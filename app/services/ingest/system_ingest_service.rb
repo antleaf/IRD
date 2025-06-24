@@ -26,16 +26,6 @@ module Ingest
               end
             end
             unless system.changes.empty?
-              # puts system.changes.inspect
-              # unless candidate_system.dry_run
-              #   service_result = Snapshots::SystemSnapshotCreationService.call(candidate_system.get_attribute("id"), user)
-              #   if service_result.success?
-              #     Rails.logger.info("Created snapshot for system with id '#{system.id}'")
-              #   else
-              #     Rails.logger.error("Error creating snapshot for system with id '#{system.id}': #{service_result.error}")
-              #     raise service_result.error
-              #   end
-              # end
               updated = true
               Rails.logger.info("System with id '#{system.id}' updated")
             end
@@ -43,7 +33,11 @@ module Ingest
               Rails.logger.info("System with id '#{system.id}' unchanged")
             end
             system.mark_reviewed!
-            system.save! unless candidate_system.dry_run # always save even if record unchanged to update reviewed_at timestamp
+            unless candidate_system.dry_run # always save even if record unchanged to update reviewed_at timestamp
+              Audited.audit_class.as_user(user) do
+                system.save!
+              end
+            end
           else
             raise Pundit::NotAuthorizedError.new("Not authorised to update system with ID: '#{system.id}'") # fail because user does not have permission to update system
           end
