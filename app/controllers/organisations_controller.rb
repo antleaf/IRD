@@ -68,7 +68,7 @@ class OrganisationsController < ApplicationController
     if @organisation.country.present?
       @organisation.make_rp!
       @organisation.save!
-      ActiveJob.perform_all_later(@organisation.country.systems.map { |system| AllocateRpByCountryJob.new(system.id) })
+      ActiveJob.perform_all_later(@organisation.country.systems.map { |system| AllocateRpByCountryJob.new(system.id,true) })
       redirect_back fallback_location: root_path, notice: "Making this organisation Responsible Organisation for repositories in #{@organisation.country.name}."
     else
       redirect_back fallback_location: root_path, alert: "This organisation does not have a country."
