@@ -73,7 +73,7 @@ class SystemPolicy < ApplicationPolicy
   end
 
   def check_url?
-    curate?
+    User.valid_user?(@user) && @user.has_role?(:administrator)
   end
 
   def check_oai_pmh_identify?
@@ -113,7 +113,7 @@ class SystemPolicy < ApplicationPolicy
   end
 
   def change_system_status?
-    curate?
+    User.valid_user?(@user) && @user.has_role?(:administrator)
   end
 
   def change_oai_status?
