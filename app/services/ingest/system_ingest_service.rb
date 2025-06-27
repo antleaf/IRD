@@ -48,8 +48,13 @@ module Ingest
           else
             system = System.new(candidate_system.attributes)
             candidate_system.tags.each { |tag| system.tag_list.add(tag) } if candidate_system.tags
+            system.record_source = candidate_system.record_source
             Rails.logger.debug("Creating new system with id '#{system.id}'....")
-            system.save! unless candidate_system.dry_run
+            unless candidate_system.dry_run
+              Audited.audit_class.as_user(user) do
+                system.save!
+              end
+            end
             Rails.logger.info("System with id '#{system.id}' created")
             candidate_system.identifiers.each_pair { |scheme, value| Repoid.find_or_create_by(system: system, identifier_scheme: scheme.to_sym, identifier_value: value) } unless candidate_system.dry_run
             Rails.logger.debug("Repoids for system with id '#{system.id}' updated")
