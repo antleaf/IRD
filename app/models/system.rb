@@ -31,7 +31,7 @@ class System < ApplicationRecord
   Issue = Struct.new(:priority, :description)
   include TranslateEnum
   include MachineReadability
-  audited on: [:insert, :update]
+  audited on: [:create, :update]
 
   searchkick max_result_window: 20000, deep_paging: true
   acts_as_taggable_on :tags, :labels # labels are from a *controlled* vocab, used for operations

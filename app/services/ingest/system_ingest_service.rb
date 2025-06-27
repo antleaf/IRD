@@ -15,7 +15,7 @@ module Ingest
         system = System.find(candidate_system.get_attribute("id")) if candidate_system.get_attribute("id").present?
         if system
           if Pundit.policy(user, system).update?
-            Rails.logger.debug("Updating existing system with id '#{system.id}'.... for user #{user.name}")
+            Rails.logger.debug("Updating existing system with id '#{system.id}'.... by user #{user.name}")
             system.assign_attributes(candidate_system.attributes)
             candidate_system.tags.each { |tag| system.tag_list.add(tag) }
             candidate_system.identifiers.each_pair do |scheme, value|
@@ -27,7 +27,7 @@ module Ingest
             end
             unless system.changes.empty?
               updated = true
-              Rails.logger.info("System with id '#{system.id}' updated")
+              Rails.logger.info("System with id '#{system.id}' updated by #{user.email})")
             end
             unless updated
               Rails.logger.info("System with id '#{system.id}' unchanged")
@@ -49,7 +49,7 @@ module Ingest
             system = System.new(candidate_system.attributes)
             candidate_system.tags.each { |tag| system.tag_list.add(tag) } if candidate_system.tags
             system.record_source = candidate_system.record_source
-            Rails.logger.debug("Creating new system with id '#{system.id}'....")
+            Rails.logger.debug("Creating new system with id '#{system.id}' (user = #{user.email})....")
             unless candidate_system.dry_run
               Audited.audit_class.as_user(user) do
                 system.save!
