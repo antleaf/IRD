@@ -10,7 +10,7 @@ tr:
 
       Bu dizindeki her depo aşağıdaki kriterleri karşılar:
 
-      - İçeriğinin büyük çoğunluğu tamamen Açık Erişimdir
+      - İçeriğinin büyük çoğunluğu tamamen Açık Erişimlidir
       - OAI-PMH'yi destekler
 
       #### Verilerin Yönetimi
@@ -20,8 +20,8 @@ tr:
 
       - **Taslak**: Bir depo tanımlanmıştır ancak henüz IRD hizmeti tarafından değerlendirilmemiştir veya doğrulanmamıştır.
       - **İnceleme Bekleniyor**: Tanımlanan deponun "kapsam dahilinde" olduğu değerlendirilmiştir, bazı ilk otomatik kontrollerden geçmiştir ancak henüz bir Sorumlu Kuruluşa tahsis edilmemiştir.
-      - **İnceleme Altında**: Tanımlanan depo, tahsis edilen Sorumlu Kuruluş tarafından incelenmektedir.
-      - **Yayınlandı**: Depo, tahsis edilen Sorumlu Kuruluş tarafından incelenmiştir ve doğru ve güncel olduğu doğrulanmıştır.
+      - **İnceleme Altında**: Tanımlanan depo tahsis edilen Sorumlu Kuruluş tarafından incelenmektedir.
+      - **Doğrulandı**: Depo tahsis edilen Sorumlu Kuruluş tarafından incelenmiştir ve doğru ve güncel olduğu doğrulanmıştır.
       - **Arşivlendi**: Depo artık etkin değildir veya kapsam dışındadır. Kayıt arşivlenmiştir ve artık IRD hizmetinde yayınlanmamaktadır.
 
       #### Lisans

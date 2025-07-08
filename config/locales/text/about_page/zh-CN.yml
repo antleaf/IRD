@@ -4,36 +4,36 @@ zh-CN:
     about_page_text: |-
       ### 关于服务
 
-      国际存储库目录 (IRD) 由 [开放存取存储库联盟 (COAR)](https://www.coar-repositories.org/) 管理。
+      国际知识库目录 (IRD) 由 [开放存取知识库联盟 (COAR)](https://www.coar-repositories.org/) 管理。
 
-      #### 纳入标准
+      #### 收录标准
 
-      此目录中的每个存储库都满足以下标准：
+      本目录中的每个知识库均满足以下标准：
 
       - 其大部分内容完全开放存取
-      - 它支持 OAI-PMH
+      - 支持 OAI-PMH
 
       #### 数据管理
-      此目录中的元数据是从存储库本身收集的，并定期更新。一些元数据会自动更新，但元数据记录也由称为“负责组织”的组织管理，这些组织分配人员和资源以维护元数据的准确性和及时性。
+      本目录中的元数据来自知识库本身，并定期更新。部分元数据会自动更新，但元数据记录也由名为“责任组织”的组织负责管理，这些组织会分配人力和资源来维护元数据的准确性和及时性。
 
-      目录包含有关存储库的元数据记录。在任何时候，每条记录都处于以下四种“状态”之一：
+      本目录包含关于知识库的元数据记录。在任何时候，每条记录都处于以下四种“状态”之一：
 
-      - **草稿**：存储库已确定，但尚未由 IRD 服务评估或验证。
-      - **等待审核**：已确定的存储库已被判定为“在范围内”，已通过一些初步的自动检查，但尚未分配给负责组织。
-      - **审核中**：已确定的存储库正在由分配的负责组织审核。
-      - **已发布**：存储库已由分配的负责组织审核，并被验证为准确且最新。
-      - **已存档**：存储库不再处于活动状态，或超出范围。记录已存档，不再在 IRD 服务上发布。
+      - **草稿**：知识库已确定，但尚未经过 IRD 服务的评估或验证。
+      - **等待审核**：已识别的存储库已被判定为“在范围内”，已通过初步自动检查，但尚未分配给负责机构。
+      - **审核中**：已识别的存储库正在由分配的负责机构审核。
+      - **已验证**：存储库已由分配的负责机构审核，并已验证其准确性和最新性。
+      - **已存档**：存储库不再活跃，或超出范围。该记录已存档，不再在 IRD 服务上发布。
 
       #### 许可证
-      IRD 中的数据可以不受限制地重复使用。更正式地说，它是根据 [CC0 许可证](https://creativecommons.org/publicdomain/zero/1.0/?ref=chooser-v1) 获得许可的。
+      IRD 中的数据可以不受限制地重复使用。更正式地说，它根据 [CC0 许可证](https://creativecommons.org/publicdomain/zero/1.0/?ref=chooser-v1) 获得许可。
 
-      #### 软件开发和维护
-      IRD 软件由 [Antleaf](https://www.antleaf.com/) 开发、部署和维护。此软件的 [开源代码](https://github.com/coar-repositories/IRD) 已根据 [MIT 许可证](https://opensource.org/license/mit) 获得许可。
+      #### 软件开发与维护
+      IRD 软件由 [Antleaf](https://www.antleaf.com/) 开发、部署和维护。该软件的 [开源代码](https://github.com/coar-repositories/IRD) 采用 [MIT 许可证](https://opensource.org/license/mit) 授权。
 
       ### 致谢
 
       #### IRD 工作组
-      COAR 谨感谢 IRD 工作组对 IRD 发展的宝贵贡献：
+      COAR 谨感谢 IRD 工作组对 IRD 发展做出的宝贵贡献：
 
       - Iryna Kuchma，EIFL
       - Pierre Lasou，拉瓦尔大学
@@ -44,25 +44,25 @@ zh-CN:
       - Paul Walk，Antleaf
       - Virginia Barbour，开放获取澳大利亚（前成员）
 
-      #### 研究组织注册表 (ROR)
-      IRD 使用经许可从 [研究组织注册表 (ROR)](https://ror.org/) 下载的数据。
-      IRD 使用 ROR 尽可能消除目录中组织名称的歧义。
+      #### 研究机构注册中心 (ROR)
+      IRD 使用经许可从 [研究机构注册中心 (ROR)](https://ror.org/) 下载的数据。
+      IRD 尽可能使用 ROR 来消除目录中机构名称的歧义。
 
       #### 其他信息来源
-      一些第三方注册中心/目录/列表已用于识别纳入 IRD 的候选人。这些包括（但不限于）：
+      一些第三方注册机构/目录/名单已被用来识别可纳入 IRD 的候选人。这些包括（但不限于）：
 
       - [ROAR](https://roar.eprints.org)
       - [OpenDOAR](http://v2.sherpa.ac.uk/opendoar/)
       - [Re3data](https://www.re3data.org/)
-      - [有关 Dataverse 安装的众包信息](https://docs.google.com/spreadsheets/d/1bfsw7gnHlHerLXuk7YprUT68liHfcaMxs1rFciA-mEo/edit?gid=0#gid=0)
+      - [关于 Dataverse 安装的众包信息](https://docs.google.com/spreadsheets/d/1bfsw7gnHlHerLXuk7YprUT68liHfcaMxs1rFciA-mEo/edit?gid=0#gid=0)
       - [Hyku Commons](https://hykucommons.org/)
       - [NII（日本）存储库列表](https://irdb.nii.ac.jp/en/repositorylist)
 
-      还要感谢以下提供有关存储库信息的个人：
+      同时感谢以下提供存储库信息的个人：
 
-      - Bram Luyten， [Atmire](https://www.atmire.com)
+      - Bram Luyten [Atmire](https://www.atmire.com)
       - Jon Hackney，[Worktribe](https://www.worktribe.com)
       - Heather Greer-Klein [Samvera](https://samvera.org/)
     data_curation_text: |-
-      ### 负责组织
-      本目录中记录的管理责任由*负责组织*承担：
+      ### 负责机构
+      本目录中记录的管理责任分配给以下*负责机构*：

@@ -14,14 +14,14 @@ fr:
       - Il est compatible avec OAI-PMH
 
       #### Gestion des données
-      Les métadonnées de ce répertoire sont collectées auprès des dépôts eux-mêmes et sont mises à jour régulièrement. Certaines métadonnées sont mises à jour automatiquement, mais les enregistrements de métadonnées sont également gérés par des organisations appelées « Organisations responsables », qui affectent des personnes et des ressources pour maintenir l'exactitude et l'actualité des métadonnées.
+      Les métadonnées de ce répertoire sont collectées auprès des dépôts eux-mêmes et sont mises à jour régulièrement. Certaines métadonnées sont mises à jour automatiquement, mais les enregistrements de métadonnées sont également gérés par des organisations appelées « Organisations responsables » qui affectent des personnes et des ressources pour maintenir l'exactitude et l'actualité des métadonnées.
 
       Le répertoire contient des enregistrements de métadonnées sur les dépôts. Chaque enregistrement est à tout moment dans l'un des quatre « états » suivants :
 
       - **Brouillon** : Un dépôt a été identifié, mais n'a pas encore été évalué ni vérifié par le service IRD.
       - **En attente de révision** : Le dépôt identifié a été jugé « dans le champ d'application », a passé avec succès une vérification automatisée initiale, mais n'a pas encore été attribué à une organisation responsable.
       - **En cours de révision** : Le dépôt identifié est en cours de révision par l'organisation responsable désignée.
-      - **Publié** : Le dépôt a été révisé par l'organisation responsable désignée et son exactitude et sa mise à jour ont été vérifiées.
+      - **Vérifié** : Le dépôt a été révisé par l'organisation responsable désignée et est vérifié comme étant exact et à jour.
       - **Archivé** : Le dépôt n'est plus actif ou est hors champ d'application. L'enregistrement est archivé et n'est plus publié sur le service IRD.
 
       #### Licence

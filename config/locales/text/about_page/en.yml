@@ -21,7 +21,7 @@ en:
         - **Draft**: A repository has been identified, but not yet assessed or verified by the IRD service.
         - **Awaiting Review**: The identified repository has been judged to be "in scope", has passed some initial automated checking but has not yet been allocated to a Responsible Organisation.
         - **Under Review**: The identified repository is being reviewed by the allocated Responsible Organisation.
-        - **Published**: The repository has been reviewed by the allocated Responsible Organisation and is verified as accurate and up-to-date.
+        - **Verified**: The repository has been reviewed by the allocated Responsible Organisation and is verified as accurate and up-to-date.
         - **Archived**: The repository is no longer active, or is out-of-scope. The record is archived and no longer published on the IRD service.
 
       #### License
