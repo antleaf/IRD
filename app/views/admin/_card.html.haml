@@ -48,6 +48,13 @@
           = link_to t('buttons.make_record_draft'),  set_record_draft_url(system.id), :class => 'btn btn-secondary btn-sm'
     %div.row
       %div.col
+        %div.card-system-details
+          %ul
+            %li
+              %b= "URL:"
+              = auto_link system.url
+    %div.row
+      %div.col
         = render '_shared/label_buttons', system: system
     %div.row
       %div.col
