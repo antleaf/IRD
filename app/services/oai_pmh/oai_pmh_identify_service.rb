@@ -44,7 +44,6 @@ module OaiPmh
         @system.write_network_check(:oai_pmh_identify, true, "", response.status)
         @system.oai_status = :online
         Utilities::HttpHeadersProcessor.process_tags_from_headers(@system.tag_list, response.headers, :oai_pmh)
-        @system.metadata.except!("unconfirmed_oai_pmh_url_base_url") # if @system.metadata["unconfirmed_oai_pmh_url_base_url"]
         parse_metadata(response)
 
       rescue Faraday::ResourceNotFound => e # 404
@@ -114,6 +113,7 @@ module OaiPmh
         success @system
       ensure
         begin
+          @system.metadata.except!("unconfirmed_oai_pmh_url_base_url") # if @system.metadata["unconfirmed_oai_pmh_url_base_url"]
           Audited.audit_class.as_user(User.system_user) do
             @system.save!
           end
