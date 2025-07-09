@@ -9,17 +9,11 @@ module OaiPmh
         @system = System.includes(:network_checks, :repoids, :users).find(system_id)
         original_url = @system.oai_base_url
         unless original_url.present?
-          if @system.metadata["unconfirmed_oai_pmh_url_base_url"].blank? && @system.platform && @system.platform.oai_support
-            oai_pmh_url_suffix = @system.platform.oai_suffix unless @system.platform.blank?
-            unless oai_pmh_url_suffix.blank?
-              unconfirmed_oai_pmh_url_base_url = (Utilities::UrlUtility.get_url_without_trailing_slash(@system.url) + oai_pmh_url_suffix)
-              unconfirmed_oai_pmh_url_base_url = Utilities::UrlUtility.get_url_with_parent_folder_redirect_removed(unconfirmed_oai_pmh_url_base_url)
-              @system.metadata["unconfirmed_oai_pmh_url_base_url"] = unconfirmed_oai_pmh_url_base_url
-            end
-          end
+          generate_unconfirmed_oai_pmh_url_base_url
           original_url = @system.metadata["unconfirmed_oai_pmh_url_base_url"]
         end
         unless original_url.present?
+          Rails.logger.debug("OAI-PMH Base URL not present for system #{@system.id}")
           @system.write_network_check(:oai_pmh_identify, false, "Missing OAI-PMH Base URL", 0)
           if @system.platform&.oai_support
             @system.oai_status = :not_enabled
@@ -29,17 +23,15 @@ module OaiPmh
           raise StandardError.new("OAI-PMH Base URL not set")
         end
         original_url_with_verbs_removed = Utilities::OaiPmhUrlFormatter.without_verbs(original_url)
-        url_with_verb_identify = Utilities::OaiPmhUrlFormatter.with_verb_identify(original_url)
         if original_url_with_verbs_removed.to_s != @system.oai_base_url
           @system.oai_base_url = original_url_with_verbs_removed.to_s
           Rails.logger.debug "OAI-PMH Base updated from #{@system.oai_base_url} to #{original_url_with_verbs_removed.to_s}"
         end
+        url_with_verb_identify = Utilities::OaiPmhUrlFormatter.with_verb_identify(original_url)
         Rails.logger.debug("Running OAI-PMH Identify on #{url_with_verb_identify}")
         conn = Utilities::HttpClientConnectionWrapper.new(redirect_limit)
         response = conn.get(url_with_verb_identify)
-        # unless conn.redirect_url_chain.empty?
-        #   conn.redirect_url_chain.each { |prev_url| @system.add_normalid_for_url(prev_url) }
-        # end
+        Rails.logger.debug("Ran OAI-PMH Identify on #{conn.new_url}")
 
         @system.write_network_check(:oai_pmh_identify, true, "", response.status)
         @system.oai_status = :online
@@ -49,11 +41,10 @@ module OaiPmh
       rescue Faraday::ResourceNotFound => e # 404
         Rails.logger.warn("#{e} for OAI-PMH Identify #{url_with_verb_identify}")
         @system.write_network_check(:oai_pmh_identify, false, e.message, e.response[:status])
-        @system.oai_base_url = nil
-        if @system.metadata["unconfirmed_oai_pmh_url_base_url"].blank?
-          @system.oai_status = :unsupported
-        else
+        if @system.platform&.oai_support
           @system.oai_status = :not_enabled
+        else
+          @system.oai_status = :unsupported
         end
         failure e
       rescue Faraday::ForbiddenError => e # 403
@@ -126,11 +117,22 @@ module OaiPmh
 
     private
 
+    def generate_unconfirmed_oai_pmh_url_base_url
+      if @system.platform&.oai_support
+        oai_pmh_url_suffix = @system.platform.oai_suffix unless @system.platform.blank?
+        unless oai_pmh_url_suffix.blank?
+          unconfirmed_oai_pmh_url_base_url = (Utilities::UrlUtility.get_url_without_trailing_slash(@system.url) + oai_pmh_url_suffix)
+          unconfirmed_oai_pmh_url_base_url = Utilities::UrlUtility.get_url_with_parent_folder_redirect_removed(unconfirmed_oai_pmh_url_base_url)
+          @system.metadata["unconfirmed_oai_pmh_url_base_url"] = unconfirmed_oai_pmh_url_base_url
+        end
+      end
+    end
+
     def parse_metadata(response)
       doc = Nokogiri::XML(response.body)
       doc.remove_namespaces!
-      # puts doc.to_xml
-      @system.oai_base_url = doc.at_xpath("//baseURL").text
+      base_url_reported_by_oai_pmh_identify = doc.at_xpath("//baseURL").text
+      Rails.logger.warn("Base URL reported by OAI-PMH Identify is #{base_url_reported_by_oai_pmh_identify} which is different to known Base URL #{@system.oai_base_url}") if base_url_reported_by_oai_pmh_identify != @system.oai_base_url
       @system.metadata["oai_repo_name"] = doc.at_xpath("//repositoryName").text
       @system.metadata["oai_contact"] = doc.at_xpath("//adminEmail").text if doc.at_xpath("//adminEmail")
       doc.xpath("//description").each do |desc|

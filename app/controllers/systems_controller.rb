@@ -199,7 +199,7 @@ class SystemsController < ApplicationController
   def check_oai_pmh_combined
     authorize @system
     service_result = OaiPmh::OaiPmhIdentifyService.call(@system.id)
-    if service_result.success?
+    if service_result.success? && service_result.payload.oai_status_online?
       @system = service_result.payload
       service_result2 = OaiPmh::OaiPmhMetadataFormatsService.call(@system.id)
       if service_result2.success?
@@ -210,6 +210,8 @@ class SystemsController < ApplicationController
         else
           redirect_back fallback_location: root_path, flash: { error: "OAI-PMH check completed: OAI-PMH status is #{@system.oai_status}" }
         end
+      else
+        redirect_back fallback_location: root_path, flash: { error: "OAI-PMH check failed: #{service_result2.error.message}"}
       end
     else
       redirect_back fallback_location: root_path, flash: { error: "OAI-PMH check failed: #{service_result.error.message}" }
