@@ -130,7 +130,8 @@ module OaiPmh
       doc = Nokogiri::XML(response.body)
       doc.remove_namespaces!
       # puts doc.to_xml
-      @system.metadata["oai_repo_name"] = doc.at_xpath("//repositoryName").text if doc.at_xpath("//repositoryName")
+      @system.oai_base_url = doc.at_xpath("//baseURL").text
+      @system.metadata["oai_repo_name"] = doc.at_xpath("//repositoryName").text
       @system.metadata["oai_contact"] = doc.at_xpath("//adminEmail").text if doc.at_xpath("//adminEmail")
       doc.xpath("//description").each do |desc|
         repo_id = desc.at_xpath("//repositoryIdentifier")
