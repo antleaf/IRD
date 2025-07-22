@@ -7,6 +7,10 @@ textarea {
     border: .5px solid #cdcdcd;
 }
 
+textarea.curation-notes {
+    background-color: lightyellow;
+}
+
 div.actions {
     text-align: center;
 / / border-top: 1 px #efefef solid;
@@ -24,10 +28,12 @@ a.btn {
 
 .field {
     margin-bottom: 10px;
+    vertical-align: top;
 }
 
 .field-name {
     text-align: right;
+    vertical-align: top;
 }
 
 

@@ -13,7 +13,17 @@
       = system_status_flags @system.system_status
       = oai_status_flags @system.oai_status
   = print_field_name_and_value(t(:responsible_organisation),(link_to(@system.rp.display_name, @system.rp) unless @system.rp.nil?),true)
-  - if @system.rp.rp_contact
+
+  - if policy(@system).curate?
+    %div.property
+      %h5.property-name= t('activerecord.attributes.system.curation_notes')
+      %div.property-value.curation-notes
+        - if @system.curation_notes.present?
+          = process_md(@system.curation_notes)
+        - else
+          = t(:none)
+
+  - elsif @system.rp.rp_contact
     %div.property#change-request-property
       %h5.property-name= t('request_a_change')
       %div.property-value

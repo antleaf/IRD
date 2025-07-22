@@ -375,7 +375,7 @@ class SystemsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def system_params
-    params.require(:system).permit(:name, :short_name, :url, :description, :contact, :subcategory, :system_status, :oai_status, :platform_id, :country_id, :platform_version, :record_status, :record_source, :primary_subject, :owner_id, :rp_id, :oai_base_url, :system_category, :tag_list, :archive_label, :label_list => [], :media_types => [], :aliases => [], :user_ids => [], :repoids_attributes => [[:id, :identifier_scheme, :identifier_value, :_destroy]])
+    params.require(:system).permit(:name, :short_name, :url, :description, :contact, :subcategory, :system_status, :oai_status, :platform_id, :country_id, :platform_version, :record_status, :record_source, :primary_subject, :owner_id, :rp_id, :oai_base_url, :system_category, :tag_list, :archive_label, :curation_notes, :label_list => [], :media_types => [], :aliases => [], :user_ids => [], :repoids_attributes => [[:id, :identifier_scheme, :identifier_value, :_destroy]])
   end
 
   # def suggested_new_system_params

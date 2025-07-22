@@ -38,3 +38,4 @@ tr:
       description: Küçük resim eksik
       name: Eksik küçük resim
   curation_issues: Küratörlük Sorunları
+  no_curation_issues: Hiçbir küratörlük sorunu yok

@@ -26,6 +26,7 @@ tr:
       system:
         authorised_curators: Yetkili Küratörler
         contact: Temas etmek
+        curation_notes: Küratörlük Notları
         issues: Küratörlük Sorunları
         media_types: Medya Türleri
         oai_base_url: OAI-PMH Temel URL

@@ -38,3 +38,4 @@ pt:
       description: Falta a miniatura
       name: Miniatura ausente
   curation_issues: Questões de curadoria
+  no_curation_issues: Sem problemas de curadoria

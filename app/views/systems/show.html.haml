@@ -1,10 +1,10 @@
 %div.row
-  %div.col-lg-9
+  %div.col-lg-8
     = render 'show_general', "@system": @system
     = render 'show_technical', "@system": @system
     - if policy(@system).view_audit?
       = render 'show_audit', "@system": @system
-  %div.col-lg-3
+  %div.col-lg-4
     = render 'show_curation', "@system": @system
     - if policy(@system).admin?
       = render 'show_admin', "@system": @system

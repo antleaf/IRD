@@ -26,6 +26,7 @@ zh-CN:
       system:
         authorised_curators: 授权策展人
         contact: 接触
+        curation_notes: 策展笔记
         issues: 策展问题
         media_types: 媒体类型
         oai_base_url: OAI-PMH 基本 URL

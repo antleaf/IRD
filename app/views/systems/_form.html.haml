@@ -1,6 +1,6 @@
-%div.row
-  %div.col-9
-    = form_for @system do |f|
+= form_for @system do |f|
+  %div.row
+    %div.col-md-8
       - if @system.errors.any?
         -# i18n-tasks-use t('activerecord.errors.template.header') # this lets i18n-tasks know the key is used
         =render '_shared/validation_errors', record: @system
@@ -42,7 +42,7 @@
           -# i18n-tasks-use t('attributes.description') # this lets i18n-tasks know the key is used
           = f.label :description, :class=>"form-label"
         %div.col
-          = f.text_field :description, :class=>"form-control"
+          = f.text_area :description, :class=>"form-control"
       %div.row.align-items-center.field
         %div.col-2.field-name
           -# i18n-tasks-use t('activerecord.errors.models.system.attributes.subcategory.missing') # this lets i18n-tasks know the key is used
@@ -211,34 +211,39 @@
         = f.submit t("buttons.save_record"), :class => 'btn btn-success',onclick:"if(document.getElementById('autocomplete_system_owner').value == '') {document.getElementById('system_owner_id').value = null;};"
 
 
-  %div.col-3
-    %h5= t('curation_issues')
-    -unless @system.issues.empty?
-      %ul
-        - @system.issues.each do |issue|
-          %li.curation-issue
-            = issue_priority_flags(issue)
-    - else
-      %p No curation issues
-    - if policy(@system).admin?
-      %h5= t('network_checks')
-      - if @system.network_checks.count > 0
+    %div.col-md-4
+      %h5= t('curation_issues')
+      -unless @system.issues.empty?
         %ul
-          - @system.network_checks.each do |nc|
-            %li
-              -# i18n-tasks-use t('activerecord.attributes.network_check.network_check_type_list.#{network_check_type}') # this lets i18n-tasks know the key is used
-              = "#{network_check_result_flags(nc)} #{nc.translated_network_check_type}"
-              - unless nc.passed
-                - if nc.http_code && nc.http_code > 0
-                  = "HTTP #{nc.http_code}"
-                - if nc.description
-                  = "(#{nc.description})"
-      - if @system.metadata
-        -unless @system.metadata.empty?
-          %br
-          %h5= t('metadata')
+          - @system.issues.each do |issue|
+            %li.curation-issue
+              = issue_priority_flags(issue)
+      - else
+        %p= t('no_curation_issues')
+
+      %h5= t('activerecord.attributes.system.curation_notes')
+      %i=t('you_can_use_markdown_here')
+      = f.text_area :curation_notes, :class=>"form-control curation-notes", :rows=>"25"
+
+      - if policy(@system).admin?
+        %h5= t('network_checks')
+        - if @system.network_checks.count > 0
           %ul
-            - @system.metadata.each do |k,v|
+            - @system.network_checks.each do |nc|
               %li
-                %b="#{k}: "
-                =v
+                -# i18n-tasks-use t('activerecord.attributes.network_check.network_check_type_list.#{network_check_type}') # this lets i18n-tasks know the key is used
+                = "#{network_check_result_flags(nc)} #{nc.translated_network_check_type}"
+                - unless nc.passed
+                  - if nc.http_code && nc.http_code > 0
+                    = "HTTP #{nc.http_code}"
+                  - if nc.description
+                    = "(#{nc.description})"
+        - if @system.metadata
+          -unless @system.metadata.empty?
+            %br
+            %h5= t('metadata')
+            %ul
+              - @system.metadata.each do |k,v|
+                %li
+                  %b="#{k}: "
+                  =v

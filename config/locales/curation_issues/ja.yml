@@ -38,3 +38,4 @@ ja:
       description: サムネイルがありません
       name: サムネイルがありません
   curation_issues: キュレーションの問題
+  no_curation_issues: キュレーションの問題はありません

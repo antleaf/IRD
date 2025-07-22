@@ -38,3 +38,4 @@ fr:
       description: La miniature est manquante
       name: Vignette manquante
   curation_issues: Problèmes de conservation
+  no_curation_issues: Aucun problème de curation

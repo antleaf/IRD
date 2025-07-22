@@ -38,3 +38,4 @@ en:
       description: Thumbnail is missing
       name: Missing thumbnail
   curation_issues: Curation Issues
+  no_curation_issues: No curation issues

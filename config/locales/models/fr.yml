@@ -26,6 +26,7 @@ fr:
       system:
         authorised_curators: Conservateurs agréés
         contact: Contact
+        curation_notes: Notes de conservation
         issues: Problèmes de conservation
         media_types: Types de médias
         oai_base_url: URL de base OAI-PMH

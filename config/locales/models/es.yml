@@ -26,6 +26,7 @@ es:
       system:
         authorised_curators: Curadores autorizados
         contact: Contacto
+        curation_notes: Notas de curación
         issues: Problemas de curación
         media_types: Tipos de medios
         oai_base_url: URL base de OAI-PMH

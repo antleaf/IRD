@@ -26,6 +26,7 @@ ja:
       system:
         authorised_curators: 認定キュレーター
         contact: 連絡先
+        curation_notes: キュレーションノート
         issues: キュレーションの問題
         media_types: メディアタイプ
         oai_base_url: OAI-PMH ベース URL

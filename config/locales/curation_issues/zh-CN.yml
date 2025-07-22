@@ -38,3 +38,4 @@ zh-CN:
       description: 缩略图缺失
       name: 缺少缩略图
   curation_issues: 策展问题
+  no_curation_issues: 无策展问题
