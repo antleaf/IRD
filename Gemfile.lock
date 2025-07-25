@@ -143,7 +143,7 @@ GEM
     erubi (1.13.1)
     et-orbi (1.2.11)
       tzinfo
-    faraday (2.12.3)
+    faraday (2.13.4)
       faraday-net_http (>= 2.0, < 3.5)
       json
       logger
@@ -197,7 +197,7 @@ GEM
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
     jmespath (1.6.2)
-    json (2.13.0)
+    json (2.13.1)
     kramdown (2.5.1)
       rexml (>= 3.3.9)
     language_server-protocol (3.17.0.5)
@@ -510,7 +510,7 @@ DEPENDENCIES
   debug
   dotenv-rails
   easy_translate
-  faraday (~> 2.12.2)
+  faraday (~> 2.13.4)
   faraday-follow_redirects
   faraday-retry
   fileutils
