@@ -113,7 +113,7 @@ class SystemPolicy < ApplicationPolicy
   end
 
   def change_system_status?
-    User.valid_user?(@user) && @user.has_role?(:administrator)
+    User.valid_user?(@user) && (@user.has_role?(:administrator) || @user.has_role?(:superuser) || @user.is_responsible_for?(@record))
   end
 
   def change_oai_status?
