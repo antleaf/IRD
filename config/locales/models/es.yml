@@ -2,6 +2,11 @@
 es:
   activerecord:
     attributes:
+      batch:
+        filename: Nombre del archivo
+        locking: "¿Cierre?"
+        rp: Organización responsable
+        user: Usuario
       country:
         code: Código
         continent: Continente
@@ -83,6 +88,9 @@ es:
         fore_name: Nombre
         last_name: Apellido
     models:
+      batch:
+        one: Lote
+        other: Lotes
       country:
         one: País
         other: Países
@@ -109,11 +117,13 @@ es:
         other: Usuarios
   attributes:
     aliases: Otros nombres
+    base: registro del repositorio
     country_id: País
     description: Descripción
     id: IDENTIFICACIÓN
     identifiers: Identificadores
     name: Nombre
+    notes: Notas
     responsible_party: Organización responsable
     short_name: Nombre corto
     systems: Repositorios

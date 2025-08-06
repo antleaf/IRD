@@ -29,6 +29,7 @@ end
 
 class UnlockedValidator < ActiveModel::Validator
   def validate(record)
+    # i18n-tasks-use t('attributes.base') # this lets i18n-tasks know the key is used
     if record.is_locked?
       record.errors.add :base, :invalid, message: I18n.t("errors.locked_record_text")
     end

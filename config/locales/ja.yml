@@ -54,6 +54,7 @@ ja:
     welcome: 国際リポジトリディレクトリ (IRD) へようこそ
   platform_identified: ソフトウェア プラットフォームは特定されていますか?
   primary_subject: 主な科目
+  record_is_locked_for_editing: "%{user} による編集がロックされています"
   record_source: レコードソース
   record_status: レコードステータス
   records_in_ird: IRDの記録

@@ -2,6 +2,11 @@
 tr:
   activerecord:
     attributes:
+      batch:
+        filename: Dosya adı
+        locking: Kilitleme?
+        rp: Sorumlu Kuruluş
+        user: Kullanıcı
       country:
         code: Kod
         continent: Kıta
@@ -83,6 +88,9 @@ tr:
         fore_name: Adı
         last_name: Soyadı
     models:
+      batch:
+        one: Grup
+        other: Partiler
       country:
         one: Ülke
         other: Ülkeler
@@ -109,11 +117,13 @@ tr:
         other: Kullanıcılar
   attributes:
     aliases: Diğer İsimler
+    base: depo kaydı
     country_id: Ülke
     description: Tanım
     id: İD
     identifiers: Tanımlayıcılar
     name: İsim
+    notes: Notlar
     responsible_party: Sorumlu Kuruluş
     short_name: Kısa İsim
     systems: Depolar

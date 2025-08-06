@@ -54,6 +54,7 @@ tr:
     welcome: Uluslararası Depolar Rehberi'ne (IRD) hoş geldiniz
   platform_identified: Yazılım Platformu Belirlendi mi?
   primary_subject: Birincil Ders
+  record_is_locked_for_editing: "%{user} tarafından düzenlemeye karşı kilitlendi"
   record_source: Kayıt Kaynağı
   record_status: Kayıt Durumu
   records_in_ird: IRD'deki kayıtlar

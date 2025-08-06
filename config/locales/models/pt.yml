@@ -2,6 +2,11 @@
 pt:
   activerecord:
     attributes:
+      batch:
+        filename: Nome do arquivo
+        locking: Travando?
+        rp: Organização Responsável
+        user: Usuário
       country:
         code: Código
         continent: Continente
@@ -83,6 +88,9 @@ pt:
         fore_name: Nome Próprio
         last_name: Sobrenome
     models:
+      batch:
+        one: Lote
+        other: Lotes
       country:
         one: País
         other: Países
@@ -109,11 +117,13 @@ pt:
         other: Usuários
   attributes:
     aliases: Outros nomes
+    base: registro de repositório
     country_id: País
     description: Descrição
     id: EU IA
     identifiers: Identificadores
     name: Nome
+    notes: Notas
     responsible_party: Organização Responsável
     short_name: Nome curto
     systems: Repositórios

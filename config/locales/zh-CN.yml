@@ -54,6 +54,7 @@ zh-CN:
     welcome: 欢迎来到国际存储库目录 (IRD)
   platform_identified: 软件平台已识别？
   primary_subject: 主要科目
+  record_is_locked_for_editing: 已锁定，无法编辑，%{user} 已锁定
   record_source: 记录源
   record_status: 记录状态
   records_in_ird: 税务局记录

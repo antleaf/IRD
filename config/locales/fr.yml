@@ -54,6 +54,7 @@ fr:
     welcome: Bienvenue dans l'annuaire des référentiels internationaux (IRD)
   platform_identified: Plateforme logicielle identifiée ?
   primary_subject: Matière principale
+  record_is_locked_for_editing: Verrouillé pour modification par %{user}
   record_source: Source de l'enregistrement
   record_status: Statut de l'enregistrement
   records_in_ird: Enregistrements dans l'IRD

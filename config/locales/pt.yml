@@ -54,6 +54,7 @@ pt:
     welcome: Bem-vindo ao Diretório de Repositórios Internacionais (IRD)
   platform_identified: Plataforma de software identificada?
   primary_subject: Assunto primário
+  record_is_locked_for_editing: Bloqueado para edição por %{user}
   record_source: Fonte de registro
   record_status: Status do registro
   records_in_ird: Registros no IRD

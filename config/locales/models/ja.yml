@@ -2,6 +2,11 @@
 ja:
   activerecord:
     attributes:
+      batch:
+        filename: ファイル名
+        locking: ロックしますか?
+        rp: 責任組織
+        user: ユーザー
       country:
         code: コード
         continent: 大陸
@@ -83,6 +88,9 @@ ja:
         fore_name: 名
         last_name: 姓
     models:
+      batch:
+        one: バッチ
+        other: バッチ
       country:
         one: 国
         other: 国
@@ -109,11 +117,13 @@ ja:
         other: ユーザー
   attributes:
     aliases: その他の名前
+    base: リポジトリレコード
     country_id: 国
     description: 説明
     id: ID
     identifiers: 識別子
     name: 名前
+    notes: 注記
     responsible_party: 責任組織
     short_name: 短縮名
     systems: リポジトリ

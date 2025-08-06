@@ -2,6 +2,11 @@
 zh-CN:
   activerecord:
     attributes:
+      batch:
+        filename: 文件名
+        locking: 锁定？
+        rp: 负责机构
+        user: 用户
       country:
         code: 代码
         continent: 大陆
@@ -83,6 +88,9 @@ zh-CN:
         fore_name: 名字
         last_name: 姓
     models:
+      batch:
+        one: 批
+        other: 批次
       country:
         one: 国家
         other: 国家
@@ -109,11 +117,13 @@ zh-CN:
         other: 用户
   attributes:
     aliases: 其他名称
+    base: 储存库记录
     country_id: 国家
     description: 描述
     id: ID
     identifiers: 标识符
     name: 姓名
+    notes: 笔记
     responsible_party: 负责机构
     short_name: 简称
     systems: 存储库

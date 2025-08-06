@@ -2,6 +2,11 @@
 fr:
   activerecord:
     attributes:
+      batch:
+        filename: Nom de fichier
+        locking: Verrouillage?
+        rp: Organisation responsable
+        user: Utilisateur
       country:
         code: Code
         continent: Continent
@@ -83,6 +88,9 @@ fr:
         fore_name: Prénom
         last_name: Nom de famille
     models:
+      batch:
+        one: Lot
+        other: lots
       country:
         one: Pays
         other: Pays
@@ -109,11 +117,13 @@ fr:
         other: Utilisateurs
   attributes:
     aliases: Autres noms
+    base: enregistrement du référentiel
     country_id: Pays
     description: Description
     id: IDENTIFIANT
     identifiers: Identifiants
     name: Nom
+    notes: Remarques
     responsible_party: Organisation responsable
     short_name: Nom abrégé
     systems: Dépôts
