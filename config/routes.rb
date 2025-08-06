@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   get "metadata_formats/:id/systems", to: "metadata_formats#systems", as: "metadata_format_instances"
   resources :metadata_formats
 
@@ -57,6 +58,10 @@ Rails.application.routes.draw do
 
   get "roles/:id/users", to: "roles#users", as: "role_instances"
   resources :roles
+
+
+  get "batches/:id/generate_csv_for_download", to: "batches#generate_csv_for_download", as: "batch_generate_csv_for_download"
+  resources :batches
 
   get "countries/:id/systems", to: "countries#systems", as: "country_instances"
   get "countries/geometries", to: "countries#geometries", as: "country_geometries"

@@ -2,6 +2,11 @@
 en:
   activerecord:
     attributes:
+      batch:
+        filename: Filename
+        locking: Locking?
+        rp: Responsible Organisation
+        user: User
       country:
         code: Code
         continent: Continent
@@ -83,6 +88,9 @@ en:
         fore_name: Forename
         last_name: Surname
     models:
+      batch:
+        one: Batch
+        other: Batches
       country:
         one: Country
         other: Countries
@@ -109,11 +117,13 @@ en:
         other: Users
   attributes:
     aliases: Other Names
+    base: repository record
     country_id: Country
     description: Description
     id: ID
     identifiers: Identifiers
     name: Name
+    notes: Notes
     responsible_party: Responsible Organisation
     short_name: Short Name
     systems: Repositories

@@ -17,6 +17,7 @@ class Organisation < ApplicationRecord
   has_many :ownerships, class_name: 'System', foreign_key: 'owner_id'
   has_many :responsibilities, class_name: 'System', foreign_key: 'rp_id'
   has_and_belongs_to_many :users, :join_table => 'organisations_users'
+  has_many :batches, class_name: 'Batch', foreign_key: 'rp_id'
 
   scope :rps, -> { where(rp: true) }
   scope :in_country, ->(country_id) { where(country_id: country_id) }

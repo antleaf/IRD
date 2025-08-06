@@ -54,6 +54,7 @@ en:
     welcome: Welcome to the International Repositories Directory (IRD)
   platform_identified: Software Platform Identified?
   primary_subject: Primary Subject
+  record_is_locked_for_editing: Locked for editing by %{user}
   record_source: Record Source
   record_status: Record Status
   records_in_ird: Records in IRD

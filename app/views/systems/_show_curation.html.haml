@@ -7,6 +7,12 @@
       - if @system.reviewed
         %br
         = t(:reviewed_on, date: @system.reviewed.strftime('%Y-%m-%d'))
+      - if policy(@system).allowed_to_curate_if_record_not_locked?
+        - batch = @system.rp.batches.locking.first
+        - if batch
+          %br
+          %span.badge.text-bg-danger
+            =t("record_is_locked_for_editing", user: batch.user.display_name)
   %div.property
     %h5.property-name= t("activerecord.attributes.system.system_status")
     %div.property-value

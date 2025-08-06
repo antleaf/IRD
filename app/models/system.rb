@@ -27,6 +27,14 @@ class UrlValidator < ActiveModel::Validator
   end
 end
 
+class UnlockedValidator < ActiveModel::Validator
+  def validate(record)
+    if record.is_locked?
+      record.errors.add :base, :invalid, message: I18n.t("errors.locked_record_text")
+    end
+  end
+end
+
 class System < ApplicationRecord
   Issue = Struct.new(:priority, :description)
   include TranslateEnum
@@ -104,6 +112,7 @@ class System < ApplicationRecord
   validates :name, :url, presence: true
   validates_with UrlValidator, on: :create
   validates_with VerifiedSystemValidator
+  validates_with UnlockedValidator
 
   before_validation :set_defaults
   before_save :initialise_for_saving
@@ -182,6 +191,10 @@ class System < ApplicationRecord
     self.rp_id = Organisation.default_rp_id
     self.users.clear
     self.mark_reviewed!
+  end
+
+  def is_locked?
+    Batch.locking.where(rp_id: self.rp_id).exists?
   end
 
   def set_record_under_review!

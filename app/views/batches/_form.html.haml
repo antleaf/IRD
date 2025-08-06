@@ -1,0 +1,37 @@
+= form_for @batch do |f|
+  - if @batch.errors.any?
+    -# i18n-tasks-use t('activerecord.errors.template.header') # this lets i18n-tasks know the key is used
+    =render '_shared/validation_errors', record: @batch
+
+  - unless @batch.rp.present?
+    %div.row.align-items-center.field
+      %div.col-2.field-name
+        -# i18n-tasks-use t('activerecord.attributes.batch.rp') # this lets i18n-tasks know the key is used
+        = f.label :rp, :class=>"form-label"
+      %div.col
+        = f.collection_select :rp_id, Organisation.rps.order('lower(name)'), :id, :name, :include_blank => true,:class=>"form-select form-control"
+  - if @batch.rp.present? && @batch.user == User.system_user
+    %div.row.align-items-center.field
+      %div.col-2.field-name
+        -# i18n-tasks-use t('activerecord.attributes.batch.user') # this lets i18n-tasks know the key is used
+        = f.label :user, :class=>"form-label"
+      %div.col
+        = f.collection_select :user_id, @batch.rp.users.order('lower(last_name)'), :id, :name, :include_blank => true,:class=>"form-select form-control"
+
+  - if @batch.filename.present?
+    %div.row.align-items-center.field
+      %div.col-2.field-name
+        -# i18n-tasks-use t('activerecord.attributes.batch.locking') # this lets i18n-tasks know the key is used
+        = f.label :locking, :class=>"form-label"
+      %div.col
+        = f.check_box :locking
+
+  %div.row.align-items-center.field
+    %div.col-2.field-name
+      -# i18n-tasks-use t('activerecord.attributes.notes') # this lets i18n-tasks know the key is used
+      = f.label :notes, :class=>"form-label"
+    %div.col
+      = f.text_field :notes, :class=>"form-control"
+
+
+  = render '_shared/record_form_buttons', form: f,model_instance: @batch

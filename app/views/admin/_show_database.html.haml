@@ -34,3 +34,7 @@
 %a{href:metadata_formats_url,:class => 'btn btn-primary btn-sm'}
   = t('activerecord.models.metadata_format.other')
   %span.badge.bg-secondary.badge-count= MetadataFormat.count
+%br
+%a{href:batches_url,:class => 'btn btn-primary btn-sm'}
+  = t('activerecord.models.batch.other')
+  %span.badge.bg-secondary.badge-count= Batch.count

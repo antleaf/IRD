@@ -1,0 +1,10 @@
+= render '_shared/record_action_buttons', model_instance: @batch
+
+- if policy(@batch).generate_csv_for_download? && @batch.filename.nil? && @batch.rp.present? && @batch.user.present? && @batch.user != User.system_user
+  = link_to t('buttons.generate_csv_for_batch_ingest'), batch_generate_csv_for_download_url(@batch.id,format: :csv), :class => 'btn btn-primary btn-sm'
+
+= print_field_name_and_value(t('activerecord.attributes.batch.filename'),@batch.filename)
+= print_field_name_and_value(t('attributes.name'),@batch.user.name)
+= print_field_name_and_value(t('activerecord.models.organisation.one'),@batch.rp.display_name)
+= print_field_name_and_value(t('activerecord.attributes.batch.locking'),@batch.locking)
+= print_field_name_and_value(t('attributes.notes'),@batch.notes)
