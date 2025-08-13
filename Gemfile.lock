@@ -400,16 +400,16 @@ GEM
       rubocop-performance (>= 1.24)
       rubocop-rails (>= 2.30)
     ruby-progressbar (1.13.0)
-    rubyzip (2.4.1)
+    rubyzip (3.0.1)
     searchkick (5.5.2)
       activemodel (>= 7.1)
       hashie
     securerandom (0.4.1)
-    selenium-webdriver (4.34.0)
+    selenium-webdriver (4.35.0)
       base64 (~> 0.2)
       logger (~> 1.4)
       rexml (~> 3.2, >= 3.2.5)
-      rubyzip (>= 1.2.2, < 3.0)
+      rubyzip (>= 1.2.2, < 4.0)
       websocket (~> 1.0)
     simplecov (0.22.0)
       docile (~> 1.1)
@@ -543,7 +543,7 @@ DEPENDENCIES
   rspec-rails (~> 7.1.0)
   rubocop-rails-omakase
   searchkick
-  selenium-webdriver (~> 4.28)
+  selenium-webdriver (~> 4.35)
   simplecov
   solid_cable
   solid_cache
