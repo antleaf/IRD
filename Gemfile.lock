@@ -264,7 +264,7 @@ GEM
       faraday (>= 1.0, < 3)
       multi_json (>= 1.0)
     ostruct (0.6.3)
-    pagy (9.3.5)
+    pagy (9.4.0)
     parallel (1.27.0)
     parser (3.3.9.0)
       ast (~> 2.4.1)
@@ -530,7 +530,7 @@ DEPENDENCIES
   nokogiri
   opensearch-ruby
   ostruct
-  pagy (~> 9.3)
+  pagy (~> 9.4)
   passwordless
   pg (>= 0.18, < 2.0)
   propshaft
