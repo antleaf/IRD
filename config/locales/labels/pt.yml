@@ -4,6 +4,7 @@ pt:
     candidate-defunct: Pode estar extinto
     candidate-out-of-scope: Pode estar fora do escopo
     defunct: Extinto
+    delisted-by-owner: Removido pelo proprietário
     duplicate: Duplicado
     flag: Sinalizado
     out-of-scope: Fora do escopo

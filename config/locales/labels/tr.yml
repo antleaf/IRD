@@ -4,6 +4,7 @@ tr:
     candidate-defunct: İşlevini yitirmiş olabilir
     candidate-out-of-scope: Kapsam dışı olabilir
     defunct: Feshedilmiş
+    delisted-by-owner: Sahibi tarafından listeden çıkarıldı
     duplicate: Kopyalamak
     flag: Bayraklı
     out-of-scope: Kapsam dışı

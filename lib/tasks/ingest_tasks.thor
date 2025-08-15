@@ -2,7 +2,7 @@ class IngestTasks < Thor
 
   namespace "ingest"
   desc "systems", "Ingests systems data"
-  method_option :source, type: :string, required: true, :desc => "Source - e.g. samvera"
+  method_option :rp, type: :string, required: true, :desc => "Responsible Party ID (UUID) - e.g. 12345678-1234-1234-1234-123456789012)"
   method_option :dryRun, type: :boolean, required: false, :desc => "Dry Run?"
   method_option :dataFile, type: :string, required: true, :desc => "Data file (CSV)?"
   method_option :userEmail, type: :string, required: true, :desc => "Email address of user uploading data?"
@@ -22,7 +22,7 @@ class IngestTasks < Thor
           tags = []
         end
         csv_data = File.read(options.dataFile)
-        Ingest::SystemIngestBatchCsvService.call!(csv_data, options.source, tags, options.dryRun, user)
+        Ingest::SystemIngestBatchCsvService.call!(csv_data, "CSV", options.rp, tags, options.dryRun, user)
       end
     rescue Exception => e
       Rails.logger.error e.message

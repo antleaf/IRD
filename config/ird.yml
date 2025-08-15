@@ -107,5 +107,7 @@ shared:
       restricted: false
     candidate-out-of-scope:
       restricted: true
+    delisted-by-owner:
+      restricted: false
 
 

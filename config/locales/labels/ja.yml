@@ -4,6 +4,7 @@ ja:
     candidate-defunct: 廃止される可能性がある
     candidate-out-of-scope: 範囲外の可能性があります
     defunct: 廃止
+    delisted-by-owner: 所有者によってリストから削除されました
     duplicate: 重複
     flag: フラグ付き
     out-of-scope: 範囲外

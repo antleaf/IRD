@@ -11,7 +11,7 @@ module Ingest
     require "csv"
     require "fileutils"
 
-    def call(data, record_source, tags, dry_run, user)
+    def call(data, record_source, rp_id, tags, dry_run, user)
       batch_report = SystemIngestBatchReport.new
       begin
         service_result = SystemIngestBatchCsvValidationService.call(data)
@@ -20,16 +20,16 @@ module Ingest
         end
         CSV.parse(data, headers: true).each_with_index do |row,row_number|
           begin
-            # [ :owner_id, :owner_homepage, :owner_ror, :owner_name, :repository_type, :, :, :, :
             candidate_system = CandidateSystem.new(record_source, dry_run, tags)
             candidate_system.add_attribute("id", row["id"])
+            candidate_system.add_attribute("rp_id", rp_id)
             candidate_system.add_attribute("system_category", (row["system_category"] ||= Rails.configuration.ird[:default_attributes][:system_category]))
             candidate_system.add_attribute("subcategory", row["repository_type"])
             candidate_system.add_attribute("name", row["name"])
             candidate_system.add_attribute("url", row["homepage"])
             candidate_system.add_attribute("platform_id", row["software"])
             candidate_system.add_attribute("platform_version", row["software_version"])
-            candidate_system.add_attribute("contact", row["contact"])
+            candidate_system.add_attribute("contact", row["contact"]) if row["contact"] && !row["contact"].blank?
             candidate_system.add_attribute("oai_base_url", row["oai_pmh_base_url"])
             candidate_system.add_attribute("primary_subject", row["primary_subject"])
             candidate_system.add_attribute("record_status", row["record_status"])
