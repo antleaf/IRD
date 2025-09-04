@@ -2,8 +2,8 @@
 zh-CN:
   buttons:
     add_agent: 添加代理
-    allocate_rp_by_country: 按国家分配 RP
-    allocate_rp_by_country_replace_existing: 按国家分配 RP（替换现有的）
+    allocate_rp_by_country: 按国家/地区分配 RP
+    allocate_rp_by_country_replace_existing: 按国家/地区分配 RP（替换现有的）
     archive_record: 档案记录
     archive_record_defunct: 存档此记录（存储库已不存在）
     archive_record_out_of_scope: 归档此记录（存储库超出了 IRD 的范围）

@@ -9,7 +9,7 @@ zh-CN:
         user: 用户
       country:
         code: 代码
-        continent: 大陆
+        continent: 洲
       generator:
         platform: 软件平台
         version: 软件版本
@@ -68,8 +68,8 @@ zh-CN:
         responsible_party: 负责机构
         subcategory: 范围
         subcategory_list:
-          disciplinary_repository: 纪律
-          generalist_repository: 通才
+          disciplinary_repository: 学科
+          generalist_repository: 通用
           governmental_repository: 政府
           institutional_repository: 机构
           special_collection: 特别收藏
@@ -92,8 +92,8 @@ zh-CN:
         one: 批
         other: 批次
       country:
-        one: 国家
-        other: 国家
+        one: 国家/地区
+        other: 国家/地区
       generator:
         one: 发电机
         other: 生成器
@@ -118,7 +118,7 @@ zh-CN:
   attributes:
     aliases: 其他名称
     base: 储存库记录
-    country_id: 国家
+    country_id: 国家/地区
     description: 描述
     id: ID
     identifiers: 标识符

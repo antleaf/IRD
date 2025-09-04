@@ -39,7 +39,7 @@ zh-CN:
   operations: 运营
   owner: 所有者
   page_titles:
-    about: 关于税务局
+    about: 关于国际存储库目录
     admin: 行政
     authorised_systems: 存储库 %{name} 被授权管理
     authorised_systems_self: 您有权管理的存储库
