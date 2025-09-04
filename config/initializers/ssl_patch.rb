@@ -1,0 +1,3 @@
+if OpenSSL::SSL.const_defined?(:OP_IGNORE_UNEXPECTED_EOF)
+  OpenSSL::SSL::SSLContext::DEFAULT_PARAMS[:options] |= OpenSSL::SSL::OP_IGNORE_UNEXPECTED_EOF
+end
