@@ -2,6 +2,7 @@
 tr:
   buttons:
     add_agent: Ajan Ekle
+    add_identifier: Tanımlayıcı Ekle
     allocate_rp_by_country: RP'yi Ülkeye Göre Tahsis Et
     allocate_rp_by_country_replace_existing: RP'yi Ülkeye Göre Tahsis Et (Mevcut Olanı Değiştir)
     archive_record: Arşiv Kaydı

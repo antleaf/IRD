@@ -1,0 +1,27 @@
+= form_with url: "/systems/add_repo_id", method: :post do |f|
+  %div.modal.fade#addIdentifierModal{tabindex:"-1", role:"dialog","aria-labelledby":"addIdentifierModal","aria-hidden":"true"}
+    %div.modal-dialog.modal-lg{role:"document"}
+      %div.modal-content
+        %div.modal-header
+          %h5.modal-title Add an Identifier
+          %button.close{type:"button", "data-bs-dismiss": "modal", "aria-label":"Close"}
+            %span{"aria-hidden":"true"}
+              &times;
+        %div.modal-body
+          = "(#{t(:all_fields_must_be_completed)})"
+          %div.container-fluid
+            = f.hidden_field :id, value: @system.id
+            %div.row.align-items-center.field
+              %div.col-3.field-name
+                = f.label :repo_id_scheme, :class=>"form-label"
+              %div.col
+                -# = f.text_field :identifier_scheme, :class=>"form-control"
+                = f.select :repo_id_scheme, Rails.configuration.ird[:repoid_schemes].keys, :class=>"form-control"
+            %div.row.align-items-center.field
+              %div.col-3.field-name
+                = f.label :repo_id_value, :class=>"form-label"
+              %div.col
+                = f.text_field :repo_id_value, :class=>"form-control"
+        %div.modal-footer
+          .actions
+            = f.submit t("buttons.save_record"), :class => 'btn btn-primary'

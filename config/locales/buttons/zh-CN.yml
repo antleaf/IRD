@@ -2,6 +2,7 @@
 zh-CN:
   buttons:
     add_agent: 添加代理
+    add_identifier: 添加标识符
     allocate_rp_by_country: 按国家/地区分配 RP
     allocate_rp_by_country_replace_existing: 按国家/地区分配 RP（替换现有的）
     archive_record: 档案记录

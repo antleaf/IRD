@@ -88,7 +88,6 @@ Rails.application.routes.draw do
   # get '/systems/autocomplete', to: 'systems#autocomplete', as: 'autocomplete_system_link'
   get "/systems/search", to: "systems#search", as: "system_search"
   get "/systems/:id/check_url", to: "systems#check_url", as: "check_website"
-  post "/systems/add_repo_id", to: "systems#add_repo_id"
   get "/systems/:id/process_as_duplicate", to: "systems#process_as_duplicate", as: "process_as_duplicate"
   get "/systems/:id/mark_reviewed", to: "systems#mark_reviewed", as: "mark_reviewed"
   get "/systems/:id/set_record_verified", to: "systems#set_record_verified", as: "set_record_verified"
@@ -103,6 +102,7 @@ Rails.application.routes.draw do
   get "/systems/:id/check_oai_pmh_combined", to: "systems#check_oai_pmh_combined", as: "check_oai_combined"
   get "/systems/:id/auto_curate", to: "systems#auto_curate", as: "auto_curate"
   post "/systems/authorise_user", to: "systems#authorise_user", as: "authorise_user"
+  post "/systems/add_repo_id", to: "systems#add_repo_id", as: "add_repo_id"
   post "/systems/suggest_new_system", to: "systems#suggest_new_system", as: "suggest_new_system"
   # post '/systems/add_new_user_and_authorise', to: 'systems#add_new_user_and_authorise'
   resources :systems

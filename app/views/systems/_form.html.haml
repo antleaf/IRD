@@ -153,6 +153,10 @@
             -# - elsif @system.rp
             -#   %span.form-control= @system.rp.name
 
+
+
+
+
       - if policy(@system).add_repo_id?
         %div.row.field
           %div.col-2.field-name
@@ -164,7 +168,8 @@
                 %div.col-2.field-name
                   Scheme
                 %div.col
-                  = repoid_form.text_field :identifier_scheme, :class=>"form-control"
+                  -# = repoid_form.text_field :identifier_scheme, :class=>"form-control"
+                  = repoid_form.select :identifier_scheme, Rails.configuration.ird[:repoid_schemes].keys, :class=>"form-control"
               %div.row
                 %div.col-2.field-name
                   Value
@@ -176,6 +181,8 @@
                 %div.col
                   = repoid_form.checkbox :_destroy
               %br
+
+
 
       %div.row.align-items-center.field
         %div.col-2.field-name

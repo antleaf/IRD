@@ -1,7 +1,7 @@
 require "ostruct"
 
 class SystemsController < ApplicationController
-  before_action :set_system, only: %i[ show edit update destroy authorise_user network_check check_url check_oai_pmh_identify check_oai_pmh_formats check_oai_pmh_combined get_thumbnail remove_thumbnail label add_repo_id process_as_duplicate set_record_verified set_record_archived set_record_draft auto_curate set_record_awaiting_review set_record_under_review]
+  before_action :set_system, only: %i[ show edit update destroy authorise_user add_repo_id network_check check_url check_oai_pmh_identify check_oai_pmh_formats check_oai_pmh_combined get_thumbnail remove_thumbnail label add_repo_id process_as_duplicate set_record_verified set_record_archived set_record_draft auto_curate set_record_awaiting_review set_record_under_review]
   after_action :verify_authorized
 
   def suggest_new_system
@@ -211,7 +211,7 @@ class SystemsController < ApplicationController
           redirect_back fallback_location: root_path, flash: { error: "OAI-PMH check completed: OAI-PMH status is #{@system.oai_status}" }
         end
       else
-        redirect_back fallback_location: root_path, flash: { error: "OAI-PMH check failed: #{service_result2.error.message}"}
+        redirect_back fallback_location: root_path, flash: { error: "OAI-PMH check failed: #{service_result2.error.message}" }
       end
     else
       redirect_back fallback_location: root_path, flash: { error: "OAI-PMH check failed: #{service_result.error.message}" }
@@ -308,6 +308,7 @@ class SystemsController < ApplicationController
       redirect_to system_url(@system)
     end
   end
+
   def show
     authorize @system
     @page_title = @system.name

@@ -2,6 +2,7 @@
 en:
   buttons:
     add_agent: Add Agent
+    add_identifier: Add Identifier
     allocate_rp_by_country: Allocate RP by Country
     allocate_rp_by_country_replace_existing: Allocate RP by Country (Replace Existing)
     archive_record: Archive Record
