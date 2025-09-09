@@ -17,6 +17,9 @@ es:
         canonical_schema: Esquema
         match_order: Orden de partido
         matchers: Comparadores
+      metadata_namespace:
+        metadata_format: Formato de metadatos
+        namespace: Espacio de nombres
       network_check:
         network_check_type_list:
           homepage_url: URL de la página de inicio
@@ -100,6 +103,9 @@ es:
       metadata_format:
         one: Formato de metadatos
         other: Formatos de metadatos
+      metadata_namespace:
+        one: Espacio de nombres de metadatos
+        other: Espacios de nombres de metadatos
       organisation:
         one: Organización
         other: Organizaciones

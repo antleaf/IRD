@@ -17,6 +17,9 @@ ja:
         canonical_schema: スキーマ
         match_order: 試合順
         matchers: マッチャー
+      metadata_namespace:
+        metadata_format: メタデータ形式
+        namespace: 名前空間
       network_check:
         network_check_type_list:
           homepage_url: ホームページURL
@@ -100,6 +103,9 @@ ja:
       metadata_format:
         one: メタデータ形式
         other: メタデータ形式
+      metadata_namespace:
+        one: メタデータ名前空間
+        other: メタデータ名前空間
       organisation:
         one: 組織
         other: 組織

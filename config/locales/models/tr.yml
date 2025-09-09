@@ -17,6 +17,9 @@ tr:
         canonical_schema: Şema
         match_order: Maç Sırası
         matchers: Eşleştiriciler
+      metadata_namespace:
+        metadata_format: Meta Veri Biçimi
+        namespace: Ad alanı
       network_check:
         network_check_type_list:
           homepage_url: Ana sayfa URL'si
@@ -100,6 +103,9 @@ tr:
       metadata_format:
         one: Meta Veri Biçimi
         other: Meta Veri Biçimleri
+      metadata_namespace:
+        one: Meta Veri Ad Alanı
+        other: Meta Veri Ad Alanları
       organisation:
         one: Organizasyon
         other: Kuruluşlar

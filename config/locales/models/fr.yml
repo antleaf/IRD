@@ -17,6 +17,9 @@ fr:
         canonical_schema: Schéma
         match_order: Ordre de match
         matchers: Les allumeurs
+      metadata_namespace:
+        metadata_format: Format des métadonnées
+        namespace: Espace de noms
       network_check:
         network_check_type_list:
           homepage_url: URL de la page d'accueil
@@ -100,6 +103,9 @@ fr:
       metadata_format:
         one: Format des métadonnées
         other: Formats de métadonnées
+      metadata_namespace:
+        one: Espace de noms des métadonnées
+        other: Espaces de noms de métadonnées
       organisation:
         one: Organisation
         other: Organisations

@@ -18,8 +18,8 @@ en:
         match_order: Match Order
         matchers: Matchers
       metadata_namespace:
-        namespace: Namespace
         metadata_format: Metadata Format
+        namespace: Namespace
       network_check:
         network_check_type_list:
           homepage_url: Homepage URL
