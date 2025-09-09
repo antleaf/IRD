@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
   get "metadata_formats/:id/systems", to: "metadata_formats#systems", as: "metadata_format_instances"
   resources :metadata_formats
 
@@ -46,6 +47,7 @@ Rails.application.routes.draw do
   get "generators/:id/systems", to: "generators#systems", as: "generator_instances"
   resources :generators
 
+  resources :metadata_namespaces
 
   passwordless_for :users
   get "/dashboard", to: "users#dashboard", as: "user_root"

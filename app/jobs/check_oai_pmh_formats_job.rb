@@ -3,7 +3,9 @@ class CheckOaiPmhFormatsJob < ApplicationJob
 
   def perform(system_id)
     system = OaiPmh::OaiPmhMetadataFormatsService.call(system_id).payload
-    Curation::SystemMetadataFormatAssociationService.call(system)
+    if system.present?
+      Curation::SystemMetadataFormatAssociationService.call(system)
+    end
   end
 
 end

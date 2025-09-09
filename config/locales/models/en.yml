@@ -17,6 +17,9 @@ en:
         canonical_schema: Schema
         match_order: Match Order
         matchers: Matchers
+      metadata_namespace:
+        namespace: Namespace
+        metadata_format: Metadata Format
       network_check:
         network_check_type_list:
           homepage_url: Homepage URL
@@ -100,6 +103,9 @@ en:
       metadata_format:
         one: Metadata Format
         other: Metadata Formats
+      metadata_namespace:
+        one: Metadata Namespace
+        other: Metadata Namespaces
       organisation:
         one: Organisation
         other: Organisations

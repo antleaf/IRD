@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_08_06_085310) do
+ActiveRecord::Schema[8.0].define(version: 2025_09_09_102839) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -115,6 +115,11 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_06_085310) do
     t.index ["metadata_format_id"], name: "index_metadata_formats_systems_on_metadata_format_id"
     t.index ["system_id", "metadata_format_id"], name: "idx_on_system_id_metadata_format_id_e48ddf6a6b", unique: true
     t.index ["system_id"], name: "index_metadata_formats_systems_on_system_id"
+  end
+
+  create_table "metadata_namespaces", id: :string, force: :cascade do |t|
+    t.string "metadata_format_id", limit: 36
+    t.index ["metadata_format_id"], name: "index_metadata_namespaces_on_metadata_format_id"
   end
 
   create_table "network_checks", id: { type: :string, limit: 36 }, force: :cascade do |t|
@@ -327,6 +332,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_06_085310) do
   add_foreign_key "generators", "platforms"
   add_foreign_key "metadata_formats_systems", "metadata_formats"
   add_foreign_key "metadata_formats_systems", "systems"
+  add_foreign_key "metadata_namespaces", "metadata_formats"
   add_foreign_key "network_checks", "systems"
   add_foreign_key "normalids", "systems"
   add_foreign_key "organisations", "countries"

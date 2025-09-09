@@ -2,7 +2,7 @@ class MetadataFormat < ApplicationRecord
   include MachineReadability
 
   has_and_belongs_to_many :systems, :join_table => 'metadata_formats_systems', strict_loading: false
-
+  has_many :metadata_namespaces
 
   before_create :set_id
   before_save :initialise_for_saving

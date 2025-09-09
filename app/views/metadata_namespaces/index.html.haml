@@ -1,0 +1,18 @@
+= render '_shared/record_new_button', model_sym: :metadata_namespace
+= render '_shared/paginator'
+%table{:class=>"table table-sm table-striped table-bordered sortable-table"}
+  %caption
+    Metadata Namespaces
+  %thead
+    %tr
+      %th Namespace
+      %th Format
+      %th.actions &nbsp;
+  %tbody
+    - @metadata_namespaces.each do |metadata_namespace|
+      %tr
+        %td= link_to metadata_namespace.id, metadata_namespace
+        %td= link_to metadata_namespace.metadata_format.name,metadata_namespace.metadata_format unless metadata_namespace.metadata_format.nil?
+        = render '_shared/record_action_buttons_table', model_instance: metadata_namespace
+
+= render '_shared/paginator'

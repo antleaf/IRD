@@ -5,21 +5,16 @@ module Curation
     def call(system)
       begin
         system.metadata_formats.clear
-        system.formats.each do |format|
-          MetadataFormat.order(:match_order).each do |mf|
-            if mf.matchers.present?
-              mf.matchers.each do |matcher|
-                begin
-                  reg = eval matcher
-                  if reg.match? format[1]
-                    system.metadata_formats << mf unless system.metadata_formats.include?(mf)
-                    break
-                  end
-                rescue Exception => e
-                  # Rails.logger.warn("#{e} for matcher #{matcher} for @system: #{system.id}")
-                end
-              end
+        system.formats.each_pair do |prefix,format|
+          mn = MetadataNamespace.find_by_id(format["namespace"])
+          if mn.present?
+            if mn.metadata_format.present?
+              system.metadata_formats << mn.metadata_format unless system.metadata_formats.include?(mn.metadata_format)
             end
+          else
+            MetadataNamespace.create!(
+              id: format["namespace"]
+            )
           end
         end
         success system

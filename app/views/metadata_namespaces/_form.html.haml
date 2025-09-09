@@ -1,0 +1,11 @@
+= form_for @metadata_namespace do |f|
+  - if @metadata_namespace.errors.any?
+    =render '_shared/validation_errors', record: @metadata_namespace
+
+
+  %div.row.align-items-center.field
+    %div.col-2.field-name
+    = f.label :metadata_format, :class=>"form-label"
+  %div.col
+    = f.text_field :metadata_format
+  = render '_shared/record_form_buttons', form: f,model_instance: @metadata_namespace

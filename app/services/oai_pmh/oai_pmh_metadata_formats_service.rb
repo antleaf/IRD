@@ -21,7 +21,11 @@ module OaiPmh
 
         @system.formats = {}
         doc.xpath("//metadataFormat").each do |format|
-          @system.formats[format.at_xpath("metadataPrefix").text] = format.at_xpath("metadataNamespace").text if format.at_xpath("metadataNamespace")
+          # @system.formats[format.at_xpath("metadataPrefix").text] = format.at_xpath("metadataNamespace").text if format.at_xpath("metadataNamespace")
+          @system.formats[format.at_xpath("metadataPrefix").text.strip] = {
+            namespace: (format.at_xpath("metadataNamespace").text.strip if format.at_xpath("metadataNamespace")),
+            schema: (format.at_xpath("schema").text.strip if format.at_xpath("schema"))
+          }
         end
       rescue StandardError => e
         Rails.logger.warn "CheckOaiPmhFormatsJob: #{e.message}"

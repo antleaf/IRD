@@ -41,14 +41,17 @@
       -#   %h5.property-name= "#{t('activerecord.models.metadata_format.other')} (OAI-PMH)"
       -#   %div.property-value
       -#     - if @system.formats.present?
-      -#       %ul
-      -#         - @system.formats.each do |mf|
-      -#           %li
-      -#             %b prefix:
-      -#             = mf[0]
-      -#             %br
-      -#             %b namespace:
-      -#             = mf[1]
+      -#       - @system.formats.each do |mf|
+      -#         %b prefix:
+      -#         = mf[0]
+      -#         %br
+      -#         %b namespace:
+      -#         = mf[1]["namespace"]
+      -#         %br
+      -#         %b schema:
+      -#         = mf[1]["schema"]
+      -#         %br
+      -#         %br
       -#     -else
       -#       =t(:none)
 
