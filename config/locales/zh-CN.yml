@@ -54,6 +54,7 @@ zh-CN:
     welcome: 欢迎来到国际存储库目录 (IRD)
   platform_identified: 软件平台已识别？
   primary_subject: 主要科目
+  recognised_metadata_formats: IRD 认可的元数据格式
   record_is_locked_for_editing: 已锁定，无法编辑，%{user} 已锁定
   record_source: 记录源
   record_status: 记录状态
@@ -85,6 +86,7 @@ zh-CN:
   tags: 标签
   technical_information: 技术信息
   total_results: 总结果
+  unrecognised_metadata_formats: OAI-PMH 报告但 IRD 未识别的元数据格式
   verified: 已验证
   website_url: 网站网址
   you_can_use_markdown_here: 您可以在此处使用 Markdown

@@ -15,8 +15,6 @@ ja:
         version: ソフトウェアバージョン
       metadata_format:
         canonical_schema: スキーマ
-        match_order: 試合順
-        matchers: マッチャー
       metadata_namespace:
         metadata_format: メタデータ形式
         namespace: 名前空間

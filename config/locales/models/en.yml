@@ -15,8 +15,6 @@ en:
         version: Software Version
       metadata_format:
         canonical_schema: Schema
-        match_order: Match Order
-        matchers: Matchers
       metadata_namespace:
         metadata_format: Metadata Format
         namespace: Namespace

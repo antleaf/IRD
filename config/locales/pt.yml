@@ -54,6 +54,7 @@ pt:
     welcome: Bem-vindo ao Diretório de Repositórios Internacionais (IRD)
   platform_identified: Plataforma de software identificada?
   primary_subject: Assunto primário
+  recognised_metadata_formats: Formatos de metadados reconhecidos pelo IRD
   record_is_locked_for_editing: Bloqueado para edição por %{user}
   record_source: Fonte de registro
   record_status: Status do registro
@@ -85,6 +86,7 @@ pt:
   tags: Etiquetas
   technical_information: Informações técnicas
   total_results: Resultados totais
+  unrecognised_metadata_formats: Formatos de metadados relatados pelo OAI-PMH, mas não reconhecidos pelo IRD
   verified: Verificado
   website_url: URL do site
   you_can_use_markdown_here: Você pode usar Markdown aqui

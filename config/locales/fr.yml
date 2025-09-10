@@ -54,6 +54,7 @@ fr:
     welcome: Bienvenue dans l'annuaire des référentiels internationaux (IRD)
   platform_identified: Plateforme logicielle identifiée ?
   primary_subject: Matière principale
+  recognised_metadata_formats: Formats de métadonnées reconnus par l'IRD
   record_is_locked_for_editing: Verrouillé pour modification par %{user}
   record_source: Source de l'enregistrement
   record_status: Statut de l'enregistrement
@@ -85,6 +86,7 @@ fr:
   tags: Mots clés
   technical_information: Informations techniques
   total_results: Résultats totaux
+  unrecognised_metadata_formats: Formats de métadonnées signalés par l'OAI-PMH mais non reconnus par l'IRD
   verified: Vérifié
   website_url: URL du site Web
   you_can_use_markdown_here: Vous pouvez utiliser Markdown ici

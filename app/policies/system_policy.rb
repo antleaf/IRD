@@ -90,7 +90,11 @@ class SystemPolicy < ApplicationPolicy
   end
 
   def curate?
-    update?
+    update? && !@record.is_locked?
+  end
+
+  def edit?
+    update? && !@record.is_locked?
   end
 
   def allowed_to_curate_if_record_not_locked?
@@ -124,7 +128,7 @@ class SystemPolicy < ApplicationPolicy
   end
 
   def update?
-    User.valid_user?(@user) && (@user.has_role?(:administrator) || @user.has_role?(:superuser) || @user.can_curate?(@record)) && !@record.is_locked?
+    User.valid_user?(@user) && (@user.has_role?(:administrator) || @user.has_role?(:superuser) || @user.can_curate?(@record))
   end
 
   def ark?
@@ -133,6 +137,10 @@ class SystemPolicy < ApplicationPolicy
 
   def view_audit?
     User.valid_user?(@user) && (@user.has_role?(:administrator) || @user.has_role?(:superuser))
+  end
+
+  def view_metadata_formats?
+    User.valid_user?(@user) && (@user.has_role?(:administrator))
   end
 
 end

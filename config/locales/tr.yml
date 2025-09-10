@@ -54,6 +54,7 @@ tr:
     welcome: Uluslararası Depolar Rehberi'ne (IRD) hoş geldiniz
   platform_identified: Yazılım Platformu Belirlendi mi?
   primary_subject: Birincil Ders
+  recognised_metadata_formats: IRD Tarafından Tanınan Meta Veri Biçimleri
   record_is_locked_for_editing: "%{user} tarafından düzenlemeye karşı kilitlendi"
   record_source: Kayıt Kaynağı
   record_status: Kayıt Durumu
@@ -85,6 +86,7 @@ tr:
   tags: Etiketler
   technical_information: Teknik Bilgiler
   total_results: Toplam Sonuçlar
+  unrecognised_metadata_formats: OAI-PMH Tarafından Bildirilen Ancak IRD Tarafından Tanınmayan Meta Veri Biçimleri
   verified: Doğrulandı
   website_url: Web sitesi URL'si
   you_can_use_markdown_here: Markdown'ı burada kullanabilirsiniz

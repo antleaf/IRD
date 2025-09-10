@@ -15,8 +15,6 @@ zh-CN:
         version: 软件版本
       metadata_format:
         canonical_schema: 架构
-        match_order: 匹配顺序
-        matchers: 匹配器
       metadata_namespace:
         metadata_format: 元数据格式
         namespace: 命名空间

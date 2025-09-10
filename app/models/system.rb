@@ -1,5 +1,6 @@
 class VerifiedSystemValidator < ActiveModel::Validator
   def validate(record)
+    # i18n-tasks-use t('attributes.base') # this lets i18n-tasks know the key is used
     if record.record_status == "verified"
       # i18n-tasks-use t('activerecord.errors.models.system.attributes.system_status.not_online') # this lets i18n-tasks know the key is used
       record.errors.add(:system_status, :not_online) unless record.system_status_online?
@@ -27,14 +28,14 @@ class UrlValidator < ActiveModel::Validator
   end
 end
 
-class UnlockedValidator < ActiveModel::Validator
-  def validate(record)
-    # i18n-tasks-use t('attributes.base') # this lets i18n-tasks know the key is used
-    if record.is_locked?
-      record.errors.add :base, :invalid, message: I18n.t("errors.locked_record_text")
-    end
-  end
-end
+# class UnlockedValidator < ActiveModel::Validator
+#   def validate(record)
+#     # i18n-tasks-use t('attributes.base') # this lets i18n-tasks know the key is used
+#     if record.is_locked?
+#       record.errors.add :base, :invalid, message: I18n.t("errors.locked_record_text")
+#     end
+#   end
+# end
 
 class System < ApplicationRecord
   Issue = Struct.new(:priority, :description)
@@ -113,7 +114,7 @@ class System < ApplicationRecord
   validates :name, :url, presence: true
   validates_with UrlValidator, on: :create
   validates_with VerifiedSystemValidator
-  validates_with UnlockedValidator
+  # validates_with UnlockedValidator
 
   before_validation :set_defaults
   before_save :initialise_for_saving

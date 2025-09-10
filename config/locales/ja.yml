@@ -54,6 +54,7 @@ ja:
     welcome: 国際リポジトリディレクトリ (IRD) へようこそ
   platform_identified: ソフトウェア プラットフォームは特定されていますか?
   primary_subject: 主な科目
+  recognised_metadata_formats: IRDが認識するメタデータ形式
   record_is_locked_for_editing: "%{user} による編集がロックされています"
   record_source: レコードソース
   record_status: レコードステータス
@@ -85,6 +86,7 @@ ja:
   tags: タグ
   technical_information: 技術情報
   total_results: 合計結果
+  unrecognised_metadata_formats: OAI-PMH で報告されているが IRD では認識されないメタデータ形式
   verified: 検証済み
   website_url: ウェブサイトURL
   you_can_use_markdown_here: ここでマークダウンを使用できます

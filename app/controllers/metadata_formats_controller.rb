@@ -112,6 +112,6 @@ class MetadataFormatsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def metadata_format_params
-      params.expect(metadata_format: [ :name, :canonical_schema, :match_order,matchers: [] ])
+      params.expect(metadata_format: [ :name, :canonical_schema ])#,matchers: [], :match_order
     end
 end

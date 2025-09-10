@@ -15,8 +15,6 @@ fr:
         version: Version du logiciel
       metadata_format:
         canonical_schema: Schéma
-        match_order: Ordre de match
-        matchers: Les allumeurs
       metadata_namespace:
         metadata_format: Format des métadonnées
         namespace: Espace de noms

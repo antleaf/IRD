@@ -54,6 +54,7 @@ en:
     welcome: Welcome to the International Repositories Directory (IRD)
   platform_identified: Software Platform Identified?
   primary_subject: Primary Subject
+  recognised_metadata_formats: Metadata Formats Recognised by IRD
   record_is_locked_for_editing: Locked for editing by %{user}
   record_source: Record Source
   record_status: Record Status
@@ -85,6 +86,7 @@ en:
   tags: Tags
   technical_information: Technical Information
   total_results: Total Results
+  unrecognised_metadata_formats: Metadata Formats Reported by OAI-PMH but Unrecognised by IRD
   verified: Verified
   website_url: Website URL
   you_can_use_markdown_here: You can use Markdown here

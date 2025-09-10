@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_09_09_102839) do
+ActiveRecord::Schema[8.0].define(version: 2025_09_10_085100) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -100,11 +100,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_09_09_102839) do
   create_table "metadata_formats", id: { type: :string, limit: 36 }, force: :cascade do |t|
     t.string "name"
     t.string "canonical_schema"
-    t.string "matchers", array: true
-    t.float "match_order", default: 100.0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["match_order"], name: "index_metadata_formats_on_match_order"
   end
 
   create_table "metadata_formats_systems", id: false, force: :cascade do |t|

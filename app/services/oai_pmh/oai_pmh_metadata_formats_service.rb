@@ -6,7 +6,7 @@ module OaiPmh
 
     def call(system_id, redirect_limit = 6)
       begin
-        @system = System.includes(:network_checks, :repoids,  :users).find(system_id)
+        @system = System.includes(:network_checks, :repoids, :users).find(system_id)
         original_url = @system.oai_base_url
         unless original_url.present?
           Rails.logger.warn("OAI-PMH Base URL missing for OAI-PMH ListMetadataFormats #{original_url}")
@@ -21,11 +21,26 @@ module OaiPmh
 
         @system.formats = {}
         doc.xpath("//metadataFormat").each do |format|
-          # @system.formats[format.at_xpath("metadataPrefix").text] = format.at_xpath("metadataNamespace").text if format.at_xpath("metadataNamespace")
           @system.formats[format.at_xpath("metadataPrefix").text.strip] = {
             namespace: (format.at_xpath("metadataNamespace").text.strip if format.at_xpath("metadataNamespace")),
             schema: (format.at_xpath("schema").text.strip if format.at_xpath("schema"))
           }
+        end
+        @system.metadata_formats.clear
+        @system.formats.each_pair do |prefix, format|
+          unless format[:namespace].blank?
+            mn = MetadataNamespace.find_by_id(format[:namespace])
+            if mn.present?
+              if mn.metadata_format.present?
+                @system.metadata_formats << mn.metadata_format unless @system.metadata_formats.include?(mn.metadata_format)
+                @system.formats.delete(prefix)
+              end
+            else
+              MetadataNamespace.create!(
+                id: format[:namespace]
+              )
+            end
+          end
         end
       rescue StandardError => e
         Rails.logger.warn "CheckOaiPmhFormatsJob: #{e.message}"

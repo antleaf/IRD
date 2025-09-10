@@ -15,8 +15,6 @@ tr:
         version: Yazılım Sürümü
       metadata_format:
         canonical_schema: Şema
-        match_order: Maç Sırası
-        matchers: Eşleştiriciler
       metadata_namespace:
         metadata_format: Meta Veri Biçimi
         namespace: Ad alanı

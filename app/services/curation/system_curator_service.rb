@@ -34,9 +34,6 @@ module Curation
         else
           system.tag_list.add("auto-curation-error")
         end
-        # No need for this now because it is called by CheckOaiPmhFormatsJob and in the Systems controller where appropriate
-        # service_result = Curation::SystemMetadataFormatAssociationService.call(system)
-        # system = service_result.payload if service_result.success?
         success system
       rescue Exception => e
         Rails.logger.error("Error in SystemCuratorService: #{e.message}")

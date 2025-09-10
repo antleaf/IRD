@@ -6,7 +6,7 @@ class MetadataFormat < ApplicationRecord
 
   before_create :set_id
   before_save :initialise_for_saving
-  validate :matchers_must_be_regex
+  # validate :matchers_must_be_regex
 
   Machine_readable_attributes = MachineReadableAttributeSet.new([
                                                                   MachineReadableAttribute.new(:id, :string, "entity.id"),
@@ -33,20 +33,20 @@ class MetadataFormat < ApplicationRecord
     self.match_order ||= 100.0
   end
 
-  def matchers_must_be_regex
-    if self.matchers.present?
-      self.matchers.uniq!
-      self.matchers.compact_blank!
-      self.matchers.each do |matcher|
-        begin
-          reg = eval matcher
-          unless reg.is_a? Regexp
-            errors.add(:matchers, "Invalid matcher regex: '#{matcher}'")
-          end
-        rescue
-          errors.add(:matchers, "Invalid matcher regex: '#{matcher}'")
-        end
-      end
-    end
-  end
+  # def matchers_must_be_regex
+  #   if self.matchers.present?
+  #     self.matchers.uniq!
+  #     self.matchers.compact_blank!
+  #     self.matchers.each do |matcher|
+  #       begin
+  #         reg = eval matcher
+  #         unless reg.is_a? Regexp
+  #           errors.add(:matchers, "Invalid matcher regex: '#{matcher}'")
+  #         end
+  #       rescue
+  #         errors.add(:matchers, "Invalid matcher regex: '#{matcher}'")
+  #       end
+  #     end
+  #   end
+  # end
 end

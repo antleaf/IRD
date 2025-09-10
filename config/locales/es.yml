@@ -54,6 +54,7 @@ es:
     welcome: Bienvenido al Directorio Internacional de Repositorios (IRD)
   platform_identified: "¿Plataforma de software identificada?"
   primary_subject: Tema principal
+  recognised_metadata_formats: Formatos de metadatos reconocidos por el IRD
   record_is_locked_for_editing: Bloqueado para edición por %{user}
   record_source: Fuente del registro
   record_status: Estado del registro
@@ -85,6 +86,7 @@ es:
   tags: Etiquetas
   technical_information: Información técnica
   total_results: Resultados totales
+  unrecognised_metadata_formats: Formatos de metadatos informados por OAI-PMH pero no reconocidos por el IRD
   verified: Verificado
   website_url: URL del sitio web
   you_can_use_markdown_here: Puedes usar Markdown aquí
