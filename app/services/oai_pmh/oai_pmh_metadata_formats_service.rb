@@ -29,7 +29,7 @@ module OaiPmh
         @system.metadata_formats.clear
         @system.formats.each_pair do |prefix, format|
           unless format[:namespace].blank?
-            mn = MetadataNamespace.find_by_id(format[:namespace])
+            mn = MetadataNamespace.find_by(namespace: format[:namespace])
             if mn.present?
               if mn.metadata_format.present?
                 @system.metadata_formats << mn.metadata_format unless @system.metadata_formats.include?(mn.metadata_format)
@@ -37,7 +37,7 @@ module OaiPmh
               end
             else
               MetadataNamespace.create!(
-                id: format[:namespace]
+                namespace: format[:namespace]
               )
             end
           end

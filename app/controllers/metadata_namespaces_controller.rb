@@ -25,7 +25,7 @@ class MetadataNamespacesController < ApplicationController
   # GET /metadata_namespaces/1/edit
   def edit
     authorize @metadata_namespace
-    @page_title = "Editing Metadata Namespace"
+    @page_title = "Editing #{@metadata_namespace.namespace}"
   end
 
   # POST /metadata_namespaces or /metadata_namespaces.json
@@ -77,6 +77,6 @@ class MetadataNamespacesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def metadata_namespace_params
-      params.expect(metadata_namespace: [ :metadata_format_id ])
+      params.expect(metadata_namespace: [ :namespace, :metadata_format_id ])
     end
 end

@@ -1,6 +1,6 @@
-= render '_shared/record_action_buttons', model_instance: @platform
+= render '_shared/record_action_buttons', model_instance: @metadata_namespace
 %div.row
   %div.col
-    = print_field_name_and_value("ID",@metadata_namespace.id)
-    = print_field_name_and_value("Metadata Format",@metadata_namespace.metadata_format.name)
+    = print_field_name_and_value("Namespace",@metadata_namespace.namespace)
+    = print_field_name_and_value("Metadata Format",@metadata_namespace.metadata_format.name) unless @metadata_namespace.metadata_format.blank?
 

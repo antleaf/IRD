@@ -5,7 +5,7 @@ class MetadataFormat < ApplicationRecord
   has_many :metadata_namespaces
 
   before_create :set_id
-  before_save :initialise_for_saving
+  # before_save :initialise_for_saving
   # validate :matchers_must_be_regex
 
   Machine_readable_attributes = MachineReadableAttributeSet.new([
@@ -26,12 +26,12 @@ class MetadataFormat < ApplicationRecord
     end
   end
 
-  def initialise_for_saving
-    self.matchers ||= []
-    self.matchers.uniq!
-    self.matchers.compact_blank!
-    self.match_order ||= 100.0
-  end
+  # def initialise_for_saving
+  #   self.matchers ||= []
+  #   self.matchers.uniq!
+  #   self.matchers.compact_blank!
+  #   self.match_order ||= 100.0
+  # end
 
   # def matchers_must_be_regex
   #   if self.matchers.present?

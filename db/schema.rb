@@ -114,9 +114,11 @@ ActiveRecord::Schema[8.0].define(version: 2025_09_10_085100) do
     t.index ["system_id"], name: "index_metadata_formats_systems_on_system_id"
   end
 
-  create_table "metadata_namespaces", id: :string, force: :cascade do |t|
+  create_table "metadata_namespaces", id: { type: :string, limit: 36 }, force: :cascade do |t|
+    t.string "namespace", null: false
     t.string "metadata_format_id", limit: 36
     t.index ["metadata_format_id"], name: "index_metadata_namespaces_on_metadata_format_id"
+    t.index ["namespace"], name: "index_metadata_namespaces_on_namespace"
   end
 
   create_table "network_checks", id: { type: :string, limit: 36 }, force: :cascade do |t|

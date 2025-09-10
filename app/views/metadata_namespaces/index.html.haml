@@ -11,7 +11,7 @@
   %tbody
     - @metadata_namespaces.each do |metadata_namespace|
       %tr
-        %td= link_to metadata_namespace.id, metadata_namespace
+        %td= link_to metadata_namespace.namespace, metadata_namespace
         %td= link_to metadata_namespace.metadata_format.name,metadata_namespace.metadata_format unless metadata_namespace.metadata_format.nil?
         = render '_shared/record_action_buttons_table', model_instance: metadata_namespace
 
