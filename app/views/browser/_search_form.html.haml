@@ -20,4 +20,4 @@
           = render(:partial => '_shared/facets_for_searchkick/facet_continent',:locals => {filter_name: 'continent', title: t('activerecord.attributes.country.continent'),facet: @facets['continent']})
           = render(:partial => '_shared/facets_for_searchkick/facet_country',:locals => {filter_name: 'country', title: t('activerecord.models.country.one'),facet: @facets['country']})
           = render(:partial => '_shared/facets_for_searchkick/facet_platform',:locals => {filter_name: 'platform', title: t('activerecord.attributes.system.platform'),facet: @facets['platform']})
-          -# = render(:partial => '_shared/facets_for_searchkick/facet_untranslated_values',:locals => {filter_name: 'metadata_formats', title: t('activerecord.models.metadata_format.other'),facet: @facets['metadata_formats']})
+          = render(:partial => '_shared/facets_for_searchkick/facet_untranslated_values',:locals => {filter_name: 'metadata_formats', title: t('activerecord.models.metadata_format.other'),facet: @facets['metadata_formats']})
