@@ -1,6 +1,6 @@
 class CountriesController < ApplicationController
   require 'json'
-  before_action :set_country, only: %i[ show systems]
+  before_action :set_country, only: %i[ show systems edit update]
   after_action :verify_authorized
   protect_from_forgery except: :geometries
 
@@ -66,6 +66,23 @@ class CountriesController < ApplicationController
     @page_title = t("countries_list.#{@country.id}")
   end
 
+  def edit
+    authorize :country
+  end
+
+  def update
+    authorize @country
+    respond_to do |format|
+      if @country.update(country_params)
+        format.html { redirect_to country_url(@country), notice: "country was successfully updated." }
+        format.json { render :show, status: :ok, location: @country }
+      else
+        format.html { render :edit, status: :unprocessable_entity }
+        format.json { render json: @country.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   # PATCH/PUT /countries/1 or /countries/1.json
 
   # DELETE /countries/1 or /countries/1.json
@@ -78,7 +95,7 @@ class CountriesController < ApplicationController
   end
 
   # Only allow a list of trusted parameters through.
-  # def country_params
-  #   params.require(:country).permit(:id, :name, :continent)
-  # end
+  def country_params
+    params.require(:country).permit(:id, :name, :continent)
+  end
 end
