@@ -316,6 +316,7 @@ class SystemsController < ApplicationController
   def new
     authorize :system
     @system = System.new
+    @system.media_types = []
   end
 
   # GET /systems/1/edit

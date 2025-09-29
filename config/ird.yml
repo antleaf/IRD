@@ -22,7 +22,7 @@ shared:
     opendoar:
       display: true
       link_to_source: true
-      http_prefix: https://v2.sherpa.ac.uk/id/repository/
+      http_prefix: https://opendoar.ac.uk/repository/
       http_suffix:
     re3data:
       display: true
