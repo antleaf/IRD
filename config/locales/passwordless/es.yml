@@ -4,6 +4,7 @@ es:
     mailer:
       sign_in:
         body: 'Utilice este enlace para iniciar sesión directamente en el IRD: %{magic_link} Al hacer clic en este enlace, el IRD instalará una cookie, pero solo para habilitar el proceso de inicio de sesión. El IRD no instala ninguna otra cookie para ningún otro propósito.'
+        subject: Su enlace de inicio de sesión para el Directorio Internacional de Repositorios (IRD)
     sessions:
       create:
         email_sent: Le hemos enviado un correo electrónico con un enlace que puede utilizar para iniciar sesión.

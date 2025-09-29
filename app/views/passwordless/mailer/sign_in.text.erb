@@ -1,1 +1,2 @@
 <%= t("passwordless.mailer.sign_in.body", token: @token, magic_link: Utilities::UrlUtility.get_url_string_with_port_80_removed(@magic_link)) %>
+<%-# i18n-tasks-use t('passwordless.mailer.sign_in.subject') # this lets i18n-tasks know the key is used %>

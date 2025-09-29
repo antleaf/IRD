@@ -3,8 +3,8 @@ en:
   passwordless:
     mailer:
       sign_in:
-        subject: Your sign-in link for the International Repositories Directory (IRD)
         body: "Use this link to sign in directly to the International Repositories Directory (IRD):\r\n%{magic_link}\r\nWhen you click on this link, the IRD will set a cookie - but only to enable the login process. IRD does not set any other cookies for any other purpose."
+        subject: Your sign-in link for the International Repositories Directory (IRD)
     sessions:
       create:
         email_sent: We have sent you an email with a link which you can use to sign in
