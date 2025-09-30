@@ -36,22 +36,26 @@ class AdminController < ApplicationController
 
     @unpaginated_systems = System.search(
       search_terms,
+      fields: [:name, :short_name, :aliases, :owner_names],
       where: conditions,
       aggs: facets,
       body_options: {
         track_total_hits: true
       },
-      includes: [:network_checks, :repoids, :users, :metadata_formats]
+      includes: [:network_checks, :repoids, :users, :metadata_formats],
+      misspellings: false
     )
 
     @systems = System.search(
       search_terms,
+      fields: [:name, :short_name, :aliases, :owner_names],
       where: conditions,
       order: { name: :asc },
       aggs: facets,
       page: page,
       per_page: per_page,
-      includes: [:network_checks, :repoids, :users, :metadata_formats]
+      includes: [:network_checks, :repoids, :users, :metadata_formats],
+      misspellings: false
     )
 
     @facets = @systems.aggs

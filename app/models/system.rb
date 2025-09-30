@@ -68,7 +68,8 @@ class System < ApplicationRecord
       http_code_oai: network_checks.oai_checks.first&.http_code,
       metadata_formats: metadata_formats.map(&:name),
       identifier_schemes: repoids.map(&:identifier_scheme).excluding("ird").uniq,
-      curation_issues: issues.map { |issue| issue["description"] }
+      curation_issues: issues.map { |issue| issue["description"] },
+      owner_names: owner ? [owner.name, owner.short_name].flatten.compact : []
     }
   end
 
@@ -169,7 +170,6 @@ class System < ApplicationRecord
       self.name
     end
   end
-
 
   def mark_reviewed!
     self.reviewed = Time.zone.now
@@ -316,7 +316,7 @@ class System < ApplicationRecord
       Repoid.create!(
         system_id: self.id,
         identifier_scheme: :ark,
-        identifier_value: "ark:#{Rails.configuration.ird[:ark][:naan]}/#{Rails.configuration.ird[:ark][:shoulder]}#{self.id.tr('-','')}"
+        identifier_value: "ark:#{Rails.configuration.ird[:ark][:naan]}/#{Rails.configuration.ird[:ark][:shoulder]}#{self.id.tr('-', '')}"
       )
     end
   end

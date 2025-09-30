@@ -9,9 +9,11 @@ class SearchController < ApplicationController
     per_page = params[:items] || Rails.application.config.ird[:catalogue_default_page_size].to_i
     @search_result = Searchkick.search(
       search_terms,
+      fields: [:name, :short_name, :aliases, :owner_names],
       models: [System, Organisation],
       page: page,
       per_page: per_page,
+      misspellings: false
     )
     @pagy = Pagy.new_from_searchkick(@search_result)
     respond_to do |format|

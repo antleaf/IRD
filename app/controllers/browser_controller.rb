@@ -18,32 +18,36 @@ class BrowserController < ApplicationController
     conditions[:metadata_formats] = params[:metadata_formats] if params[:metadata_formats].present?
     conditions[:media_types] = params[:media_types] if params[:media_types].present?
     conditions[:record_status] = params[:record_status] if params[:record_status].present?
-    conditions[:_not] = { record_status: [:draft,:archived] }
+    conditions[:_not] = { record_status: [:draft, :archived] }
 
     page = params[:page] || 1
     per_page = params[:items] || Rails.application.config.ird[:catalogue_default_page_size].to_i
 
-    facets = [:country,:continent,:platform,:system_status,:oai_status,:subcategory,:primary_subject, :metadata_formats, :media_types, :record_status]
+    facets = [:country, :continent, :platform, :system_status, :oai_status, :subcategory, :primary_subject, :metadata_formats, :media_types, :record_status]
 
     @unpaginated_systems = System.search(
       search_terms,
+      fields: [:name, :short_name, :aliases, :owner_names],
       where: conditions,
       aggs: facets,
       body_options: {
         track_total_hits: true
       },
-      includes: [:network_checks,:repoids,:users, :metadata_formats]
+      includes: [:network_checks, :repoids, :users, :metadata_formats],
+      misspellings: false
     )
 
     @systems = System.search(
       search_terms,
+      fields: [:name, :short_name, :aliases, :owner_names],
       where: conditions,
       order: { name: :asc },
       aggs: facets,
       page: page,
       per_page: per_page,
-      includes: [:network_checks,:repoids,:users, :metadata_formats]
-      )
+      includes: [:network_checks, :repoids, :users, :metadata_formats],
+      misspellings: false
+    )
 
     @facets = @systems.aggs
     respond_to do |format|
