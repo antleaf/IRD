@@ -3,13 +3,16 @@ fr:
   passwordless:
     mailer:
       sign_in:
-        body: 'Utilisez ce lien pour vous connecter directement à l''IRD : %{magic_link} Lorsque vous cliquez sur ce lien, l''IRD installe un cookie - mais uniquement pour permettre le processus de connexion. L''IRD n''installe aucun autre cookie à d''autres fins.'
+        body: |-
+          Utilisez ce lien pour vous connecter directement au Répertoire international des dépôts (IRD) :
+          %{magic_link}
+          Lorsque vous cliquez sur ce lien, l'IRD installe un cookie, uniquement pour activer le processus de connexion. L'IRD n'installe aucun autre cookie à d'autres fins.
         subject: Votre lien de connexion à l'International Repositories Directory (IRD)
     sessions:
       create:
         email_sent: Nous vous avons envoyé un e-mail avec un lien que vous pouvez utiliser pour vous connecter
       new:
         email:
-          label: Adresse e-mail
+          label: Adresse email
           placeholder: utilisateur@exemple.com
         submit: Se connecter

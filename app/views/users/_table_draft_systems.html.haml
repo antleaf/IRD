@@ -1,0 +1,20 @@
+= render '_shared/paginator'
+%table{:class=>"table table-sm table-striped table-bordered sortable-table"}
+  %caption
+    = title
+  %thead
+    %tr
+      %th= t(:name)
+      %th= t(:website_url)
+      %th= t(:owner)
+      %th= t(:responsible_organisation)
+      %th= t("attributes.created_at")
+  %tbody
+    - systems.each do |system|
+      %tr
+        %td= system.display_name
+        %td= system.url
+        %td= system.owner.name if system.owner
+        %td= system.rp.display_name if system.rp
+        %td= system.created_at.strftime("%Y-%m-%d")
+= render '_shared/paginator'

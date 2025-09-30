@@ -3,7 +3,7 @@ es:
   passwordless:
     mailer:
       sign_in:
-        body: 'Utilice este enlace para iniciar sesión directamente en el IRD: %{magic_link} Al hacer clic en este enlace, el IRD instalará una cookie, pero solo para habilitar el proceso de inicio de sesión. El IRD no instala ninguna otra cookie para ningún otro propósito.'
+        body: "Utilice este enlace para iniciar sesión directamente en el Directorio Internacional de Repositorios (IRD): \n%{magic_link} \nAl hacer clic en este enlace, el IRD instalará una cookie, pero solo para habilitar el proceso de inicio de sesión. El IRD no instala ninguna otra cookie para ningún otro propósito."
         subject: Su enlace de inicio de sesión para el Directorio Internacional de Repositorios (IRD)
     sessions:
       create:

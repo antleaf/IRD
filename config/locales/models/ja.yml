@@ -123,6 +123,7 @@ ja:
     aliases: その他の名前
     base: リポジトリレコード
     country_id: 国
+    created_at: レコードが作成されました
     description: 説明
     id: ID
     identifiers: 識別子

@@ -123,6 +123,7 @@ pt:
     aliases: Outros nomes
     base: registro de repositório
     country_id: País
+    created_at: Registro criado
     description: Descrição
     id: EU IA
     identifiers: Identificadores

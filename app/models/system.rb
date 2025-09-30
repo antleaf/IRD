@@ -205,7 +205,7 @@ class System < ApplicationRecord
 
   def set_record_draft!
     self.record_status = :draft
-    self.rp_id = Organisation.default_rp_id
+    # self.rp_id = Organisation.default_rp_id
   end
 
   def publicly_viewable?

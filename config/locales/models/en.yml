@@ -123,6 +123,7 @@ en:
     aliases: Other Names
     base: repository record
     country_id: Country
+    created_at: Record Created
     description: Description
     id: ID
     identifiers: Identifiers

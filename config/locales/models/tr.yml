@@ -123,6 +123,7 @@ tr:
     aliases: Diğer İsimler
     base: depo kaydı
     country_id: Ülke
+    created_at: Kayıt Oluşturuldu
     description: Tanım
     id: İD
     identifiers: Tanımlayıcılar

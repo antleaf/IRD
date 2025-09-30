@@ -123,6 +123,7 @@ zh-CN:
     aliases: 其他名称
     base: 储存库记录
     country_id: 国家/地区
+    created_at: 已创建记录
     description: 描述
     id: ID
     identifiers: 标识符

@@ -123,6 +123,7 @@ fr:
     aliases: Autres noms
     base: enregistrement du référentiel
     country_id: Pays
+    created_at: Enregistrement créé
     description: Description
     id: IDENTIFIANT
     identifiers: Identifiants

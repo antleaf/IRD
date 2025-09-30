@@ -123,6 +123,7 @@ es:
     aliases: Otros nombres
     base: registro del repositorio
     country_id: País
+    created_at: Registro creado
     description: Descripción
     id: IDENTIFICACIÓN
     identifiers: Identificadores

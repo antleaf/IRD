@@ -1,7 +1,8 @@
-- authorised_systems = @user.systems.publicly_viewable
+- @authorised_systems = @user.systems
 - @user.organisations.each do |org|
-  - authorised_systems += org.responsibilities.publicly_viewable
-- systems_requiring_review = authorised_systems.select{|s| s.record_status_under_review?}
+  - @authorised_systems += org.responsibilities
+- @systems_requiring_review = @authorised_systems.select{|s| s.record_status_under_review?}
+- @systems_draft = @authorised_systems.select{|s| s.record_status_draft?}
 
 - if current_user && current_user == @user
   %div.text-end
@@ -27,13 +28,15 @@
   %div.col.md-6
     -# - if @user.organisations.count > 0
     = render 'table_organisations',title: t(:managing_agent_for_these_organisations), organisations: @user.organisations, data_downloadable: false
-    = print_field_name_and_value(t('authorised_curator_for_these_repositories'),(link_to authorised_systems.uniq.count, authorised_systems_path(@user))) if authorised_systems.present?
-    = print_field_name_and_value(t("repositories_requiring_review"),(link_to systems_requiring_review.uniq.count, systems_requiring_review_path(@user))) if systems_requiring_review.present?
-
-= link_to t("buttons.suggest_new_system"),nil, :class => 'btn btn-primary btn-sm',"data-bs-toggle":"modal", "data-bs-target":"#suggestSystemModal"
+    = print_field_name_and_value(t('authorised_curator_for_these_repositories'),(link_to @authorised_systems.uniq.count, authorised_systems_path(@user))) if @authorised_systems.present?
+    = print_field_name_and_value(t("repositories_requiring_review"),(link_to @systems_requiring_review.uniq.count, systems_requiring_review_path(@user))) if @systems_requiring_review.present?
+    - unless @systems_draft.empty?
+      = render 'table_draft_systems', title: t("draft_records"), systems: @systems_draft.uniq, data_downloadable: false
+      = link_to t("buttons.suggest_new_system"),nil, :class => 'btn btn-primary btn-sm',"data-bs-toggle":"modal", "data-bs-target":"#suggestSystemModal"
 
 %br
--# = render 'table_authorised_systems', title: t(:authorised_curator_for_these_repositories), systems: authorised_systems.uniq, data_downloadable: (true unless authorised_systems.blank?)
--# = render 'table_systems_under_review', title: t(:repositories_requiring_review), systems: systems_requiring_review.uniq, data_downloadable: true
+
+
+
 
 = render 'suggest_system_modal'

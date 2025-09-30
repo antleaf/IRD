@@ -14,6 +14,7 @@ tr:
   continents: Kıtalar
   curation: Küratörlük
   database: Veritabanı
+  draft_records: Taslak Kayıtlar (işleniyor - henüz incelemeye hazır değil)
   email: E-posta
   filter: Filtre
   fore_name: İlk adı

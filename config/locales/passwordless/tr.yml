@@ -3,13 +3,16 @@ tr:
   passwordless:
     mailer:
       sign_in:
-        body: 'Doğrudan IRD''ye giriş yapmak için bu bağlantıyı kullanın: %{magic_link} Bu bağlantıya tıkladığınızda, IRD bir çerez ayarlayacaktır - ancak yalnızca giriş sürecini etkinleştirmek için. IRD başka hiçbir amaç için başka hiçbir çerez ayarlamaz.'
+        body: |-
+          Uluslararası Veri Depoları Dizini'ne (IRD) doğrudan giriş yapmak için bu bağlantıyı kullanın:
+          %{magic_link}
+          Bu bağlantıya tıkladığınızda, IRD bir çerez ayarlayacaktır; ancak bu yalnızca giriş işlemini etkinleştirmek için geçerlidir. IRD, başka hiçbir amaçla başka çerez ayarlamaz.
         subject: Uluslararası Depolar Rehberi (IRD) için oturum açma bağlantınız
     sessions:
       create:
-        email_sent: Size oturum açmak için kullanabileceğiniz bağlantıyı içeren bir e-posta gönderdik
+        email_sent: Oturum açmak için kullanabileceğiniz bir bağlantı içeren bir e-posta gönderdik
       new:
         email:
           label: E-posta adresi
           placeholder: kullanıcı@example.com
-        submit: Kayıt olmak
+        submit: Giriş yap

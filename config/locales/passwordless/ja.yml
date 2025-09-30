@@ -3,7 +3,10 @@ ja:
   passwordless:
     mailer:
       sign_in:
-        body: 'IRD に直接サインインするには、このリンクを使用してください: %{magic_link} このリンクをクリックすると、IRD は Cookie を設定しますが、これはログイン プロセスを有効にするためだけに設定されます。IRD は、他の目的で他の Cookie を設定することはありません。'
+        body: |-
+          国際リポジトリディレクトリ（IRD）に直接サインインするには、このリンクを使用してください。
+          %{magic_link}
+          このリンクをクリックすると、IRDはログインプロセスを有効にするためだけにCookieを設定します。IRDは、他の目的でCookieを設定することはありません。
         subject: 国際リポジトリディレクトリ（IRD）へのサインインリンク
     sessions:
       create:
