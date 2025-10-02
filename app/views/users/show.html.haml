@@ -32,7 +32,7 @@
     = print_field_name_and_value(t("repositories_requiring_review"),(link_to @systems_requiring_review.uniq.count, systems_requiring_review_path(@user))) if @systems_requiring_review.present?
     - unless @systems_draft.empty?
       = render 'table_draft_systems', title: t("draft_records"), systems: @systems_draft.uniq, data_downloadable: false
-      = link_to t("buttons.suggest_new_system"),nil, :class => 'btn btn-primary btn-sm',"data-bs-toggle":"modal", "data-bs-target":"#suggestSystemModal"
+    = link_to t("buttons.suggest_new_system"),nil, :class => 'btn btn-primary btn-sm',"data-bs-toggle":"modal", "data-bs-target":"#suggestSystemModal"
 
 %br
 
