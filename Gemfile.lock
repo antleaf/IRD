@@ -169,7 +169,6 @@ GEM
       activesupport (>= 5.1)
       haml (>= 4.0.6)
       railties (>= 5.1)
-    hashie (5.0.0)
     highline (3.1.2)
       reline
     i18n (1.14.7)
@@ -404,9 +403,8 @@ GEM
       rubocop-rails (>= 2.30)
     ruby-progressbar (1.13.0)
     rubyzip (3.2.1)
-    searchkick (5.5.2)
-      activemodel (>= 7.1)
-      hashie
+    searchkick (6.0.2)
+      activemodel (>= 7.2)
     securerandom (0.4.1)
     selenium-webdriver (4.38.0)
       base64 (~> 0.2)
@@ -546,7 +544,7 @@ DEPENDENCIES
   rails_autolink
   rspec-rails (~> 7.1.0)
   rubocop-rails-omakase
-  searchkick (~> 5.5)
+  searchkick (~> 6.0)
   selenium-webdriver (~> 4.28)
   simplecov
   solid_cable
