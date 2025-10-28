@@ -4,6 +4,8 @@ module Curation
   class SystemNamesProcessorService < ApplicationService
     def call(system)
       begin
+        system.aliases.reject! {|s| Rails.configuration.ird.alias_and_short_name_stop_list.include?(s)}
+        system.short_name = nil if Rails.configuration.ird.alias_and_short_name_stop_list.include?(system.short_name)
         if system.short_name.blank?
           system.aliases.each do |a|
             if a.size < 20 || !a.include?(' ')

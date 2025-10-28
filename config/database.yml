@@ -7,6 +7,7 @@ default: &default
   username: <%= ENV.fetch('IRD_DB_USERNAME') %>
   password: <%= ENV.fetch('IRD_DB_PASSWORD') %>
   pool: <%= ENV.fetch('IRD_DB_CONNECTION_POOL') %>
+  <% if RUBY_PLATFORM =~ /darwin/ %>gssencmode: disable<% end %> # This stops those pesky crashes when running background processes on MacOS
 development:
   primary:
     <<: *default
