@@ -1,7 +1,9 @@
 %nav#navbar-ird.navbar.navbar-expand-lg.bg-body-tertiary
   %div#header.container-fluid
     %a.navbar-brand{href:"/"}
-      =link_to image_tag('ird-logo.png', id:"navbar-brand-image",class:"d-inline-block align-text-top"), root_url
+      -# =link_to image_tag('ird-logo.png', id:"navbar-brand-image",class:"d-inline-block align-text-top"), root_url
+      =link_to image_tag('IRD-logo-RBG.png', id:"navbar-brand-image",class:"d-inline-block align-text-top"), root_url
+
     %button.navbar-toggler{"aria-controls" => "navbarSupportedContent", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-bs-target" => "#navbarSupportedContent", "data-bs-toggle" => "collapse", :type => "button"}
       %span.navbar-toggler-icon
     #navbarSupportedContent.collapse.navbar-collapse
