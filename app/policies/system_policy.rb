@@ -24,6 +24,10 @@ class SystemPolicy < ApplicationPolicy
     User.valid_user?(@user) && (@user.has_role?(:administrator) || @user.has_role?(:superuser)) && !@record.is_locked?
   end
 
+  def mark_reviewed?
+    User.valid_user?(@user) && (@user.has_role?(:administrator) || @user.has_role?(:superuser) || @user.is_responsible_for?(@record)) && !@record.is_locked?
+  end
+
   def set_record_verified?
     User.valid_user?(@user) && (@user.has_role?(:administrator) || @user.has_role?(:superuser) || @user.is_responsible_for?(@record)) && !@record.is_locked?
   end

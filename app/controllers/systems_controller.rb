@@ -1,7 +1,7 @@
 require "ostruct"
 
 class SystemsController < ApplicationController
-  before_action :set_system, only: %i[ show edit update destroy authorise_user add_repo_id network_check check_url check_oai_pmh_identify check_oai_pmh_formats check_oai_pmh_combined get_thumbnail remove_thumbnail label add_repo_id process_as_duplicate set_record_verified set_record_archived set_record_draft auto_curate set_record_awaiting_review set_record_under_review]
+  before_action :set_system, only: %i[ show edit update destroy authorise_user add_repo_id network_check check_url check_oai_pmh_identify check_oai_pmh_formats check_oai_pmh_combined get_thumbnail remove_thumbnail label add_repo_id process_as_duplicate set_record_verified set_record_archived set_record_draft auto_curate set_record_awaiting_review set_record_under_review mark_reviewed]
   after_action :verify_authorized
 
   def suggest_new_system
@@ -64,16 +64,16 @@ class SystemsController < ApplicationController
     end
   end
 
-  # def mark_reviewed
-  #   authorize @system
-  #   begin
-  #     @system.mark_reviewed!
-  #     @system.save!
-  #     redirect_back fallback_location: root_path, notice: "Repository marked as reviewed."
-  #   rescue Exception => e
-  #     redirect_back fallback_location: root_path, flash: { error: "Unable to mark repository as reviewed: #{e.message}" }
-  #   end
-  # end
+  def mark_reviewed
+    authorize @system
+    begin
+      @system.mark_reviewed!
+      @system.save!
+      redirect_back fallback_location: root_path, notice: "Repository marked as reviewed."
+    rescue Exception => e
+      redirect_back fallback_location: root_path, flash: { error: "Unable to mark repository as reviewed: #{e.message}" }
+    end
+  end
 
   def set_record_verified
     authorize @system
