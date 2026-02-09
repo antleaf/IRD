@@ -21,3 +21,5 @@
 
 ## Running
 `rails server`
+
+## Tests

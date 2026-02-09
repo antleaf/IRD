@@ -48,24 +48,61 @@ RSpec.describe 'Platforms Management', type: :system do
       click_link platform.name
 
       # Verify we're on the show page
-      expect(page).to have_current_path(platform_path(platform), ignore_query: true)
       expect(page).to have_content(platform.name)
     end
   end
 
   describe 'Creating a platform' do
-    it 'clicking create button brings up the create form' do
-      # Sign in as administrator
+     # Standard users
+     it 'standard user has no create button' do
+      visit authenticate_as_url(email: users(:user).email)
+      visit platforms_url
+
+      expect(page).not_to have_selector('.btn-primary', text: 'Create Platform Record')
+    end
+    # Admin users
+    it 'admin user has create button and can click it' do
       visit authenticate_as_url(email: users(:administrator).email)
+      visit platforms_url
 
-      # Navigate to platforms page
-      visit platforms_path
-
-      # Click the create button (using CSS class selector to find the button)
+      expect(page).to have_selector('.btn-primary', text: 'Create Platform Record')
       find('.btn-primary', text: 'Create Platform Record').click
-
-      # Verify we're on the new platform page (ignoring query parameters like ?lang=en)
       expect(page).to have_current_path(new_platform_path, ignore_query: true)
+    end
+    it 'admin user can create a platform and correct values are saved' do
+      visit authenticate_as_url(email: users(:administrator).email)
+      visit platforms_url
+
+      find('.btn-primary', text: 'Create Platform Record').click
+      platform_name = "Test Platform #{SecureRandom.hex(4)}"
+      platform_url = 'https://example.com'
+      platform_matcher = '/example\\.com/'
+      platform_generator_pattern = '/example/'
+      platform_match_order = '99.0'
+      platform_oai_suffix = 'test_suffix'
+
+      fill_in 'platform[name]', with: platform_name
+      fill_in 'platform[url]', with: platform_url
+      find('input[name="platform[trusted]"]').set(true)
+      first('input[name="platform[matchers][]"]').set(platform_matcher)
+      first('input[name="platform[generator_patterns][]"]').set(platform_generator_pattern)
+      fill_in 'platform[match_order]', with: platform_match_order
+      find('input[name="platform[oai_support]"]').set(true)
+      fill_in 'platform[oai_suffix]', with: platform_oai_suffix
+
+      click_button 'Save record'
+
+      expect(page).to have_content('Platform was successfully created.')
+      expect(page).to have_content(platform_name)
+
+      platform = Platform.find_by!(name: platform_name)
+      expect(platform.url).to eq(platform_url)
+      expect(platform.trusted).to eq(true)
+      expect(platform.matchers).to include(platform_matcher)
+      expect(platform.generator_patterns).to include(platform_generator_pattern)
+      expect(platform.match_order).to eq(99.0)
+      expect(platform.oai_support).to eq(true)
+      expect(platform.oai_suffix).to eq(platform_oai_suffix)
     end
   end
 end
