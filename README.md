@@ -21,3 +21,11 @@
 
 ## Running
 `rails server`
+
+## Tests
+
+### To run all tests
+`bundle exec rspec`
+
+### To run just system tests
+`bundle exec rspec spec/system/*`
