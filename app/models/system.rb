@@ -405,6 +405,9 @@ class System < ApplicationRecord
     self.aliases.each do |a|
       a.strip! unless self.name.nil?
     end
+    if self.record_status_changed? && self.record_status == "verified"
+      self.mark_reviewed!
+    end
   end
 end
 
