@@ -104,5 +104,47 @@ RSpec.describe 'Platforms Management', type: :system do
       expect(platform.oai_support).to eq(true)
       expect(platform.oai_suffix).to eq(platform_oai_suffix)
     end
+
+    it 'admin user can edit a platform and correct values are saved' do
+      visit authenticate_as_url(email: users(:administrator).email)
+
+      platform = Platform.where.not(name: [ nil, '', 'Unknown' ]).first
+      expect(platform).to be_present
+
+      visit platforms_url
+      click_link platform.name
+
+      find('.btn-primary', text: 'Edit').click
+
+      updated_name = "Updated Platform #{SecureRandom.hex(4)}"
+      updated_url = 'https://updated.example.com'
+      updated_matcher = '/updated\\.example\\.com/'
+      updated_generator_pattern = '/updated/'
+      updated_match_order = '77.0'
+      updated_oai_suffix = 'updated_suffix'
+
+      fill_in 'platform[name]', with: updated_name
+      fill_in 'platform[url]', with: updated_url
+      find('input[name="platform[trusted]"]').set(true)
+      first('input[name="platform[matchers][]"]').set(updated_matcher)
+      first('input[name="platform[generator_patterns][]"]').set(updated_generator_pattern)
+      fill_in 'platform[match_order]', with: updated_match_order
+      find('input[name="platform[oai_support]"]').set(true)
+      fill_in 'platform[oai_suffix]', with: updated_oai_suffix
+
+      click_button 'Save record'
+
+      expect(page).to have_content('Platform was successfully updated.')
+      expect(page).to have_content(updated_name)
+
+      platform.reload
+      expect(platform.url).to eq(updated_url)
+      expect(platform.trusted).to eq(true)
+      expect(platform.matchers).to include(updated_matcher)
+      expect(platform.generator_patterns).to include(updated_generator_pattern)
+      expect(platform.match_order).to eq(77.0)
+      expect(platform.oai_support).to eq(true)
+      expect(platform.oai_suffix).to eq(updated_oai_suffix)
+    end
   end
 end
