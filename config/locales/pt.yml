@@ -87,6 +87,7 @@ pt:
   tags: Etiquetas
   technical_information: Informações técnicas
   total_results: Resultados totais
+  unknown: Desconhecido
   unrecognised_metadata_formats: Formatos de metadados relatados pelo OAI-PMH, mas não reconhecidos pelo IRD
   verified: Verificado
   website_url: URL do site

@@ -87,6 +87,7 @@ ja:
   tags: タグ
   technical_information: 技術情報
   total_results: 合計結果
+  unknown: 未知
   unrecognised_metadata_formats: OAI-PMH で報告されているが IRD では認識されないメタデータ形式
   verified: 検証済み
   website_url: ウェブサイトURL

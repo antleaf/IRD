@@ -34,4 +34,7 @@
                 %li= t(medium, scope: :media_types)
           - else
             =t(:none)
-
+      - if @system.item_count > 0
+        = print_field_name_and_value(t('activerecord.attributes.system.item_count'),@system.item_count)# unless @system.item_count == 0
+      - else
+        = print_field_name_and_value(t('activerecord.attributes.system.item_count'),t(:unknown))

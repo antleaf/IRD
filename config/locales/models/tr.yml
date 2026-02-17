@@ -34,6 +34,7 @@ tr:
         contact: Temas etmek
         curation_notes: Küratörlük Notları
         issues: Küratörlük Sorunları
+        item_count: Toplam Ürün Sayısı
         media_types: Medya Türleri
         oai_base_url: OAI-PMH Temel URL
         oai_status: OAI-PMH Durumu

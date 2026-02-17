@@ -15,6 +15,7 @@ gem "addressable"
 gem "kramdown"
 gem "passwordless"
 gem "searchkick", "~> 5.5"
+# gem "searchkick", "~> 6.0.3"
 gem "opensearch-ruby"
 gem "mission_control-jobs"
 gem "chunky_png"
@@ -32,7 +33,7 @@ gem "ostruct"
 gem "audited"
 gem "image_processing", "~> 1.2"
 
-# Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
+# Bundle edge instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 8.1.2"
 # The modern asset pipeline for Rails [https://github.com/rails/propshaft]
 gem "propshaft"
@@ -89,8 +90,7 @@ end
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
-  gem "i18n-tasks", "~> 1.0.14"
-  gem "easy_translate"
+  gem "i18n-tasks", "~> 1.1.2"
 end
 
 group :test do

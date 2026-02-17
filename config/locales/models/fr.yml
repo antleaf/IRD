@@ -34,6 +34,7 @@ fr:
         contact: Contact
         curation_notes: Notes de conservation
         issues: Problèmes de conservation
+        item_count: Nombre total d'articles
         media_types: Types de médias
         oai_base_url: URL de base OAI-PMH
         oai_status: Statut OAI-PMH

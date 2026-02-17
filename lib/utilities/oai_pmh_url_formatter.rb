@@ -9,6 +9,18 @@ module Utilities
       base_url_with_verb
     end
 
+    def self.with_verb_list_identifiers(base_url,resumptionToken)
+      base_url_with_verb = Addressable::URI.parse(base_url)
+
+      base_url_with_verb.query_values = {"verb": "ListIdentifiers"}
+      if resumptionToken.present?
+        base_url_with_verb.query_values = base_url_with_verb.query_values.merge({"resumptionToken": resumptionToken})
+      else
+        base_url_with_verb.query_values = base_url_with_verb.query_values.merge({"metadataPrefix": "oai_dc"})
+      end
+      base_url_with_verb
+    end
+
     def self.with_verb_list_metadata_formats(base_url)
       base_url_with_verb = Addressable::URI.parse(base_url)
       base_url_with_verb.query_values = {"verb": "ListMetadataFormats"}

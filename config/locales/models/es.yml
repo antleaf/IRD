@@ -34,6 +34,7 @@ es:
         contact: Contacto
         curation_notes: Notas de curación
         issues: Problemas de curación
+        item_count: Total de artículos
         media_types: Tipos de medios
         oai_base_url: URL base de OAI-PMH
         oai_status: Estado de OAI-PMH

@@ -87,6 +87,7 @@ fr:
   tags: Mots clés
   technical_information: Informations techniques
   total_results: Résultats totaux
+  unknown: Inconnu
   unrecognised_metadata_formats: Formats de métadonnées signalés par l'OAI-PMH mais non reconnus par l'IRD
   verified: Vérifié
   website_url: URL du site Web

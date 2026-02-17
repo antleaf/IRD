@@ -87,6 +87,7 @@ tr:
   tags: Etiketler
   technical_information: Teknik Bilgiler
   total_results: Toplam Sonuçlar
+  unknown: Bilinmiyor
   unrecognised_metadata_formats: OAI-PMH Tarafından Bildirilen Ancak IRD Tarafından Tanınmayan Meta Veri Biçimleri
   verified: Doğrulandı
   website_url: Web sitesi URL'si

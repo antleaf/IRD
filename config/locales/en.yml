@@ -87,6 +87,7 @@ en:
   tags: Tags
   technical_information: Technical Information
   total_results: Total Results
+  unknown: Unknown
   unrecognised_metadata_formats: Metadata Formats Reported by OAI-PMH but Unrecognised by IRD
   verified: Verified
   website_url: Website URL

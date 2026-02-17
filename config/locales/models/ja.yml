@@ -34,6 +34,7 @@ ja:
         contact: 連絡先
         curation_notes: キュレーションノート
         issues: キュレーションの問題
+        item_count: 合計アイテム数
         media_types: メディアタイプ
         oai_base_url: OAI-PMH ベース URL
         oai_status: OAI-PMH ステータス
