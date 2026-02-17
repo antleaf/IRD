@@ -73,6 +73,10 @@ class SystemPolicy < ApplicationPolicy
     curate?
   end
 
+  def get_item_count?
+    User.valid_user?(@user) && @user.has_role?(:administrator)
+  end
+
   def check_oai_pmh_formats?
     curate?
   end

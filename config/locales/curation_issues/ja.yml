@@ -19,6 +19,9 @@ ja:
     name-missing:
       description: 名前がありません
       name: 名前がありません
+    no-item-count:
+      description: アイテム数は不明です
+      name: アイテム数なし
     oai-base-url-missing:
       description: OAI-PMH ベース URL がありません
       name: OAI-PMH ベース URL がありません

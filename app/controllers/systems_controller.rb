@@ -1,7 +1,7 @@
 require "ostruct"
 
 class SystemsController < ApplicationController
-  before_action :set_system, only: %i[ show edit update destroy authorise_user add_repo_id network_check check_url check_oai_pmh_identify check_oai_pmh_formats check_oai_pmh_combined get_thumbnail remove_thumbnail label add_repo_id process_as_duplicate set_record_verified set_record_archived set_record_draft auto_curate set_record_awaiting_review set_record_under_review mark_reviewed]
+  before_action :set_system, only: %i[ show edit update destroy authorise_user add_repo_id network_check check_url check_oai_pmh_identify check_oai_pmh_formats check_oai_pmh_combined get_thumbnail remove_thumbnail label add_repo_id process_as_duplicate set_record_verified set_record_archived set_record_draft auto_curate set_record_awaiting_review set_record_under_review mark_reviewed get_item_count]
   after_action :verify_authorized
 
   def suggest_new_system
@@ -229,6 +229,17 @@ class SystemsController < ApplicationController
       end
     else
       redirect_back fallback_location: root_path, flash: { error: "OAI-PMH Identify failed: #{service_result.error.message}" }
+    end
+  end
+
+  def get_item_count
+    authorize @system
+    service_result = OaiPmh::OaiPmhRecordCountService.call(@system.id)
+    if service_result.success?
+      @system = service_result.payload
+      redirect_back fallback_location: root_path, notice: "OAI-PMH Item count completed"
+    else
+      redirect_back fallback_location: root_path, flash: { error: "OAI-PMH Item count failed: #{service_result.error.message}" }
     end
   end
 

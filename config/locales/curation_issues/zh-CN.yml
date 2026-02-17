@@ -19,6 +19,9 @@ zh-CN:
     name-missing:
       description: 姓名缺失
       name: 缺少姓名
+    no-item-count:
+      description: 暂无商品数量信息
+      name: 无商品数量
     oai-base-url-missing:
       description: 缺少 OAI-PMH 基本 URL
       name: 缺少 OAI-PMH 基本 URL

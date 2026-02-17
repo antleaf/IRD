@@ -70,8 +70,9 @@
         -unless @system.issues.empty?
           %ul
             - @system.issues.each do |issue|
-              %li.list-group-item
-              = issue_priority_flags(issue)
+              - if issue["priority"] != "invisible"
+                %li.list-group-item
+                  = issue_priority_flags(issue)
         - else
           ="#{t(:none)} 😊"
     %h5.property-name= t('actions')
@@ -110,6 +111,8 @@
             = link_to t('buttons.get_thumbnail'), get_thumbnail_url(@system.id), :class => 'btn btn-primary btn-sm'
           - if policy(@system).network_check?
             = link_to t('buttons.start_background_network_checks'), network_check_url(@system.id), :class => 'btn btn-primary btn-sm'
+          - if policy(@system).get_item_count?
+            = link_to "Get Item Count", get_item_count_url(@system.id), :class => 'btn btn-primary btn-sm'
     - if policy(@system).authorise_user?
       %div.property
         -# %h5.property-name= t(:user_access)

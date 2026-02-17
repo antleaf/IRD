@@ -19,6 +19,9 @@ pt:
     name-missing:
       description: Nome está faltando
       name: Nome faltando
+    no-item-count:
+      description: Não há contagem de itens disponível.
+      name: Sem contagem de itens
     oai-base-url-missing:
       description: URL base OAI-PMH está faltando
       name: URL base OAI-PMH ausente

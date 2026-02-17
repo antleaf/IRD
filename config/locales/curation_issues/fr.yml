@@ -19,6 +19,9 @@ fr:
     name-missing:
       description: Le nom est manquant
       name: Nom manquant
+    no-item-count:
+      description: Nombre d'articles non disponible
+      name: Aucun nombre d'articles
     oai-base-url-missing:
       description: L'URL de base OAI-PMH est manquante
       name: URL de base OAI-PMH manquante

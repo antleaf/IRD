@@ -5,7 +5,8 @@ module OaiPmh
   class OaiPmhRecordCountService < ApplicationService
     def call(system_id, redirect_limit = 6)
       repositoryItemCount = 0
-      begin
+      url_with_verb_list_identifiers = ""
+        begin
         @system = System.includes(:network_checks, :repoids, :users).find(system_id)
         original_url = @system.oai_base_url
         conn = Utilities::HttpClientConnectionWrapper.new(redirect_limit)
@@ -42,7 +43,7 @@ module OaiPmh
           # puts "Resumption token: #{resumptionToken}"
         end
       rescue Faraday::Error, StandardError => e
-        Rails.logger.warn("#{e} for OAI-PMH List Identifiers #{url_with_verb_identify}")
+        Rails.logger.warn("#{e} for OAI-PMH List Identifiers #{url_with_verb_list_identifiers}")
         failure e
       else
         success @system

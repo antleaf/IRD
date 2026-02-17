@@ -259,6 +259,7 @@ class System < ApplicationRecord
     issue_array << Issue.new(:low, "description-missing") if self.description.blank?
     issue_array << Issue.new(:low, "contact-missing") if self.contact.blank?
     issue_array << Issue.new(:low, "thumbnail-missing") unless self.thumbnail.attached?
+    issue_array << Issue.new(:invisible, "no-item-count") unless self.item_count > 0
     self.issues = issue_array
   end
 

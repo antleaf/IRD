@@ -73,6 +73,9 @@ class AdminController < ApplicationController
       when :check_oai_identify
         ActiveJob.perform_all_later(@unpaginated_systems.map { |system| CheckOaiPmhIdentifyJob.new(system.id) })
         redirect_back fallback_location: root_path, notice: "Started OAI-PMH identify job for #{@unpaginated_systems.count} systems..."
+      when :get_item_count
+        ActiveJob.perform_all_later(@unpaginated_systems.map { |system| GetItemCountViaOaiPmhJob.new(system.id) })
+        redirect_back fallback_location: root_path, notice: "Started Item count job for #{@unpaginated_systems.count} systems..."
       when :check_oai_formats
         ActiveJob.perform_all_later(@unpaginated_systems.map { |system| CheckOaiPmhFormatsJob.new(system.id) })
         redirect_back fallback_location: root_path, notice: "Started OAI-PMH format checking job for #{@unpaginated_systems.count} systems..."

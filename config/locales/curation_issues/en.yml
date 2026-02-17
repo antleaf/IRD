@@ -19,6 +19,9 @@ en:
     name-missing:
       description: Name is missing
       name: Missing name
+    no-item-count:
+      description: No item count available
+      name: No item count
     oai-base-url-missing:
       description: OAI-PMH Base URL is missing
       name: Missing OAI-PMH Base URL

@@ -19,6 +19,9 @@ tr:
     name-missing:
       description: İsim eksik
       name: Eksik isim
+    no-item-count:
+      description: Ürün sayısı bilgisi mevcut değil.
+      name: Ürün sayısı yok
     oai-base-url-missing:
       description: OAI-PMH Temel URL'si eksik
       name: Eksik OAI-PMH Temel URL'si
