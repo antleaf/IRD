@@ -73,6 +73,10 @@ class SystemPolicy < ApplicationPolicy
     curate?
   end
 
+  def display_item_counts_for_repositories?
+    Rails.configuration.ird[:display_item_counts_for_repositories] || User.valid_user?(@user) && @user.has_role?(:administrator)
+  end
+
   def get_item_count?
     User.valid_user?(@user) && @user.has_role?(:administrator)
   end
