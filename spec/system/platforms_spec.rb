@@ -104,7 +104,8 @@ RSpec.describe 'Platforms Management', type: :system do
       expect(platform.oai_support).to eq(true)
       expect(platform.oai_suffix).to eq(platform_oai_suffix)
     end
-
+  end
+  describe 'Editing a platform' do
     it 'admin user can edit a platform and correct values are saved' do
       visit authenticate_as_url(email: users(:administrator).email)
 
@@ -138,6 +139,7 @@ RSpec.describe 'Platforms Management', type: :system do
       expect(page).to have_content(updated_name)
 
       platform.reload
+      expect(platform.name).to eq(updated_name)
       expect(platform.url).to eq(updated_url)
       expect(platform.trusted).to eq(true)
       expect(platform.matchers).to include(updated_matcher)
