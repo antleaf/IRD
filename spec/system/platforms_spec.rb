@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe 'Platforms Management', type: :system do
   describe 'Viewing platforms list' do
     it 'displays the platforms index page' do
-      visit platforms_path
+      visit platforms_url
       expect(page).to have_current_path(platforms_path)
       expect(page).to have_content('Platforms')
     end
@@ -18,7 +18,7 @@ RSpec.describe 'Platforms Management', type: :system do
     end
 
     it 'shows total results count matching rows' do
-      visit platforms_path
+      visit platforms_url
 
       # Get the total count from the database
       expected_count = Platform.count
