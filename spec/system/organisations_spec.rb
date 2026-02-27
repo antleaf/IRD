@@ -44,6 +44,61 @@ RSpec.describe 'Organisations Management', type: :system do
     end
   end
 
+  describe 'Creating an organisation' do
+    # Standard users
+    it 'standard user has no create button' do
+      visit authenticate_as_url(email: users(:user).email)
+      visit organisations_url
+
+      expect(page).not_to have_selector('.btn-primary', text: 'Create Organisation Record')
+    end
+
+    # Admin users
+    it 'admin user has create button and can click it' do
+      visit authenticate_as_url(email: users(:administrator).email)
+      visit organisations_url
+
+      expect(page).to have_selector('.btn-primary', text: 'Create Organisation Record')
+      find('.btn-primary', text: 'Create Organisation Record').click
+      expect(page).to have_current_path(new_organisation_path, ignore_query: true)
+    end
+
+    it 'admin user can create an organisation and correct values are saved' do
+      visit authenticate_as_url(email: users(:administrator).email)
+      visit organisations_url
+
+      find('.btn-primary', text: 'Create Organisation Record').click
+
+      organisation_name = "Test Organisation #{SecureRandom.hex(4)}"
+      organisation_short_name = "TO#{SecureRandom.hex(2).upcase}"
+      organisation_website = 'https://example.org'
+      organisation_alias = 'Example Org Alias'
+      organisation_ror = "https://ror.org/#{SecureRandom.alphanumeric(9).downcase}"
+      organisation_location = 'Test City, Test Country'
+
+      fill_in 'organisation[name]', with: organisation_name
+      fill_in 'organisation[short_name]', with: organisation_short_name
+      fill_in 'organisation[website]', with: organisation_website
+      first('input[name="organisation[aliases][]"]').set(organisation_alias)
+      fill_in 'organisation[ror]', with: organisation_ror
+      fill_in 'organisation[location]', with: organisation_location
+      select 'Switzerland', from: 'organisation[country_id]'
+
+      click_button 'Save record'
+
+      expect(page).to have_content('Organisation was successfully created.')
+      expect(page).to have_content(organisation_name)
+
+      organisation = Organisation.find_by!(name: organisation_name)
+      expect(organisation.short_name).to eq(organisation_short_name)
+      expect(organisation.website).to eq(organisation_website)
+      expect(organisation.aliases).to include(organisation_alias)
+      expect(organisation.ror).to eq(organisation_ror)
+      expect(organisation.location).to eq(organisation_location)
+      expect(organisation.country_id).to eq('CH')
+    end
+  end
+
   describe 'Editing an organisation' do
     # Standard users
     it 'standard user has no edit button' do
