@@ -87,23 +87,23 @@ RSpec.describe 'Countries Management', type: :system do
     end
   end
 
-  describe 'Create Country Record button' do
-    it 'standard user has no create button' do
-      visit authenticate_as_url(email: users(:user).email)
-      visit countries_url
-
-      expect(page).not_to have_selector('.btn-primary', text: 'Create Country Record')
-    end
-
-    it 'admin user has create button and can click it' do
-      visit authenticate_as_url(email: users(:administrator).email)
-      visit countries_url
-
-      expect(page).to have_selector('.btn-primary', text: 'Create Country Record')
-      find('.btn-primary', text: 'Create Country Record').click
-      expect(page).to have_current_path(new_country_path, ignore_query: true)
-    end
-  end
+  # describe 'Create Country Record button' do
+  #   it 'standard user has no create button' do
+  #     visit authenticate_as_url(email: users(:user).email)
+  #     visit countries_url
+  #
+  #     expect(page).not_to have_selector('.btn-primary', text: 'Create Country Record')
+  #   end
+  #
+  #   it 'admin user has create button and can click it' do
+  #     visit authenticate_as_url(email: users(:administrator).email)
+  #     visit countries_url
+  #
+  #     expect(page).to have_selector('.btn-primary', text: 'Create Country Record')
+  #     find('.btn-primary', text: 'Create Country Record').click
+  #     expect(page).to have_current_path(new_country_path, ignore_query: true)
+  #   end
+  # end
 
   describe 'Editing a country' do
     it 'admin user can edit a country and correct values are saved' do

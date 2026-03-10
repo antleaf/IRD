@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-
   get "metadata_formats/:id/systems", to: "metadata_formats#systems", as: "metadata_format_instances"
   resources :metadata_formats
 
@@ -26,7 +25,7 @@ Rails.application.routes.draw do
 
   # STATISTICS
   get "statistics", to: "statistics#index"
-  get "statistics/clear_cache", to: "statistics#clear_cache",as: "clear_statistics_cache"
+  get "statistics/clear_cache", to: "statistics#clear_cache", as: "clear_statistics_cache"
   get "statistics/by-continent", to: "statistics#by_continent"
   get "statistics/by-country", to: "statistics#by_country"
   get "statistics/by-platform", to: "statistics#by_platform"
@@ -61,13 +60,12 @@ Rails.application.routes.draw do
   get "roles/:id/users", to: "roles#users", as: "role_instances"
   resources :roles
 
-
   get "batches/:id/generate_csv_for_download", to: "batches#generate_csv_for_download", as: "batch_generate_csv_for_download"
   resources :batches
 
   get "countries/:id/systems", to: "countries#systems", as: "country_instances"
   get "countries/geometries", to: "countries#geometries", as: "country_geometries"
-  resources :countries
+  resources :countries, except: [ :new, :create, :destroy ]
 
   get "platforms/:id/systems", to: "platforms#systems", as: "platform_instances"
   resources :platforms

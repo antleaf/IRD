@@ -66,9 +66,30 @@ class CountriesController < ApplicationController
     @page_title = t("countries_list.#{@country.id}")
   end
 
+  # def new
+  #   authorize :country
+  #   @country = Country.new
+  # end
+
   def edit
     authorize :country
   end
+
+  # def create
+  #   authorize :country
+  #   @page_title = "Create new #{Country.model_name.human(count: 1)}"
+  #   @country = Country.new(country_params)
+  #
+  #   respond_to do |format|
+  #     if @country.save
+  #       format.html { redirect_to country_url(@country), notice: "Country was successfully created." }
+  #       format.json { render :show, status: :created, location: @country }
+  #     else
+  #       format.html { render :new, status: :unprocessable_entity }
+  #       format.json { render json: @country.errors, status: :unprocessable_entity }
+  #     end
+  #   end
+  # end
 
   def update
     authorize @country
