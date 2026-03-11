@@ -73,42 +73,7 @@ RSpec.describe 'Systems Management', type: :system do
     end
   end
 
-  describe 'Searching systems' do
-    it 'admin user can search for systems by name' do
-      # Create a verified system that will be searchable
-      test_system = System.create!(
-        name: 'Test Searchable Repository',
-        short_name: 'TSR',
-        url: 'https://test-searchable.example.com',
-        platform_id: Platform.first.id,
-        country_id: Country.first&.id || 'CH',
-        rp_id: Organisation.first.id,
-        record_status: :verified,
-        system_status: :online,
-        oai_status: :online,
-        subcategory: :institutional_repository,
-        primary_subject: :multidisciplinary,
-        media_types: [ 'books' ]
-      )
 
-      # Refresh the search index to make the new system immediately searchable
-      System.search_index.refresh
-
-      # Authenticate as administrator
-      visit authenticate_as_path(email: users(:administrator).email)
-
-      # Visit systems index first to establish session
-      visit systems_path
-      expect(page).to have_content('Systems')
-
-      # Now visit search page with search parameter
-      visit system_search_path(search: 'Searchable')
-
-      # Verify search results are displayed (table renders display_name)
-      expect(page).to have_content(test_system.display_name)
-      expect(page).to have_content('Systems')
-    end
-  end
 
   describe 'Creating a system' do
     # Standard users
@@ -208,6 +173,43 @@ RSpec.describe 'Systems Management', type: :system do
       expect(system.short_name).to eq(updated_short_name)
       expect(system.url).to eq(updated_url)
       expect(system.description).to eq(updated_description)
+    end
+  end
+
+describe 'Searching systems' do
+    it 'admin user can search for systems by name' do
+      # Create a verified system that will be searchable
+      test_system = System.create!(
+        name: 'Test Searchable Repository',
+        short_name: 'TSR',
+        url: 'https://test-searchable.example.com',
+        platform_id: Platform.first.id,
+        country_id: Country.first&.id || 'CH',
+        rp_id: Organisation.first.id,
+        record_status: :verified,
+        system_status: :online,
+        oai_status: :online,
+        subcategory: :institutional_repository,
+        primary_subject: :multidisciplinary,
+        media_types: [ 'books' ]
+      )
+
+      # Refresh the search index to make the new system immediately searchable
+      System.search_index.refresh
+
+      # Authenticate as administrator
+      visit authenticate_as_path(email: users(:administrator).email)
+
+      # Visit systems index first to establish session
+      visit systems_path
+      expect(page).to have_content('Systems')
+
+      # Now visit search page with search parameter
+      visit system_search_path(search: 'Searchable')
+
+      # Verify search results are displayed (table renders display_name)
+      expect(page).to have_content(test_system.display_name)
+      expect(page).to have_content('Systems')
     end
   end
 end
