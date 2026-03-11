@@ -13,13 +13,18 @@ RSpec.describe 'Systems Management', type: :system do
       visit authenticate_as_url(email: users(:administrator).email)
       visit systems_url
 
-      # Check that at least one system is listed (index shows publicly_viewable only)
-      system = System.publicly_viewable.where.not(name: nil).where.not(name: '').first
+      # Check that at least one system is listed
+      system = System.where.not(name: nil).where.not(name: '').first
       if system.present?
         # The table displays display_name (short_name or name)
+        # write to console for debugging if display_name is not found
+        unless page.has_content?(system.display_name)
+          puts "Debug: System display_name not found on page. System details: #{system.attributes.inspect}"
+        end
+
         expect(page).to have_content(system.display_name)
       else
-        skip 'No publicly viewable systems available for testing'
+        skip 'No systems available for testing'
       end
     end
 
@@ -28,10 +33,10 @@ RSpec.describe 'Systems Management', type: :system do
       visit systems_url
 
       # Get the total count from the database
-      expected_count = System.publicly_viewable.count
+      expected_count = System.count
 
       if expected_count == 0
-        skip 'No publicly viewable systems available for testing'
+        skip 'No systems available for testing'
       end
 
       # Extract the count from the total-results label (use first occurrence)
@@ -53,10 +58,10 @@ RSpec.describe 'Systems Management', type: :system do
       visit systems_url
 
       # Find a system with a name
-      system = System.publicly_viewable.where.not(name: [ nil, '', "Unknown" ]).first
-      
+      system = System.where.not(name: [ nil, '', "Unknown" ]).first
+
       if system.blank?
-        skip 'No publicly viewable systems available for testing'
+        skip 'No systems available for testing'
       end
 
       # Click on the system name link (displays as display_name in table)
@@ -83,7 +88,7 @@ RSpec.describe 'Systems Management', type: :system do
         oai_status: :online,
         subcategory: :institutional_repository,
         primary_subject: :multidisciplinary,
-        media_types: ['books']
+        media_types: [ 'books' ]
       )
 
       # Refresh the search index to make the new system immediately searchable
@@ -99,8 +104,8 @@ RSpec.describe 'Systems Management', type: :system do
       # Now visit search page with search parameter
       visit system_search_path(search: 'Searchable')
 
-      # Verify search results are displayed
-      expect(page).to have_content('Test Searchable Repository')
+      # Verify search results are displayed (table renders display_name)
+      expect(page).to have_content(test_system.display_name)
       expect(page).to have_content('Systems')
     end
   end
@@ -162,14 +167,24 @@ RSpec.describe 'Systems Management', type: :system do
     it 'admin user can edit a system and correct values are saved' do
       visit authenticate_as_url(email: users(:administrator).email)
 
-      system = System.publicly_viewable.where.not(name: [ nil, '', 'Unknown' ]).first
-      
-      if system.blank?
-        skip 'No publicly viewable systems available for testing'
-      end
+      system = System.create!(
+        name: "Editable System #{SecureRandom.hex(4)}",
+        short_name: "ES#{SecureRandom.hex(2).upcase}",
+        url: 'https://editable.example.com/repository',
+        description: 'Original description',
+        contact: 'editable@example.com',
+        platform_id: Platform.first.id,
+        country_id: Country.first&.id || 'CH',
+        rp_id: Organisation.first.id,
+        record_status: :draft,
+        system_status: :unknown,
+        oai_status: :unknown,
+        subcategory: :institutional_repository,
+        primary_subject: :multidisciplinary,
+        media_types: [ 'books' ]
+      )
 
-      visit systems_url
-      click_link system.display_name
+      visit system_url(system)
 
       find('.btn-primary', text: 'Edit').click
 
