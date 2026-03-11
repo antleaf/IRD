@@ -14,17 +14,12 @@ RSpec.describe 'Systems Management', type: :system do
       visit systems_url
 
       # Check that at least one system is listed
-      system = System.where.not(name: nil).where.not(name: '').first
+      system = System.publicly_viewable.where.not(name: nil).where.not(name: '').first
       if system.present?
         # The table displays display_name (short_name or name)
-        # write to console for debugging if display_name is not found
-        unless page.has_content?(system.display_name)
-          puts "Debug: System display_name not found on page. System details: #{system.attributes.inspect}"
-        end
-
         expect(page).to have_content(system.display_name)
       else
-        skip 'No systems available for testing'
+        skip 'No publicly viewable systems available for testing'
       end
     end
 
@@ -33,10 +28,10 @@ RSpec.describe 'Systems Management', type: :system do
       visit systems_url
 
       # Get the total count from the database
-      expected_count = System.count
+      expected_count = System.publicly_viewable.count
 
       if expected_count == 0
-        skip 'No systems available for testing'
+        skip 'No publicly viewable systems available for testing'
       end
 
       # Extract the count from the total-results label (use first occurrence)
@@ -58,10 +53,10 @@ RSpec.describe 'Systems Management', type: :system do
       visit systems_url
 
       # Find a system with a name
-      system = System.where.not(name: [ nil, '', "Unknown" ]).first
+      system = System.publicly_viewable.where.not(name: [ nil, '', "Unknown" ]).first
 
       if system.blank?
-        skip 'No systems available for testing'
+        skip 'No publicly viewable systems available for testing'
       end
 
       # Click on the system name link (displays as display_name in table)
@@ -70,6 +65,45 @@ RSpec.describe 'Systems Management', type: :system do
       # Verify we're on the show page
       expect(page).to have_current_path(system_path(system), ignore_query: true)
       expect(page).to have_content(system.name)
+    end
+
+    it 'does not show non-verified systems in the index' do
+      visit authenticate_as_url(email: users(:administrator).email)
+
+      visible_system = System.create!(
+        name: "Visible System #{SecureRandom.hex(4)}",
+        short_name: "VS#{SecureRandom.hex(2).upcase}",
+        url: 'https://visible.example.com/repository',
+        platform_id: Platform.first.id,
+        country_id: Country.first&.id || 'CH',
+        rp_id: Organisation.first.id,
+        record_status: :verified,
+        system_status: :online,
+        oai_status: :online,
+        subcategory: :institutional_repository,
+        primary_subject: :multidisciplinary,
+        media_types: [ 'books' ]
+      )
+
+      hidden_system = System.create!(
+        name: "Hidden System #{SecureRandom.hex(4)}",
+        short_name: "HS#{SecureRandom.hex(2).upcase}",
+        url: 'https://hidden.example.com/repository',
+        platform_id: Platform.first.id,
+        country_id: Country.first&.id || 'CH',
+        rp_id: Organisation.first.id,
+        record_status: :draft,
+        system_status: :unknown,
+        oai_status: :unknown,
+        subcategory: :institutional_repository,
+        primary_subject: :multidisciplinary,
+        media_types: [ 'books' ]
+      )
+
+      visit systems_url
+
+      expect(page).to have_content(visible_system.display_name)
+      expect(page).not_to have_content(hidden_system.display_name)
     end
   end
 
