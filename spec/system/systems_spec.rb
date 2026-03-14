@@ -14,7 +14,7 @@ RSpec.describe 'Systems Management', type: :system do
       visit systems_url
 
       # Check that at least one system is listed
-      system = System.publicly_viewable.where.not(name: nil).where.not(name: '').first
+      system = System.publicly_viewable.where.not(name: nil).where.not(name: '').order(:name).first
       if system.present?
         # The table displays display_name (short_name or name)
         expect(page).to have_content(system.display_name)
@@ -57,7 +57,7 @@ RSpec.describe 'Systems Management', type: :system do
       visit systems_url
 
       # Find a system with a name
-      system = System.publicly_viewable.where.not(name: [ nil, '', "Unknown" ]).first
+      system = System.publicly_viewable.where.not(name: [ nil, '', "Unknown" ]).order(:name).first
 
       if system.blank?
         skip 'No publicly viewable systems available for testing'
