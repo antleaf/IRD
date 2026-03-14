@@ -10,6 +10,7 @@ abort("The Rails environment is running in production mode!") if Rails.env.produ
 require 'rspec/rails'
 require "passwordless/test_helpers"
 require 'capybara/rails'
+require_relative 'support/searchkick_helpers'
 
 # Add additional requires below this line. Rails is not loaded until this point!
 
@@ -36,6 +37,8 @@ rescue ActiveRecord::PendingMigrationError => e
   abort e.to_s.strip
 end
 RSpec.configure do |config|
+  config.include SearchkickHelpers
+
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_paths = [
     Rails.root.join('spec/fixtures')

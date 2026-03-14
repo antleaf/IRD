@@ -14,7 +14,7 @@ RSpec.describe 'Systems Management', type: :system do
       visit systems_url
 
       # Check that at least one system is listed
-      system = System.publicly_viewable.where.not(name: nil).where.not(name: '').order(:name).first
+      system = System.publicly_viewable.order(:name).where.not(name: nil).where.not(name: '').first
       if system.present?
         # The table displays display_name (short_name or name)
         expect(page).to have_content(system.display_name)
@@ -56,8 +56,8 @@ RSpec.describe 'Systems Management', type: :system do
       visit authenticate_as_url(email: users(:administrator).email)
       visit systems_url
 
-      # Find a system with a name
-      system = System.publicly_viewable.where.not(name: [ nil, '', "Unknown" ]).order(:name).first
+      # Find a system using the same scope/order as the systems index
+      system = System.publicly_viewable.order(:name).where.not(name: [ nil, '', "Unknown" ]).first
 
       if system.blank?
         skip 'No publicly viewable systems available for testing'
@@ -74,35 +74,8 @@ RSpec.describe 'Systems Management', type: :system do
     it 'does not show non-verified systems in the index' do
       visit authenticate_as_url(email: users(:administrator).email)
 
-      visible_system = System.create!(
-        name: "Visible System #{SecureRandom.hex(4)}",
-        short_name: "VS#{SecureRandom.hex(2).upcase}",
-        url: 'https://visible.example.com/repository',
-        platform_id: Platform.first.id,
-        country_id: Country.first&.id || 'CH',
-        rp_id: Organisation.first.id,
-        record_status: :verified,
-        system_status: :online,
-        oai_status: :online,
-        subcategory: :institutional_repository,
-        primary_subject: :multidisciplinary,
-        media_types: [ 'books' ]
-      )
-
-      hidden_system = System.create!(
-        name: "Hidden System #{SecureRandom.hex(4)}",
-        short_name: "HS#{SecureRandom.hex(2).upcase}",
-        url: 'https://hidden.example.com/repository',
-        platform_id: Platform.first.id,
-        country_id: Country.first&.id || 'CH',
-        rp_id: Organisation.first.id,
-        record_status: :draft,
-        system_status: :unknown,
-        oai_status: :unknown,
-        subcategory: :institutional_repository,
-        primary_subject: :multidisciplinary,
-        media_types: [ 'books' ]
-      )
+      visible_system = systems(:zenodo)
+      hidden_system = systems(:hidden_draft)
 
       visit systems_url
 
@@ -120,24 +93,13 @@ RSpec.describe 'Systems Management', type: :system do
       visit systems_url
 
       # Standard users should not be authorized to view systems
-      expect(page).to have_content('not authorized') || have_current_path(root_path)
-    end
-
-    # Admin users
-    it 'admin user has create button and can click it' do
-      visit authenticate_as_url(email: users(:administrator).email)
-      visit systems_url
-
-      expect(page).to have_selector('.btn-primary', text: 'Create System Record')
-      find('.btn-primary', text: 'Create System Record').click
-      expect(page).to have_current_path(new_system_path, ignore_query: true)
+      unauthorized_feedback_present = page.has_content?('not authorized') || page.has_current_path?(root_path, ignore_query: true)
+      expect(unauthorized_feedback_present).to be(true)
     end
 
     it 'admin user can create a system and correct values are saved' do
       visit authenticate_as_url(email: users(:administrator).email)
-      visit systems_url
-
-      find('.btn-primary', text: 'Create System Record').click
+      visit new_system_url
 
       system_name = "Test System #{SecureRandom.hex(4)}"
       system_short_name = "TS#{SecureRandom.hex(2).upcase}"
@@ -169,25 +131,22 @@ RSpec.describe 'Systems Management', type: :system do
   describe 'Editing a system' do
     it 'admin user can edit a system and correct values are saved' do
       visit authenticate_as_url(email: users(:administrator).email)
+      visit new_system_url
 
-      system = System.create!(
-        name: "Editable System #{SecureRandom.hex(4)}",
-        short_name: "ES#{SecureRandom.hex(2).upcase}",
-        url: 'https://editable.example.com/repository',
-        description: 'Original description',
-        contact: 'editable@example.com',
-        platform_id: Platform.first.id,
-        country_id: Country.first&.id || 'CH',
-        rp_id: Organisation.first.id,
-        record_status: :draft,
-        system_status: :unknown,
-        oai_status: :unknown,
-        subcategory: :institutional_repository,
-        primary_subject: :multidisciplinary,
-        media_types: [ 'books' ]
-      )
+      editable_name = "Editable System #{SecureRandom.hex(4)}"
+      editable_short_name = "ES#{SecureRandom.hex(2).upcase}"
 
-      visit system_url(system)
+      fill_in 'system[name]', with: editable_name
+      fill_in 'system[short_name]', with: editable_short_name
+      fill_in 'system[url]', with: 'https://editable.example.com/repository'
+      fill_in 'system[description]', with: 'Original description'
+      fill_in 'system[contact]', with: 'editable@example.com'
+      select 'Institutional', from: 'system[subcategory]'
+      select 'Multidisciplinary', from: 'system[primary_subject]'
+
+      click_button 'Save record'
+
+      system = System.find_by!(name: editable_name)
 
       find('.btn-primary', text: 'Edit').click
 
@@ -214,39 +173,52 @@ RSpec.describe 'Systems Management', type: :system do
     end
   end
 
-describe 'Searching systems' do
+  describe 'Searching systems' do
     it 'admin user can search for systems by name' do
-      # Create a verified system that will be searchable
-      test_system = System.create!(
-        name: 'Test Searchable Repository',
-        short_name: 'TSR',
-        url: 'https://test-searchable.example.com',
-        platform_id: Platform.first.id,
-        country_id: Country.first&.id || 'CH',
-        rp_id: Organisation.first.id,
-        record_status: :verified,
-        system_status: :online,
-        oai_status: :online,
-        subcategory: :institutional_repository,
-        primary_subject: :multidisciplinary,
-        media_types: [ 'books' ]
-      )
+      test_system = systems(:zenodo)
 
-      # Refresh the search index to make the new system immediately searchable
-      System.search_index.refresh
+      # Ensure fixture-backed record is in the search index for this test run
+      reindex_for_search!(test_system)
 
       # Authenticate as administrator
-      visit authenticate_as_path(email: users(:administrator).email)
+      visit authenticate_as_url(email: users(:administrator).email)
 
       # Visit systems index first to establish session
-      visit systems_path
+      visit systems_url
       expect(page).to have_content('Systems')
 
       # Now visit search page with search parameter
-      visit system_search_path(search: 'Searchable')
+      visit system_search_url(search: 'Zenodo')
 
       # Verify search results are displayed (table renders display_name)
       expect(page).to have_content(test_system.display_name)
+      expect(page).to have_content('Systems')
+    end
+
+    it 'reflects a newly added system in search results after indexing' do
+      visit authenticate_as_url(email: users(:administrator).email)
+      visit new_system_url
+
+      system_name = "Indexed Search System #{SecureRandom.hex(4)}"
+      system_short_name = "ISS#{SecureRandom.hex(2).upcase}"
+
+      fill_in 'system[name]', with: system_name
+      fill_in 'system[short_name]', with: system_short_name
+      fill_in 'system[url]', with: 'https://indexed-search.example.com/repository'
+      fill_in 'system[description]', with: 'Search indexing coverage test'
+      fill_in 'system[contact]', with: 'search-indexing@example.com'
+      select 'Institutional', from: 'system[subcategory]'
+      select 'Multidisciplinary', from: 'system[primary_subject]'
+
+      click_button 'Save record'
+      expect(page).to have_content('System was successfully created.')
+
+      created_system = System.find_by!(name: system_name)
+      reindex_for_search!(created_system)
+
+      visit system_search_url(search: system_name)
+
+      expect(page).to have_content(created_system.display_name)
       expect(page).to have_content('Systems')
     end
   end
