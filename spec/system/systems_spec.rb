@@ -44,8 +44,12 @@ RSpec.describe 'Systems Management', type: :system do
       # Verify the label matches the database count
       expect(label_count).to eq(expected_count), "Label shows #{label_count} but expected #{expected_count}"
 
-      # Verify the rows match the label
-      expect(row_count).to eq(label_count), "#{row_count} rows displayed but label shows #{label_count}"
+      # Verify the rows on the current page don't exceed the page size (index is paginated)
+      page_size = Pagy::DEFAULT[:limit]
+      expect(row_count).to be <= page_size,
+        "#{row_count} rows displayed but page size is #{page_size}"
+      expect(row_count).to be <= label_count,
+        "#{row_count} rows displayed but label shows only #{label_count} total"
     end
 
     it 'clicking system name navigates to show page' do
