@@ -14,7 +14,8 @@ RSpec.describe 'Systems Management', type: :system do
       visit systems_url
 
       # Check that at least one system is listed
-      system = System.publicly_viewable.order(:name).where.not(name: nil).where.not(name: '').first
+      # system = System.publicly_viewable.order(:name).where.not(name: nil).where.not(name: '').first
+      system = System.publicly_viewable.first
       if system.present?
         # The table displays display_name (short_name or name)
         expect(page).to have_content(system.display_name)
@@ -57,8 +58,8 @@ RSpec.describe 'Systems Management', type: :system do
       visit systems_url
 
       # Find a system using the same scope/order as the systems index
-      system = System.publicly_viewable.order(:name).where.not(name: [ nil, '', "Unknown" ]).first
-
+      # system = System.publicly_viewable.order(:name).where.not(name: [ nil, '', "Unknown" ]).first
+      system = System.publicly_viewable.first
       if system.blank?
         skip 'No publicly viewable systems available for testing'
       end
