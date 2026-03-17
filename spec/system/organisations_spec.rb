@@ -12,9 +12,7 @@ RSpec.describe 'Organisations Management', type: :system do
       visit organisations_url
 
       organisation = Organisation.where.not(name: nil).where.not(name: '').first
-      if organisation.present? && organisation.name != 'Unknown'
-        expect(page).to have_content(organisation.display_name).or have_content(organisation.name)
-      end
+      expect(page).to have_content(organisation.display_name).or have_content(organisation.name)
     end
 
     it 'shows total results count matching rows' do
