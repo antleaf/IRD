@@ -11,8 +11,8 @@ RSpec.describe 'Organisations Management', type: :system do
     it 'lists one organisation display_name' do
       visit organisations_url
 
-      organisation = Organisation.where.not(name: nil).where.not(name: '').first
-      expect(page).to have_content(organisation.display_name).or have_content(organisation.name)
+      organisation = Organisation.first
+      expect(page).to have_content(organisation.display_name)
     end
 
     it 'shows total results count matching rows' do
@@ -32,7 +32,7 @@ RSpec.describe 'Organisations Management', type: :system do
     it 'clicking organisation name navigates to show page' do
       visit organisations_url
 
-      organisation = Organisation.where.not(name: [ nil, '', 'Unknown' ]).first
+      organisation = Organisation.first
       expect(organisation).to be_present
 
       click_link organisation.display_name
