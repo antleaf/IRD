@@ -209,7 +209,7 @@ class System < ApplicationRecord
   end
 
   def publicly_viewable?
-    self.record_status != :draft && self.record_status != :archived
+    !self.record_status_draft? && !self.record_status_archived?
   end
 
   def add_repo_id(repo_id_scheme, repo_id_value)

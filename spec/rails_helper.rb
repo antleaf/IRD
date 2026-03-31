@@ -53,8 +53,8 @@ RSpec.configure do |config|
   System.reindex
 
   config.before(:each, type: :system) do
-    # driven_by :selenium, using: :headless_firefox, screen_size: [ 1400, 1400 ] # use :firefox (not :headless_firefox) to see what's going on
-    driven_by :selenium, using: :firefox, screen_size: [ 1400, 1400 ] # use :headless_firefox (not :firefox) to run in background
+    driven_by :selenium, using: :headless_firefox, screen_size: [ 1400, 1400 ] # use :firefox (not :headless_firefox) to see what's going on
+    # driven_by :selenium, using: :firefox, screen_size: [ 1400, 1400 ] # use :headless_firefox (not :firefox) to run in background
   end
 
   # You can uncomment this line to turn off ActiveRecord support entirely.
