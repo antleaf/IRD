@@ -29,7 +29,6 @@ es:
   logout: Cerrar sesión
   managing_agent_for_these_organisations: Agente de gestión para estas organizaciones
   managing_agents_for: Gestión de agentes para %{rp}
-  media_type: Tipo de medio
   metadata: Metadatos
   most_recent_update: Actualización más reciente
   name: Nombre

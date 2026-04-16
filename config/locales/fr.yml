@@ -29,7 +29,6 @@ fr:
   logout: Déconnexion
   managing_agent_for_these_organisations: Agent de gestion pour ces organisations
   managing_agents_for: Gestion des agents pour %{rp}
-  media_type: Type de média
   metadata: Métadonnées
   most_recent_update: Mise à jour la plus récente
   name: Nom

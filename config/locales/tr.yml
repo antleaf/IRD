@@ -29,7 +29,6 @@ tr:
   logout: Çıkış Yap
   managing_agent_for_these_organisations: Bu Kuruluşlar için Yönetici Temsilci
   managing_agents_for: "%{rp} için Aracıları Yönetme"
-  media_type: Medya türü
   metadata: Meta veri
   most_recent_update: En Son Güncelleme
   name: İsim

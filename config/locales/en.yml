@@ -29,7 +29,6 @@ en:
   logout: Logout
   managing_agent_for_these_organisations: Managing Agent for these Organisations
   managing_agents_for: Managing Agents for %{rp}
-  media_type: Media-type
   metadata: Metadata
   most_recent_update: Most Recent Update
   name: Name
