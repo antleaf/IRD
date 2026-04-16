@@ -54,7 +54,8 @@
 
       %div.row.align-items-top.field
         %div.col-2.field-name
-          = f.label :media_types, :class=>"form-label"
+          -# = f.label :media_types, :class=>"form-label"
+          %span.form-label=t(:content_types)
         %div.col
           -# i18n-tasks-use t('activerecord.errors.models.system.attributes.media_types.missing') # this lets i18n-tasks know the key is used
           -# i18n-tasks-use t('activerecord.attributes.system.media_types') # this lets i18n-tasks know the key is used

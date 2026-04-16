@@ -10,6 +10,7 @@ pt:
   authorised_curator_for_these_repositories: Curador autorizado para esses repositórios
   authorised_curators: Curadores Autorizados
   contact: Contato
+  content_type: Tipo de conteúdo
   content_types: Tipos de conteúdo
   continents: Continentes
   curation: Curadoria

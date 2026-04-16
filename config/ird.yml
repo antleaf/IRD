@@ -78,6 +78,8 @@ shared:
       identifier: "http://purl.org/coar/resource_type/c_2df8fbb1"
     research-data:
       identifier: "http://purl.org/coar/resource_type/c_ddb1"
+    preprints:
+      identifier: "http://purl.org/coar/resource_type/c_816b"
     books:
       identifier: "http://purl.org/coar/resource_type/c_2f33"
     conference-papers:
