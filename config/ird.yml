@@ -2,6 +2,7 @@ shared:
   catalogue_default_page_size: 20
   system_review_period: 365 #days
   display_item_counts_for_repositories: <%= ENV.fetch("DISPLAY_ITEM_COUNTS_FOR_REPOSITORIES",false) %>
+  default_change_request_contact_email: <%= ENV["DEFAULT_CHANGE_REQUEST_CONTACT_EMAIL"] %>
   default_models:
     rp: <%= ENV["DEFAULT_RP"] %> #IRD System
     platform: <%= ENV["DEFAULT_PLATFORM"] %>

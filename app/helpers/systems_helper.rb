@@ -9,6 +9,14 @@ module SystemsHelper
     end
   end
 
+  def change_request_contact(contact)
+    if contact.blank?
+      Rails.application.config.ird[:default_change_request_contact_email]
+    else
+      contact
+    end
+  end
+
   def resolvable_identifier(scheme, id)
     returned_identifier = "<b>#{scheme}:</b> "
     scheme_config = Rails.application.config.ird[:repoid_schemes][scheme.to_sym]

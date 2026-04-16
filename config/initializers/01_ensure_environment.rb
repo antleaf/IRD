@@ -27,6 +27,7 @@
     SYSTEM_USER
     WEB_CONCURRENCY
     WEBSITE_THUMBNAIL_GENERATION_CONCURRENCY
+    DEFAULT_CHANGE_REQUEST_CONTACT_EMAIL
   ].each do |env_var|
   # if !ENV.has_key?(env_var) || ENV[env_var].blank?
   unless ENV.has_key?(env_var)
