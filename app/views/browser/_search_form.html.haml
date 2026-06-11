@@ -10,6 +10,7 @@
         %div.col
           = render(:partial => '_shared/facets_for_searchkick/facet_country',:locals => {filter_name: 'country', title: t('activerecord.models.country.one'),facet: @facets['country']})
         %div.col
+          = render(:partial => '_shared/facets_for_searchkick/facet_characterisation',:locals => {filter_name: 'characterisations', title: t('characterisation'),facet: @facets['characterisations']})
           = render(:partial => '_shared/facets_for_searchkick/facet_record_status',:locals => {filter_name: 'record_status', title: t('record_status'),facet: @facets['record_status']})
           = render(:partial => '_shared/facets_for_searchkick/facet_subcategory',:locals => {filter_name: 'subcategory', title: t('repository_scope'),facet: @facets['subcategory']})
           = render(:partial => '_shared/facets_for_searchkick/facet_primary_subject',:locals => {filter_name: 'primary_subject', title: t('primary_subject'),facet: @facets['primary_subject']})

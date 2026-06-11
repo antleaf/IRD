@@ -17,13 +17,14 @@ class BrowserController < ApplicationController
     conditions[:primary_subject] = params[:primary_subject] if params[:primary_subject].present?
     conditions[:metadata_formats] = params[:metadata_formats] if params[:metadata_formats].present?
     conditions[:media_types] = params[:media_types] if params[:media_types].present?
+    conditions[:characterisations] = params[:characterisations] if params[:characterisations].present?
     conditions[:record_status] = params[:record_status] if params[:record_status].present?
     conditions[:_not] = { record_status: [:draft, :archived] }
 
     page = params[:page] || 1
     per_page = params[:items] || Rails.application.config.ird[:catalogue_default_page_size].to_i
 
-    facets = [:country, :continent, :platform, :system_status, :oai_status, :subcategory, :primary_subject, :metadata_formats, :media_types, :record_status]
+    facets = [:country, :continent, :platform, :system_status, :oai_status, :subcategory, :primary_subject, :metadata_formats, :media_types, :characterisations, :record_status]
 
     @unpaginated_systems = System.search(
       search_terms,

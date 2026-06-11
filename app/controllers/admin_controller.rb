@@ -15,6 +15,7 @@ class AdminController < ApplicationController
     conditions[:record_status] = params[:record_status] if params[:record_status].present?
     conditions[:record_source] = params[:record_source] if params[:record_source].present?
     conditions[:media_types] = params[:media_types] if params[:media_types].present?
+    conditions[:characterisations] = params[:characterisations] if params[:characterisations].present?
     conditions[:labels] = params[:labels] if params[:labels].present?
     conditions[:tags] = params[:tags] if params[:tags].present?
     conditions[:subcategory] = params[:subcategory] if params[:subcategory].present?
@@ -32,7 +33,7 @@ class AdminController < ApplicationController
     page = params[:page] || 1
     per_page = params[:items] || Rails.application.config.ird[:catalogue_default_page_size].to_i
 
-    facets = [:country, :continent, :platform, :system_status, :oai_status, :record_status, :record_source, :subcategory, :primary_subject, :media_types, :labels, :tags, :rp, :http_code, :http_code_oai, :metadata_formats, :identifier_schemes, :curation_issues]
+    facets = [:country, :continent, :platform, :system_status, :oai_status, :record_status, :record_source, :subcategory, :primary_subject, :media_types, :characterisations, :labels, :tags, :rp, :http_code, :http_code_oai, :metadata_formats, :identifier_schemes, :curation_issues]
 
     @unpaginated_systems = System.search(
       search_terms,
@@ -82,9 +83,9 @@ class AdminController < ApplicationController
       when :scrape_websites
         ActiveJob.perform_all_later(@unpaginated_systems.map { |system| CreateWebsiteThumbnailJob.new(system.id, true) })
         redirect_back fallback_location: root_path, notice: "Started website scraping job for #{@unpaginated_systems.count} systems..."
-      # when :publish
-      #   ActiveJob.perform_all_later(@unpaginated_systems.map { |system| RecordPublishJob.new(system.id) })
-      #   redirect_back fallback_location: root_path, notice: "Started publishing record for #{@unpaginated_systems.count} systems..."
+        # when :publish
+        #   ActiveJob.perform_all_later(@unpaginated_systems.map { |system| RecordPublishJob.new(system.id) })
+        #   redirect_back fallback_location: root_path, notice: "Started publishing record for #{@unpaginated_systems.count} systems..."
       when :verify
         ActiveJob.perform_all_later(@unpaginated_systems.map { |system| SetRecordVerifiedJob.new(system.id) })
         redirect_back fallback_location: root_path, notice: "Started verifying record for #{@unpaginated_systems.count} systems..."

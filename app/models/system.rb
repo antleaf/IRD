@@ -69,7 +69,8 @@ class System < ApplicationRecord
       metadata_formats: metadata_formats.map(&:name),
       identifier_schemes: repoids.map(&:identifier_scheme).excluding("ird").uniq,
       curation_issues: issues.map { |issue| issue["description"] },
-      owner_names: owner ? [owner.name, owner.short_name].flatten.compact : []
+      owner_names: owner ? [owner.name, owner.short_name].flatten.compact : [],
+      characterisations: characterisations
     }
   end
 
@@ -150,6 +151,17 @@ class System < ApplicationRecord
                                                                   MachineReadableAttribute.new(:metadata_formats, :array, "entity.metadata_formats.collect(&:name)", false),
                                                                   MachineReadableAttribute.new(:record_status, :string, "entity.record_status", true)
                                                                 ])
+
+
+  def characterisations
+    characterisations = []
+    if self.media_types.length == 1 && self.media_types.include?("research-data") then
+      characterisations << "data-only-repository"
+    elsif self.media_types.length == 1 && self.media_types.include?("preprints") then
+      characterisations << "preprints-only-repository"
+    end
+    characterisations
+  end
 
   def self.machine_readable_attributes
     Machine_readable_attributes
