@@ -40,7 +40,7 @@ class OrganisationsController < ApplicationController
   def autocomplete
     authorize :organisation
     @organisations = Organisation.search(params[:term])
-    render json: @organisations.map { |o| { label: o.name, value: o.id } }
+    render json: @organisations.map { |o| { label: o.disambiguated_name_for_autocomplete, value: o.id } }
   end
 
   def make_rp

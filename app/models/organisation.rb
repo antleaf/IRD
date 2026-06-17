@@ -59,6 +59,10 @@ class Organisation < ApplicationRecord
     end
   end
 
+  def disambiguated_name_for_autocomplete
+    "#{self.name} (#{self.country.name})"
+  end
+
   def self.rp_for_country(country_id)
     rp = nil
     rps = self.where(rp: true, country_id: country_id)
