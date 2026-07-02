@@ -129,30 +129,36 @@ module OaiPmh
     end
 
     def parse_metadata(response)
-      doc = Nokogiri::XML(response.body)
-      doc.remove_namespaces!
-      base_url_reported_by_oai_pmh_identify = doc.at_xpath("//baseURL").text
-      Rails.logger.warn("Base URL reported by OAI-PMH Identify is #{base_url_reported_by_oai_pmh_identify} which is different to known Base URL #{@system.oai_base_url}") if base_url_reported_by_oai_pmh_identify != @system.oai_base_url
-      @system.metadata["oai_repo_name"] = doc.at_xpath("//repositoryName").text
-      @system.metadata["oai_contact"] = doc.at_xpath("//adminEmail").text if doc.at_xpath("//adminEmail")
-      doc.xpath("//description").each do |desc|
-        repo_id = desc.at_xpath("//repositoryIdentifier")
-        if repo_id
-          @system.metadata["oai_id"] = ("oai:" + repo_id.text)
-          break
+      begin
+        doc = Nokogiri::XML(response.body)
+        doc.remove_namespaces!
+        base_url_reported_by_oai_pmh_identify = doc.at_xpath("//baseURL").text
+        Rails.logger.warn("Base URL reported by OAI-PMH Identify is #{base_url_reported_by_oai_pmh_identify} which is different to known Base URL #{@system.oai_base_url}") if base_url_reported_by_oai_pmh_identify != @system.oai_base_url
+        @system.metadata["oai_repo_name"] = doc.at_xpath("//repositoryName").text
+        @system.metadata["oai_contact"] = doc.at_xpath("//adminEmail").text if doc.at_xpath("//adminEmail")
+        doc.xpath("//description").each do |desc|
+          repo_id = desc.at_xpath("//repositoryIdentifier")
+          if repo_id
+            @system.metadata["oai_id"] = ("oai:" + repo_id.text)
+            break
+          end
         end
-      end
-      unless @system.metadata.empty?
-        if @system.metadata["oai_id"]
-          @system.add_repo_id(:OAI, @system.metadata["oai_id"])
+        unless @system.metadata.empty?
+          if @system.metadata["oai_id"]
+            @system.add_repo_id(:OAI, @system.metadata["oai_id"])
+          end
+          if !@system.contact && @system.metadata["oai_contact"]
+            @system.contact = @system.metadata["oai_contact"]
+          end
+          if !@system.description && @system.metadata["description"]
+            @system.description = @system.metadata["description"]
+          end
         end
-        if !@system.contact && @system.metadata["oai_contact"]
-          @system.contact = @system.metadata["oai_contact"]
-        end
-        if !@system.description && @system.metadata["description"]
-          @system.description = @system.metadata["description"]
-        end
+      rescue Exception => e
+        raise "Unable to parse OAI-PMH response"
+        Rails.logger.warn(e.message)
       end
     end
+
   end
 end
