@@ -74,6 +74,7 @@ ja:
           generalist_repository: 汎用リポジトリ
           governmental_repository: 政府
           institutional_repository: 機関リポジトリ
+          regional_repository: 地域/全国
           special_collection: 特別コレクション
           unknown: 非公開
         system_labels: ラベル

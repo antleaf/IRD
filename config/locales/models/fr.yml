@@ -74,6 +74,7 @@ fr:
           generalist_repository: Généraliste
           governmental_repository: Gouvernemental
           institutional_repository: Institutionnel
+          regional_repository: Régional/National
           special_collection: Collection spéciale
           unknown: Non classé
         system_labels: Étiquettes

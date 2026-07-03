@@ -74,6 +74,7 @@ zh-CN:
           generalist_repository: 通用
           governmental_repository: 政府
           institutional_repository: 机构
+          regional_repository: 区域/国家
           special_collection: 特别收藏
           unknown: 未分类
         system_labels: 标签

@@ -74,6 +74,7 @@ tr:
           generalist_repository: Genelci
           governmental_repository: Hükümetsel
           institutional_repository: Kurumsal
+          regional_repository: Bölgesel/Ulusal
           special_collection: Özel Koleksiyon
           unknown: Sınıflandırılmamış
         system_labels: Etiketler
