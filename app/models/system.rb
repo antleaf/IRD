@@ -115,7 +115,7 @@ class System < ApplicationRecord
 
   validates :name, :url, presence: true
   validates_with UrlValidator, on: :create
-  validates_with VerifiedSystemValidator
+  # validates_with VerifiedSystemValidator
   # validates_with UnlockedValidator
 
   before_validation :set_defaults
