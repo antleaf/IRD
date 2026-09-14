@@ -52,11 +52,12 @@ class Organisation < ApplicationRecord
   end
 
   def display_name
-    if self.short_name.blank?
-      self.name
-    else
-      self.short_name
-    end
+    self.name
+    # if self.short_name.blank?
+    #   self.name
+    # else
+    #   self.short_name
+    # end
   end
 
   def disambiguated_name_for_autocomplete
