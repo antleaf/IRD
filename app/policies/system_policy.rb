@@ -53,6 +53,10 @@ class SystemPolicy < ApplicationPolicy
     User.valid_user?(@user) && @user.has_role?(:administrator) && !@record.is_locked?
   end
 
+  def view_identifiers?
+    add_repo_id?
+  end
+
   def search?
     User.valid_user?(@user) && @user.has_role?(:administrator)
   end

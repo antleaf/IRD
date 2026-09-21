@@ -13,20 +13,21 @@
               = surround '(', ')' do
                 =@system.platform_version
       = print_field_name_and_value('OAI-PMH Base URL',@system.oai_base_url)
-      %div.property
-        %h5.property-name= t(:identifiers)
-        %div.property-value
-          - if !@system.repoids.empty?
-            %ul
-              - @system.repoids.each do |repoid|
-                - scheme_config = Rails.application.config.ird[:repoid_schemes][repoid.identifier_scheme.to_sym]
-                - if scheme_config[:display] == true
-                  %li= resolvable_identifier(repoid.identifier_scheme, repoid.identifier_value)
-          -else
-            =t(:none)
-        - if policy(@system).add_repo_id?
-          = link_to t("buttons.add_identifier"),nil, :class => 'btn btn-primary btn-sm',"data-bs-toggle":"modal", "data-bs-target":"#addIdentifierModal"
-          = render 'add_identifier_modal'
+      - if policy(@system).view_identifiers?
+        %div.property
+          %h5.property-name= t(:identifiers)
+          %div.property-value
+            - if !@system.repoids.empty?
+              %ul
+                - @system.repoids.each do |repoid|
+                  - scheme_config = Rails.application.config.ird[:repoid_schemes][repoid.identifier_scheme.to_sym]
+                  - if scheme_config[:display] == true
+                    %li= resolvable_identifier(repoid.identifier_scheme, repoid.identifier_value)
+            -else
+              =t(:none)
+          - if policy(@system).add_repo_id?
+            = link_to t("buttons.add_identifier"),nil, :class => 'btn btn-primary btn-sm',"data-bs-toggle":"modal", "data-bs-target":"#addIdentifierModal"
+            = render 'add_identifier_modal'
     %div.col-md-6
       %div.property
         %h5.property-name= t('recognised_metadata_formats')
