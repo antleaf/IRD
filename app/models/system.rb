@@ -262,12 +262,12 @@ class System < ApplicationRecord
       # i18n-tasks-use t("activerecord.attributes.network_check.network_check_type_list.#{network_check_type}") # this lets i18n-tasks know the key is used
     end
     issue_array << Issue.new(:medium, "platform-missing") if self.platform_id == Platform.default_platform_id
-    if self.generator
-      issue_array << Issue.new(:medium, "platform-may-be-incorrect") if self.generator.platform&.trusted && (self.generator.platform_id != self.platform_id)
-      issue_array << Issue.new(:medium, "platform-version-may-be-incorrect") if self.generator.platform == self.platform && self.generator.version != self.platform_version
-    else
+    # if self.generator
+    #   issue_array << Issue.new(:medium, "platform-may-be-incorrect") if self.generator.platform&.trusted && (self.generator.platform_id != self.platform_id)
+    #   issue_array << Issue.new(:medium, "platform-version-may-be-incorrect") if self.generator.platform == self.platform && self.generator.version != self.platform_version
+    # else
       # self.curation_alerts << Issue.new(:warning, 'Generator is unknown') # is this useful?
-    end
+    # end
     issue_array << Issue.new(:low, "description-missing") if self.description.blank?
     issue_array << Issue.new(:low, "contact-missing") if self.contact.blank?
     issue_array << Issue.new(:low, "thumbnail-missing") unless self.thumbnail.attached?

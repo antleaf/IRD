@@ -1,5 +1,10 @@
 source "https://rubygems.org"
 
+
+# TEMPORARY WORKAROUND - SHOULD BE REMOVED WHEN RAILS 8.2 is released
+# https://github.com/rails/rails/issues/58685#issuecomment-5572420067
+gem "json", "< 3"
+
 gem "dotenv-rails"
 gem "fileutils"
 gem "translate_enum"
