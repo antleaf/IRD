@@ -49,7 +49,7 @@ shared:
     ark:
       display: false
       link_to_source: true
-      http_prefix: https://n2t.net/
+      http_prefix: https://coar-repositories.org/ #not https://n2t.net/
       http_suffix:
   locales:
     en:

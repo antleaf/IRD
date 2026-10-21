@@ -1,3 +1,11 @@
+- pid = @system.ark
+- unless pid.nil?
+  %div.pid
+    %span.pid-label Persistent Identifier (PID):
+    %span.badge.text-bg-secondary= pid
+    -# = resolvable_identifier(pid.identifier_scheme, pid.identifier_value)
+
+
 %div.row
   %div.col-lg-8
     = render 'show_general', "@system": @system

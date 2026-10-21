@@ -334,6 +334,10 @@ class System < ApplicationRecord
     end
   end
 
+  def ark
+    self.repoids.where(identifier_scheme: :ark).first&.identifier_value unless self.repoids.where(identifier_scheme: :ark).empty?
+  end
+
   private
 
   def update_normalids_after_save
