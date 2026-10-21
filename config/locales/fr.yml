@@ -54,6 +54,7 @@ fr:
     search: Recherche
     statistics: Statistiques
     welcome: Bienvenue dans l'annuaire des référentiels internationaux (IRD)
+  persistent_identifier: Identifiant persistant (PID)
   platform_identified: Plateforme logicielle identifiée ?
   primary_subject: Matière principale
   recognised_metadata_formats: Formats de métadonnées reconnus par l'IRD

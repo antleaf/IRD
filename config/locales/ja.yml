@@ -54,6 +54,7 @@ ja:
     search: 検索
     statistics: 統計
     welcome: 国際リポジトリディレクトリ (IRD) へようこそ
+  persistent_identifier: 永続識別子（PID）
   platform_identified: ソフトウェア プラットフォームは特定されていますか?
   primary_subject: 主な科目
   recognised_metadata_formats: IRDが認識するメタデータ形式

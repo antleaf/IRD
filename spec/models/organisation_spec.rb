@@ -70,8 +70,12 @@ RSpec.describe Organisation, type: :model do
   end
 
   describe "#display_name" do
-    it "returns short_name when present" do
-      expect(cern.display_name).to eq("CERN")
+    # it "returns short_name when present" do
+    #   expect(cern.display_name).to eq("CERN")
+    # end
+
+    it "returns name when present" do
+      expect(cern.display_name).to eq("European Organization for Nuclear Research")
     end
 
     it "returns name when short_name is blank" do

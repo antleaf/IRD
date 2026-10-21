@@ -54,6 +54,7 @@ en:
     search: Search
     statistics: Statistics
     welcome: Welcome to the International Repositories Directory (IRD)
+  persistent_identifier: Persistent Identifier (PID)
   platform_identified: Software Platform Identified?
   primary_subject: Primary Subject
   recognised_metadata_formats: Metadata Formats Recognised by IRD

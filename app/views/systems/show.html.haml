@@ -1,7 +1,7 @@
 - pid = @system.ark
 - unless pid.nil?
   %div.pid
-    %span.pid-label Persistent Identifier (PID):
+    %span.pid-label= "#{t(:persistent_identifier)}:"
     -# %span.badge.text-bg-secondary= pid
     = resolvable_identifier(:ark, pid)
 

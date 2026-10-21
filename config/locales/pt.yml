@@ -54,6 +54,7 @@ pt:
     search: Procurar
     statistics: Estatísticas
     welcome: Bem-vindo ao Diretório de Repositórios Internacionais (IRD)
+  persistent_identifier: Identificador Persistente (PID)
   platform_identified: Plataforma de software identificada?
   primary_subject: Assunto primário
   recognised_metadata_formats: Formatos de metadados reconhecidos pelo IRD

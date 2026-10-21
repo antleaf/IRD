@@ -54,6 +54,7 @@ tr:
     search: Aramak
     statistics: İstatistikler
     welcome: Uluslararası Depolar Rehberi'ne (IRD) hoş geldiniz
+  persistent_identifier: Kalıcı Tanımlayıcı (PID)
   platform_identified: Yazılım Platformu Belirlendi mi?
   primary_subject: Birincil Ders
   recognised_metadata_formats: IRD Tarafından Tanınan Meta Veri Biçimleri

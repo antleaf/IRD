@@ -12,6 +12,7 @@
                   filter['key'],
                   true,
                   onclick: "javascript: $('#search_form').submit();"
+                -# i18n-tasks-use t('characterisations.#{characterisation}') # this lets i18n-tasks know the key is used
                 = t("characterisations.#{filter['key']}")
                 = "(#{filter['doc_count']})"
       %div.row
