@@ -41,7 +41,7 @@
     %div.property-value
       -if @system.rp && @system.rp.users.count > 0
         %ul
-          - @system.rp.users.each do |agent|
+          - @system.rp.users.order(:last_name).each do |agent|
             %li
               = agent.display_name
       - else
@@ -50,7 +50,7 @@
       = "#{t(:additional_authorised_curators)}:"
       %div.property-value
         %ul
-          - @system.users.each do |user|
+          - @system.users.order(:last_name).each do |user|
             %li
               = user.display_name
   - most_recent_audit = @system.audits.reorder(created_at: :desc).first
