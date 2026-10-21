@@ -17,8 +17,19 @@ module SystemsHelper
     end
   end
 
-  def resolvable_identifier(scheme, id)
+  def resolvable_identifier_with_scheme_label(scheme, id)
     returned_identifier = "<b>#{scheme}:</b> "
+    scheme_config = Rails.application.config.ird[:repoid_schemes][scheme.to_sym]
+    if scheme_config && scheme_config[:link_to_source]
+      returned_identifier += link_to id, full_identifier(scheme, id), class: "external-link",target: "_blank"
+    else
+      returned_identifier += id
+    end
+    returned_identifier.html_safe
+  end
+
+  def resolvable_identifier(scheme, id)
+    returned_identifier = ""
     scheme_config = Rails.application.config.ird[:repoid_schemes][scheme.to_sym]
     if scheme_config && scheme_config[:link_to_source]
       returned_identifier += link_to id, full_identifier(scheme, id), class: "external-link",target: "_blank"

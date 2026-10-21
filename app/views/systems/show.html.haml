@@ -2,8 +2,8 @@
 - unless pid.nil?
   %div.pid
     %span.pid-label Persistent Identifier (PID):
-    %span.badge.text-bg-secondary= pid
-    -# = resolvable_identifier(pid.identifier_scheme, pid.identifier_value)
+    -# %span.badge.text-bg-secondary= pid
+    = resolvable_identifier(:ark, pid)
 
 
 %div.row

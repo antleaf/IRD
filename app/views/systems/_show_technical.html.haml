@@ -22,7 +22,7 @@
                 - @system.repoids.each do |repoid|
                   - scheme_config = Rails.application.config.ird[:repoid_schemes][repoid.identifier_scheme.to_sym]
                   - if scheme_config[:display] == true
-                    %li= resolvable_identifier(repoid.identifier_scheme, repoid.identifier_value)
+                    %li= resolvable_identifier_with_scheme_label(repoid.identifier_scheme, repoid.identifier_value)
             -else
               =t(:none)
           - if policy(@system).add_repo_id?
