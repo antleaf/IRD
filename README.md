@@ -1,5 +1,4 @@
-This repository has been archived and the active code-base is now hosted by CodeBerg :
-https://codeberg.org/Antleaf/ird
+# This repository has been archived and the active code-base is now hosted by CodeBerg: [https://codeberg.org/Antleaf/ird](https://codeberg.org/Antleaf/ird)
 
 # IRD
 
